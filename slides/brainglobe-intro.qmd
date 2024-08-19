@@ -4,9 +4,12 @@
 ::: {.column width="55%"}
 Established 2020 with three aims:
 
+:::{.incremental}
 1. Develop general-purpose tools to help others build interoperable software
 2. Develop specialist software for specific analysis and visualisation needs
 3. Reduce barriers of entry, and facilitate the building of an ecosystem of computational neuroanatomy tools.
+:::
+
 :::
 ::: {.column width="45%"}
 ![](img/tracing.png)
@@ -24,75 +27,83 @@ Initial observation - lots of similar communities working independently
 
 
 ::: footer
-[Claudi, F., Petrucco, L., Tyson, A. L. et al (2020) “BrainGlobe Atlas API: a common interface for neuroanatomical atlases” Journal of Open Source Software, v5(54), 2668 ](https://doi.org/10.21105/joss.02668)
+[Claudi, F. et al. (2020) “BrainGlobe Atlas API: a common interface for neuroanatomical atlases” JOSS, v5(54), 2668 ](https://doi.org/10.21105/joss.02668)
 :::
 
 ## BrainGlobe Atlas API
-![](img/atlases.png){}
+### [brainglobe-atlasapi](https://github.com/brainglobe/brainglobe-atlasapi)
+![](img/atlases.png){fig-align="center"}
 
 ::: footer
-[Claudi, F., Petrucco, L., Tyson, A. L. et al (2020) “BrainGlobe Atlas API: a common interface for neuroanatomical atlases” Journal of Open Source Software, v5(54), 2668 ](https://doi.org/10.21105/joss.02668)
+[Claudi, F. et al. (2020) “BrainGlobe Atlas API: a common interface for neuroanatomical atlases” JOSS, v5(54), 2668 ](https://doi.org/10.21105/joss.02668)
 :::
+
+## Current atlases {.smaller}
+::: {style="font-size: 70%;"}
+
+
+| Atlas Name | Resolution | Ages | Reference Images
+| --- |  --- | --- | --- |
+| [Allen Mouse Brain Atlas](https://doi.org/10.1016/j.cell.2020.04.007) | 10, 25, 50, and 100 micron | P56 | STPT
+| [Allen Human Brain Atlas](https://www.brain-map.org) | 100 micron | Adult | MRI
+| [Max Planck Zebrafish Brain Atlas](http://fishatlas.neuro.mpg.de) | 1 micron | 6-dpf | FISH
+| [Enhanced and Unified Mouse Brain Atlas](https://kimlab.io/brain-map/atlas/) | 10, 25, 50, and 100 micron | P56 | STPT
+| [Smoothed version of the Kim et al. mouse reference atlas](https://doi.org/10.1016/j.celrep.2014.12.014) | 10, 25, 50 and 100 micron | P56 | STPT
+| [Gubra's LSFM mouse brain atlas](https://doi.org/10.1007/s12021-020-09490-8) | 20 micron | 8 to 10 weeks post natal | LSFM
+| [3D version of the Allen mouse spinal cord atlas](https://doi.org/10.1101/2021.05.06.443008) | 20 x 10 x 10 micron | Adult | Nissl
+| [AZBA: A 3D Adult Zebrafish Brain Atlas](https://doi.org/10.1101/2021.05.04.442625) | 4 micron | 15-16 weeks post natal | LSFM
+| [Waxholm Space atlas of the Sprague Dawley rat brain](https://doi.org/10.1038/s41592-023-02034-3) | 39 micron | P80  | MRI
+| [3D Edge-Aware Refined Atlases Derived from the Allen Developing Mouse Brain Atlases](https://doi.org/10.7554/eLife.61408) | 16, 16.75, and 25 micron | E13, E15, E18, P4, P14, P28 & P56 | Nissl
+| [Princeton Mouse Brain Atlas](https://brainmaps.princeton.edu/2020/09/princeton-mouse-brain-atlas-links) | 20 micron | >P56 (older animals included) | LSFM
+| [Kim Lab Developmental CCF](https://data.mendeley.com/datasets/2svx788ddf/1) | 10 micron | P56  | STP, LSFM (iDISCO) and MRI (a0, adc, dwo, fa, MTR, T2)
+| [Blind Mexican Cavefish Brain Atlas](https://doi.org/10.7554/eLife.80777) | 2 micron | 1 year | IHC
+| [BlueBrain Barrel Cortex Atlas](https://doi.org/10.1162/imag_a_00209) | 10 and 25 micron | P56 | STPT
+| [UNAM Axolotl Brain Atlas](https://doi.org/10.1038/s41598-021-89357-3) | 40 micron | ~ 3 months post hatching | MRI
+:::
+
+::: footer
+[Claudi, F. et al. (2020) “BrainGlobe Atlas API: a common interface for neuroanatomical atlases” JOSS, v5(54), 2668 ](https://doi.org/10.21105/joss.02668)
+:::
+
+
+::: footer
+[Claudi, F. et al. (2020) “BrainGlobe Atlas API: a common interface for neuroanatomical atlases” JOSS, v5(54), 2668 ](https://doi.org/10.21105/joss.02668)
+:::
+
+
 
 ## BrainGlobe Atlas API {.smaller}
-**Currently implemented atlases**
-
-* [Allen Mouse Brain Atlas](https://portal.brain-map.org/) at 10, 25, 50 and 100 micron resolutions
-* [Allen Human Brain Atlas](https://portal.brain-map.org/) at 100 micron resolution
-* [Max Planck Zebrafish Brain Atlas](http://fishatlas.neuro.mpg.de) at 1 micron resolution
-* [Enhanced and Unified Mouse Brain Atlas](https://kimlab.io/brain-map/atlas/) at 10, 25, 50 and 100 micron resolutions
-* [Smoothed version of the Kim et al. mouse reference atlas](https://doi.org/10.1016/j.celrep.2014.12.014) at 10, 25, 50 and 100 micron resolutions
-* [Gubra's LSFM mouse brain atlas](https://doi.org/10.1007/s12021-020-09490-8) at 20 micron resolution
-* [3D version of the Allen mouse spinal cord atlas](https://doi.org/10.1016/j.crmeth.2021.100074) at 20 x 10 x 10 micron resolution
-* [AZBA: A 3D Adult Zebrafish Brain Atlas]( https://doi.org/10.7554/eLife.69988) at 4 micron resolution
-* [Waxholm Space atlas of the Sprague Dawley rat brain](https://doi.org/10.1016/j.neuroimage.2014.04.001) at 39 micron resolution
-* [3D Edge-Aware Refined Atlases Derived from the Allen Developing Mouse Brain Atlases](https://doi.org/10.7554/eLife.61408) (E13, E15, E18, P4, P14, P28 & P56)
-* [Princeton Mouse Brain Atlas](https://brainmaps.princeton.edu/2020/09/princeton-mouse-brain-atlas-links) at 20 micron resolution
-* [Kim Lab Developmental CCF (P56)](https://data.mendeley.com/datasets/2svx788ddf/1) at 10 micron resolution with 8 reference images - STP, LSFM (iDISCO) and MRI (a0, adc, dwo, fa, MTR, T2)
-
-::: footer
-[Claudi, F., Petrucco, L., Tyson, A. L. et al (2020) “BrainGlobe Atlas API: a common interface for neuroanatomical atlases” Journal of Open Source Software, v5(54), 2668 ](https://doi.org/10.21105/joss.02668)
-:::
-
-
-## BrainGlobe Atlas API{.smaller}
-
 ```python
-from pprint import pprint
-from bg_atlasapi.bg_atlas import BrainGlobeAtlas
+from brainglobe_atlasapi.bg_atlas import BrainGlobeAtlas
 atlas = BrainGlobeAtlas("allen_mouse_25um")
 
-# reference image
 reference_image = atlas.reference
 print(reference_image.shape)
 # (528, 320, 456)
 
-# hemispheres image (value 1 in left hemisphere, 2 in right)
-hemispheres_image = atlas.hemispheres
-print(hemispheres_image.shape)
+annotation_image = atlas.annotation
+print(annotation_image.shape)
 # (528, 320, 456)
 
+from pprint import pprint
 VISp = atlas.structures["VISp"]
 pprint(VISp)
+
 # {'acronym': 'VISp',
 #  'id': 385,
 #  'mesh': None,
-#  'mesh_filename': PosixPath('/home/user/.brainglobe/allen_mouse_25um_v0.3/meshes/385.obj')
+#  'mesh_filename': PosixPath('/home/user/.brainglobe/allen_mouse_25um_v0.3/meshes/385.obj'),
 #  'name': 'Primary visual area',
 #  'rgb_triplet': [8, 133, 140],
 #  'structure_id_path': [997, 8, 567, 688, 695, 315, 669, 385]}
 ```
 
 ::: footer
-[Claudi, F., Petrucco, L., Tyson, A. L. et al (2020) “BrainGlobe Atlas API: a common interface for neuroanatomical atlases” Journal of Open Source Software, v5(54), 2668 ](https://doi.org/10.21105/joss.02668)
+[Claudi, F. et al. (2020) “BrainGlobe Atlas API: a common interface for neuroanatomical atlases” JOSS, v5(54), 2668 ](https://doi.org/10.21105/joss.02668)
 :::
 
-## BrainGlobe Atlas API
-![](img/brainglobe_cli.png){fig-align="center" width=110%}
 
-::: footer
-[Claudi, F., Petrucco, L., Tyson, A. L. et al (2020) “BrainGlobe Atlas API: a common interface for neuroanatomical atlases” Journal of Open Source Software, v5(54), 2668 ](https://doi.org/10.21105/joss.02668)
-:::
+# Version 1
 
 ## Whole brain microscopy {.smaller}
 ::: {.columns}
@@ -113,56 +124,67 @@ Light sheet fluorescence microscopy
 
 ![](img/microscopy.png){fig-align="center" width=110%}
 
-## Whole brain microscopy
-![](img/serial2p.png){fig-align="center" width=110%}
 
-## Whole brain microscopy
-![](img/serial2p_crop.png){fig-align="center" width=110%}
+## 
+![](img/whole.png){fig-align="center" width=70%}
 
-## brainreg
+## 
+![](img/crop.png){fig-align="center" width=70%}
+
+## Whole-brain registration
+### [`brainreg`](https://github.com/brainglobe/brainreg)
+
 ![](img/brainreg.png){fig-align="center" width=110%}
 
 
 ::: footer
-[Tyson, A. L., Vélez-Fort, M., Rousseau, C. V. et al. (2022) “Accurate determination of marker location within whole-brain microscopy images” Scientific Reports, 12, 867](https://doi.org/10.1038/s41598-021-04676-9)
+[Tyson, A. L. et al. (2022) “Accurate determination of marker location within whole-brain microscopy images” Sci Rep, 12, 867](https://doi.org/10.1038/s41598-021-04676-9)
 :::
 
-## cellfinder
+## 3D cell detection
+### [`cellfinder`](https://github.com/brainglobe/cellfinder)
 ![](img/raw.png){fig-align="center" width=70%}
 
 ::: footer
-[Tyson, A. L., Rousseau, C. V., Niedworok, C. J. et al. (2021) “A deep learning algorithm for 3D cell detection in whole mouse brain image datasets" PLoS Comp Biol 17(5): e1009074.](https://doi.org/10.1371/journal.pcbi.1009074)
+[Tyson, A. L. et al. (2021) “A deep learning algorithm for 3D cell detection in whole mouse brain image datasets" PLoS Comp Biol 17(5): e1009074.](https://doi.org/10.1371/journal.pcbi.1009074)
 :::
 
-## cellfinder
+## 3D cell detection
+### [`cellfinder`](https://github.com/brainglobe/cellfinder)
 ![](img/detect.png){fig-align="center" width=70%}
 
 ::: footer
-[Tyson, A. L., Rousseau, C. V., Niedworok, C. J. et al. (2021) “A deep learning algorithm for 3D cell detection in whole mouse brain image datasets" PLoS Comp Biol 17(5): e1009074.](https://doi.org/10.1371/journal.pcbi.1009074)
+[Tyson, A. L. et al. (2021) “A deep learning algorithm for 3D cell detection in whole mouse brain image datasets" PLoS Comp Biol 17(5): e1009074.](https://doi.org/10.1371/journal.pcbi.1009074)
 :::
 
-## cellfinder
+
+## 3D cell detection
+### [`cellfinder`](https://github.com/brainglobe/cellfinder)
 ![](img/classify.png){fig-align="center" width=70%}
 
 ::: footer
-[Tyson, A. L., Rousseau, C. V., Niedworok, C. J. et al. (2021) “A deep learning algorithm for 3D cell detection in whole mouse brain image datasets" PLoS Comp Biol 17(5): e1009074.](https://doi.org/10.1371/journal.pcbi.1009074)
+[Tyson, A. L. et al. (2021) “A deep learning algorithm for 3D cell detection in whole mouse brain image datasets" PLoS Comp Biol 17(5): e1009074.](https://doi.org/10.1371/journal.pcbi.1009074)
 :::
 
-## cellfinder
+
+## 3D cell detection
+### [`cellfinder`](https://github.com/brainglobe/cellfinder)
 ![](img/cells.png){fig-align="center" width=70%}
 
 ::: footer
-[Tyson, A. L., Rousseau, C. V., Niedworok, C. J. et al. (2021) “A deep learning algorithm for 3D cell detection in whole mouse brain image datasets" PLoS Comp Biol 17(5): e1009074.](https://doi.org/10.1371/journal.pcbi.1009074)
+[Tyson, A. L. et al. (2021) “A deep learning algorithm for 3D cell detection in whole mouse brain image datasets" PLoS Comp Biol 17(5): e1009074.](https://doi.org/10.1371/journal.pcbi.1009074)
 :::
 
-## brainglobe-segmentation
+## Spatial analysis
+### [`brainglobe-segmentation`](https://github.com/brainglobe/brainglobe-segmentation)
 ![](img/brainglobe-seg.png){fig-align="center" width=100%}
 
 ::: footer
-[Tyson, A. L., Vélez-Fort, M., Rousseau, C. V. et al. (2022) “Accurate determination of marker location within whole-brain microscopy images” Scientific Reports, 12, 867](https://doi.org/10.1038/s41598-021-04676-9)
+[Tyson, A. L. et al. (2022) “Accurate determination of marker location within whole-brain microscopy images” Sci Rep, 12, 867](https://doi.org/10.1038/s41598-021-04676-9)
 :::
 
-## brainglobe-segmentation
+## Spatial analysis
+### [`brainglobe-segmentation`](https://github.com/brainglobe/brainglobe-segmentation)
 ::: {.columns}
 ::: {.column width="25%"}
 ![](img/bg-seg-users.png){fig-align="center" width=90%}
@@ -179,15 +201,16 @@ Light sheet fluorescence microscopy
 [Tyson, A. L., Vélez-Fort, M., Rousseau, C. V. et al. (2022) “Accurate determination of marker location within whole-brain microscopy images” Scientific Reports, 12, 867](https://doi.org/10.1038/s41598-021-04676-9)
 :::
 
-## brainglobe-segmentation
+## Spatial analysis
+### [`brainglobe-segmentation`](https://github.com/brainglobe/brainglobe-segmentation)
 ![](img/brainglobe-segmentation.png){fig-align="center" width=100%}
 
 ::: footer
 [Tyson, A. L., Vélez-Fort, M., Rousseau, C. V. et al. (2022) “Accurate determination of marker location within whole-brain microscopy images” Scientific Reports, 12, 867](https://doi.org/10.1038/s41598-021-04676-9)
 :::
 
-
-## brainrender
+## Visualisation
+### [`brainrender`](https://github.com/brainglobe/brainrender)
 ::: {.columns}
 ::: {.column width="33%"}
 ![](img/br-mouse.png){fig-align="center" height=300px}
@@ -204,6 +227,54 @@ Light sheet fluorescence microscopy
 :::
 
 
-## brainrender {background-video="video/cellfinder_small.mp4" background-video-loop="true"}
+## Visualisation {background-video="img/cellfinder_small.mp4" background-video-loop="true"}
+### [`brainrender`](https://github.com/brainglobe/brainrender)
+
+::: footer
+[Claudi, F. et al. (2021) “Visualizing anatomically registered data with Brainrender” eLife, 10:e65751](https://doi.org/10.7554/eLife.65751)
+:::
+
+# Version 2
+Expanding access
+
+## Adding new atlases {.smaller}
+- Latest version of Waxholm rat
+- Axolotl
+- Prarie Vole
+- Princeton RAtlas
+- Cuttlefish
+- Developmental Mouse Brain atlas
+- NHP
+- Human
+
+## Building novel atlases
+![](img/blackcap.png){fig-align="center" width=120%}
+
+::: footer
+[github.com/brainglobe/brainglobe-template-builder](https://github.com/brainglobe/brainglobe-template-builder)
+:::
+
+## More raw data processing
+![](img/brainglobe-stitch.png){fig-align="center"}
+
+::: footer
+[github.com/brainglobe/brainglobe-stitch](https://github.com/brainglobe/brainglobe-stitch)
+:::
+
+
+## Consistent napari environment
+![](img/brainrender-napari.png){fig-align="center"}
+
+::: footer
+[github.com/brainglobe/brainrender-napari](https://github.com/brainglobe/brainrender-napari)
+:::
+
+## Support for more data types
+![](img/brainglobe-registration-demo.png){fig-align="center"}
+
+::: footer
+[github.com/brainglobe/brainglobe-registration](https://github.com/brainglobe/brainglobe-registration)
+:::
+
 
 # [BrainGlobe website](https://brainglobe.info/){preview-link="true" style="text-align: center"}

@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>brainglobe-intro</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="brainglobe-intro_files/libs/clipboard/clipboard.min.js"></script>
+<script src="brainglobe-intro_files/libs/quarto-html/quarto.js"></script>
+<script src="brainglobe-intro_files/libs/quarto-html/popper.min.js"></script>
+<script src="brainglobe-intro_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="brainglobe-intro_files/libs/quarto-html/anchor.min.js"></script>
+<link href="brainglobe-intro_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="brainglobe-intro_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="brainglobe-intro_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="brainglobe-intro_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="brainglobe-intro_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+
+
+</head>
+
+<body class="fullcontent">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="brainglobe-initiative" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="brainglobe-initiative">BrainGlobe Initiative</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p>Established 2020 with three aims:</p>
+<div class="incremental">
+<ol class="incremental" type="1">
+<li>Develop general-purpose tools to help others build interoperable software</li>
+<li>Develop specialist software for specific analysis and visualisation needs</li>
+<li>Reduce barriers of entry, and facilitate the building of an ecosystem of computational neuroanatomy tools.</li>
+</ol>
+</div>
+</div><div class="column" style="width:45%;">
+<p><img src="img/tracing.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="footer">
+<p><a href="https://brainglobe.info/">brainglobe.info</a></p>
+</div>
+</section>
+<section id="brainglobe-atlas-api" class="level2">
+<h2 class="anchored" data-anchor-id="brainglobe-atlas-api">BrainGlobe Atlas API</h2>
+<section id="brainglobe-atlasapi" class="level3">
+<h3 class="anchored" data-anchor-id="brainglobe-atlasapi"><a href="https://github.com/brainglobe/brainglobe-atlasapi">brainglobe-atlasapi</a></h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/atlases.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<div class="footer">
+<p><a href="https://doi.org/10.21105/joss.02668">Claudi, F. et al.&nbsp;(2020) “BrainGlobe Atlas API: a common interface for neuroanatomical atlases” JOSS, v5(54), 2668</a></p>
+</div>
+</section>
+</section>
+<section id="current-atlases" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="current-atlases">Current atlases</h2>
+<div style="font-size: 70%;">
+<ul>
+<li><a href="https://doi.org/10.1016/j.cell.2020.04.007">Allen Mouse Brain Atlas</a> at 10, 25, 50 and 100 micron resolutions</li>
+<li><a href="https://www.brain-map.org">Allen Human Brain Atlas</a> at 100 micron resolution</li>
+<li><a href="http://fishatlas.neuro.mpg.de">Max Planck Zebrafish Brain Atlas</a> at 1 micron resolution</li>
+<li><a href="https://kimlab.io/brain-map/atlas/">Enhanced and Unified Mouse Brain Atlas</a> at 10, 25, 50 and 100 micron resolutions</li>
+<li><a href="https://doi.org/10.1016/j.celrep.2014.12.014">Smoothed version of the Kim et al.&nbsp;mouse reference atlas</a> at 10, 25, 50 and 100 micron resolutions</li>
+<li><a href="https://doi.org/10.1007/s12021-020-09490-8">Gubra’s LSFM mouse brain atlas</a> at 20 micron resolution</li>
+<li><a href="https://doi.org/10.1101/2021.05.06.443008">3D version of the Allen mouse spinal cord atlas</a> at 20 x 10 x 10 micron resolution</li>
+<li><a href="https://doi.org/10.1101/2021.05.04.442625">AZBA: A 3D Adult Zebrafish Brain Atlas</a> at 4 micron resolution</li>
+<li><a href="https://doi.org/10.1038/s41592-023-02034-3">Waxholm Space atlas of the Sprague Dawley rat brain</a> at 39 micron resolution</li>
+<li><a href="https://doi.org/10.7554/eLife.61408">3D Edge-Aware Refined Atlases Derived from the Allen Developing Mouse Brain Atlases</a> (E13, E15, E18, P4, P14, P28 &amp; P56)</li>
+<li><a href="https://brainmaps.princeton.edu/2020/09/princeton-mouse-brain-atlas-links">Princeton Mouse Brain Atlas</a> at 20 micron resolution</li>
+<li><a href="https://data.mendeley.com/datasets/2svx788ddf/1">Kim Lab Developmental CCF (P56)</a> at 10 micron resolution with 8 reference images - STP, LSFM (iDISCO) and MRI (a0, adc, dwo, fa, MTR, T2)</li>
+<li><a href="https://doi.org/10.7554/eLife.80777">Blind Mexican Cavefish Brain Atlas</a> at 2um resolution</li>
+</ul>
+</div>
+<div class="footer">
+<p><a href="https://doi.org/10.21105/joss.02668">Claudi, F. et al.&nbsp;(2020) “BrainGlobe Atlas API: a common interface for neuroanatomical atlases” JOSS, v5(54), 2668</a></p>
+</div>
+<div class="footer">
+<p><a href="https://doi.org/10.21105/joss.02668">Claudi, F. et al.&nbsp;(2020) “BrainGlobe Atlas API: a common interface for neuroanatomical atlases” JOSS, v5(54), 2668</a></p>
+</div>
+</section>
+<section id="brainglobe-atlas-api-1" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="brainglobe-atlas-api-1">BrainGlobe Atlas API</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> brainglobe_atlasapi.bg_atlas <span class="im">import</span> BrainGlobeAtlas</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>atlas <span class="op">=</span> BrainGlobeAtlas(<span class="st">"allen_mouse_25um"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>reference_image <span class="op">=</span> atlas.reference</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(reference_image.shape)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># (528, 320, 456)</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>annotation_image <span class="op">=</span> atlas.annotation</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(annotation_image.shape)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># (528, 320, 456)</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>VISp <span class="op">=</span> atlas.structures[<span class="st">"VISp"</span>]</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>pprint(VISp)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># {'acronym': 'VISp',</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">#  'id': 385,</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co">#  'mesh': None,</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">#  'mesh_filename': PosixPath('/home/user/.brainglobe/allen_mouse_25um_v0.3/meshes/385.obj'),</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">#  'name': 'Primary visual area',</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">#  'rgb_triplet': [8, 133, 140],</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co">#  'structure_id_path': [997, 8, 567, 688, 695, 315, 669, 385]}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="footer">
+<p><a href="https://doi.org/10.21105/joss.02668">Claudi, F. et al.&nbsp;(2020) “BrainGlobe Atlas API: a common interface for neuroanatomical atlases” JOSS, v5(54), 2668</a></p>
+</div>
+</section>
+<section id="version-1" class="level1">
+<h1>Version 1</h1>
+<p>Whole brain microscopy</p>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section"></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/whole.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</section>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1"></h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/crop.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+</section>
+<section id="whole-brain-registration" class="level2">
+<h2 class="anchored" data-anchor-id="whole-brain-registration">Whole-brain registration</h2>
+<section id="brainreg" class="level3">
+<h3 class="anchored" data-anchor-id="brainreg"><a href="https://github.com/brainglobe/brainreg"><code>brainreg</code></a></h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/brainreg.png" class="img-fluid figure-img" style="width:110.0%"></p>
+</figure>
+</div>
+<div class="footer">
+<p><a href="https://doi.org/10.1038/s41598-021-04676-9">Tyson, A. L. et al.&nbsp;(2022) “Accurate determination of marker location within whole-brain microscopy images” Sci Rep, 12, 867</a></p>
+</div>
+</section>
+</section>
+<section id="d-cell-detection" class="level2">
+<h2 class="anchored" data-anchor-id="d-cell-detection">3D cell detection</h2>
+<section id="cellfinder" class="level3">
+<h3 class="anchored" data-anchor-id="cellfinder"><a href="https://github.com/brainglobe/cellfinder"><code>cellfinder</code></a></h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/raw.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+<div class="footer">
+<p><a href="https://doi.org/10.1371/journal.pcbi.1009074">Tyson, A. L. et al.&nbsp;(2021) “A deep learning algorithm for 3D cell detection in whole mouse brain image datasets” PLoS Comp Biol 17(5): e1009074.</a></p>
+</div>
+</section>
+</section>
+<section id="d-cell-detection-1" class="level2">
+<h2 class="anchored" data-anchor-id="d-cell-detection-1">3D cell detection</h2>
+<section id="cellfinder-1" class="level3">
+<h3 class="anchored" data-anchor-id="cellfinder-1"><a href="https://github.com/brainglobe/cellfinder"><code>cellfinder</code></a></h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/detect.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+<div class="footer">
+<p><a href="https://doi.org/10.1371/journal.pcbi.1009074">Tyson, A. L. et al.&nbsp;(2021) “A deep learning algorithm for 3D cell detection in whole mouse brain image datasets” PLoS Comp Biol 17(5): e1009074.</a></p>
+</div>
+</section>
+</section>
+<section id="d-cell-detection-2" class="level2">
+<h2 class="anchored" data-anchor-id="d-cell-detection-2">3D cell detection</h2>
+<section id="cellfinder-2" class="level3">
+<h3 class="anchored" data-anchor-id="cellfinder-2"><a href="https://github.com/brainglobe/cellfinder"><code>cellfinder</code></a></h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/classify.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+<div class="footer">
+<p><a href="https://doi.org/10.1371/journal.pcbi.1009074">Tyson, A. L. et al.&nbsp;(2021) “A deep learning algorithm for 3D cell detection in whole mouse brain image datasets” PLoS Comp Biol 17(5): e1009074.</a></p>
+</div>
+</section>
+</section>
+<section id="d-cell-detection-3" class="level2">
+<h2 class="anchored" data-anchor-id="d-cell-detection-3">3D cell detection</h2>
+<section id="cellfinder-3" class="level3">
+<h3 class="anchored" data-anchor-id="cellfinder-3"><a href="https://github.com/brainglobe/cellfinder"><code>cellfinder</code></a></h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/cells.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+<div class="footer">
+<p><a href="https://doi.org/10.1371/journal.pcbi.1009074">Tyson, A. L. et al.&nbsp;(2021) “A deep learning algorithm for 3D cell detection in whole mouse brain image datasets” PLoS Comp Biol 17(5): e1009074.</a></p>
+</div>
+</section>
+</section>
+<section id="spatial-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="spatial-analysis">Spatial analysis</h2>
+<section id="brainglobe-segmentation" class="level3">
+<h3 class="anchored" data-anchor-id="brainglobe-segmentation"><a href="https://github.com/brainglobe/brainglobe-segmentation"><code>brainglobe-segmentation</code></a></h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/brainglobe-seg.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+<div class="footer">
+<p><a href="https://doi.org/10.1038/s41598-021-04676-9">Tyson, A. L. et al.&nbsp;(2022) “Accurate determination of marker location within whole-brain microscopy images” Sci Rep, 12, 867</a></p>
+</div>
+</section>
+</section>
+<section id="brainrender" class="level2">
+<h2 class="anchored" data-anchor-id="brainrender">brainrender</h2>
+<div class="columns">
+<div class="column" style="width:33%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/br-mouse.png" height="300" class="figure-img"></p>
+</figure>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/br-human.png" height="300" class="figure-img"></p>
+</figure>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/br-zebrafish.png" height="300" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="footer">
+<p><a href="https://doi.org/10.7554/eLife.65751">Claudi, F. et al.&nbsp;(2021) “Visualizing anatomically registered data with Brainrender” eLife</a></p>
+</div>
+</section>
+<section id="visualisation" class="level2" data-background-video="img/cellfinder_small.mp4" data-background-video-loop="true">
+<h2 data-background-video="img/cellfinder_small.mp4" data-background-video-loop="true" class="anchored" data-anchor-id="visualisation">Visualisation</h2>
+<section id="brainrender-1" class="level3">
+<h3 class="anchored" data-anchor-id="brainrender-1"><a href="https://github.com/brainglobe/brainrender"><code>brainrender</code></a></h3>
+<div class="footer">
+<p><a href="https://doi.org/10.7554/eLife.65751">Claudi, F. et al.&nbsp;(2021) “Visualizing anatomically registered data with Brainrender” eLife, 10:e65751</a></p>
+</div>
+</section>
+</section>
+</section>
+<section id="version-2" class="level1">
+<h1>Version 2</h1>
+<p>Expanding access</p>
+<section id="adding-new-atlases" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="adding-new-atlases">Adding new atlases</h2>
+<ul>
+<li>Allen mouse brain with barrel annotations</li>
+<li>Blind mexican cavefish</li>
+<li>Latest version of Waxholm rat</li>
+<li>Axolotl</li>
+<li>Prarier Vole</li>
+<li>Princeton RAtlas</li>
+<li>Cuttlefish</li>
+<li>Developmental Mouse Brain atlas</li>
+<li>NHP</li>
+<li>Human</li>
+</ul>
+</section>
+<section id="building-novel-atlases" class="level2">
+<h2 class="anchored" data-anchor-id="building-novel-atlases">Building novel atlases</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/blackcap.png" class="img-fluid figure-img" style="width:120.0%"></p>
+</figure>
+</div>
+<div class="footer">
+<p><a href="https://github.com/brainglobe/brainglobe-template-builder">github.com/brainglobe/brainglobe-template-builder</a></p>
+</div>
+</section>
+<section id="more-raw-data-processing" class="level2">
+<h2 class="anchored" data-anchor-id="more-raw-data-processing">More raw data processing</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/brainglobe-stitch.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<div class="footer">
+<p><a href="https://github.com/brainglobe/brainglobe-stitch">github.com/brainglobe/brainglobe-stitch</a></p>
+</div>
+</section>
+<section id="consistent-napari-environment" class="level2">
+<h2 class="anchored" data-anchor-id="consistent-napari-environment">Consistent napari environment</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/brainrender-napari.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<div class="footer">
+<p><a href="https://github.com/brainglobe/brainrender-napari">github.com/brainglobe/brainrender-napari</a></p>
+</div>
+</section>
+<section id="support-for-more-data-types" class="level2">
+<h2 class="anchored" data-anchor-id="support-for-more-data-types">Support for more data types</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/brainglobe-registration-demo.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<div class="footer">
+<p><a href="https://github.com/brainglobe/brainglobe-registration">github.com/brainglobe/brainglobe-registration</a></p>
+</div>
+</section>
+<section id="brainglobe-initiative-1" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="brainglobe-initiative-1">BrainGlobe Initiative</h2>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p>Established 2020 with three aims:</p>
+<ol type="1">
+<li>Develop general-purpose tools to help others build interoperable software</li>
+<li>Develop specialist software for specific analysis and visualisation needs</li>
+<li>Reduce barriers of entry, and facilitate the building of an ecosystem of computational neuroanatomy tools.</li>
+</ol>
+</div><div class="column" style="width:45%;">
+<p><img src="img/tracing.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="brainglobe-atlas-api-2" class="level2">
+<h2 class="anchored" data-anchor-id="brainglobe-atlas-api-2">BrainGlobe Atlas API</h2>
+<p>Initial observation - lots of similar communities working independently</p>
+<ul>
+<li>Model species</li>
+<li>Imaging modality</li>
+<li>Anatomical focus</li>
+<li>Developmental stage</li>
+</ul>
+<div class="footer">
+<p><a href="https://doi.org/10.21105/joss.02668">Claudi, F., Petrucco, L., Tyson, A. L. et al (2020) “BrainGlobe Atlas API: a common interface for neuroanatomical atlases” Journal of Open Source Software, v5(54), 2668</a></p>
+</div>
+</section>
+<section id="brainglobe-atlas-api-3" class="level2">
+<h2 class="anchored" data-anchor-id="brainglobe-atlas-api-3">BrainGlobe Atlas API</h2>
+<p><img src="img/atlases.png" class="img-fluid"></p>
+<div class="footer">
+<p><a href="https://doi.org/10.21105/joss.02668">Claudi, F., Petrucco, L., Tyson, A. L. et al (2020) “BrainGlobe Atlas API: a common interface for neuroanatomical atlases” Journal of Open Source Software, v5(54), 2668</a></p>
+</div>
+</section>
+<section id="brainglobe-atlas-api-4" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="brainglobe-atlas-api-4">BrainGlobe Atlas API</h2>
+<p><strong>Currently implemented atlases</strong></p>
+<ul>
+<li><a href="https://portal.brain-map.org/">Allen Mouse Brain Atlas</a> at 10, 25, 50 and 100 micron resolutions</li>
+<li><a href="https://portal.brain-map.org/">Allen Human Brain Atlas</a> at 100 micron resolution</li>
+<li><a href="http://fishatlas.neuro.mpg.de">Max Planck Zebrafish Brain Atlas</a> at 1 micron resolution</li>
+<li><a href="https://kimlab.io/brain-map/atlas/">Enhanced and Unified Mouse Brain Atlas</a> at 10, 25, 50 and 100 micron resolutions</li>
+<li><a href="https://doi.org/10.1016/j.celrep.2014.12.014">Smoothed version of the Kim et al.&nbsp;mouse reference atlas</a> at 10, 25, 50 and 100 micron resolutions</li>
+<li><a href="https://doi.org/10.1007/s12021-020-09490-8">Gubra’s LSFM mouse brain atlas</a> at 20 micron resolution</li>
+<li><a href="https://doi.org/10.1016/j.crmeth.2021.100074">3D version of the Allen mouse spinal cord atlas</a> at 20 x 10 x 10 micron resolution</li>
+<li><a href="https://doi.org/10.7554/eLife.69988">AZBA: A 3D Adult Zebrafish Brain Atlas</a> at 4 micron resolution</li>
+<li><a href="https://doi.org/10.1016/j.neuroimage.2014.04.001">Waxholm Space atlas of the Sprague Dawley rat brain</a> at 39 micron resolution</li>
+<li><a href="https://doi.org/10.7554/eLife.61408">3D Edge-Aware Refined Atlases Derived from the Allen Developing Mouse Brain Atlases</a> (E13, E15, E18, P4, P14, P28 &amp; P56)</li>
+<li><a href="https://brainmaps.princeton.edu/2020/09/princeton-mouse-brain-atlas-links">Princeton Mouse Brain Atlas</a> at 20 micron resolution</li>
+<li><a href="https://data.mendeley.com/datasets/2svx788ddf/1">Kim Lab Developmental CCF (P56)</a> at 10 micron resolution with 8 reference images - STP, LSFM (iDISCO) and MRI (a0, adc, dwo, fa, MTR, T2)</li>
+</ul>
+<div class="footer">
+<p><a href="https://doi.org/10.21105/joss.02668">Claudi, F., Petrucco, L., Tyson, A. L. et al (2020) “BrainGlobe Atlas API: a common interface for neuroanatomical atlases” Journal of Open Source Software, v5(54), 2668</a></p>
+</div>
+</section>
+<section id="brainglobe-atlas-api-5" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="brainglobe-atlas-api-5">BrainGlobe Atlas API</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bg_atlasapi.bg_atlas <span class="im">import</span> BrainGlobeAtlas</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>atlas <span class="op">=</span> BrainGlobeAtlas(<span class="st">"allen_mouse_25um"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># reference image</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>reference_image <span class="op">=</span> atlas.reference</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(reference_image.shape)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># (528, 320, 456)</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># hemispheres image (value 1 in left hemisphere, 2 in right)</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>hemispheres_image <span class="op">=</span> atlas.hemispheres</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(hemispheres_image.shape)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co"># (528, 320, 456)</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>VISp <span class="op">=</span> atlas.structures[<span class="st">"VISp"</span>]</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>pprint(VISp)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co"># {'acronym': 'VISp',</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co">#  'id': 385,</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co">#  'mesh': None,</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co">#  'mesh_filename': PosixPath('/home/user/.brainglobe/allen_mouse_25um_v0.3/meshes/385.obj')</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co">#  'name': 'Primary visual area',</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co">#  'rgb_triplet': [8, 133, 140],</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co">#  'structure_id_path': [997, 8, 567, 688, 695, 315, 669, 385]}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="footer">
+<p><a href="https://doi.org/10.21105/joss.02668">Claudi, F., Petrucco, L., Tyson, A. L. et al (2020) “BrainGlobe Atlas API: a common interface for neuroanatomical atlases” Journal of Open Source Software, v5(54), 2668</a></p>
+</div>
+</section>
+<section id="brainglobe-atlas-api-6" class="level2">
+<h2 class="anchored" data-anchor-id="brainglobe-atlas-api-6">BrainGlobe Atlas API</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/brainglobe_cli.png" class="img-fluid figure-img" style="width:110.0%"></p>
+</figure>
+</div>
+<div class="footer">
+<p><a href="https://doi.org/10.21105/joss.02668">Claudi, F., Petrucco, L., Tyson, A. L. et al (2020) “BrainGlobe Atlas API: a common interface for neuroanatomical atlases” Journal of Open Source Software, v5(54), 2668</a></p>
+</div>
+</section>
+<section id="whole-brain-microscopy" class="level2 smaller">
+<h2 class="smaller anchored" data-anchor-id="whole-brain-microscopy">Whole brain microscopy</h2>
+<div class="columns">
+<div class="column" style="width:33%;">
+<p>Serial section two-photon tomography</p>
+</div><div class="column" style="width:33%;">
+<p>Fluorescence micro-optical sectioning tomography</p>
+</div><div class="column" style="width:33%;">
+<p>Light sheet fluorescence microscopy</p>
+</div>
+</div>
+<div class="footer">
+<p><a href="https://doi.org/10.1038/nmeth.2477">Osten, P. , Margrie, T. W. (2013) “Mapping brain circuitry with a light microscope” Nature Methods 10, 515–523</a></p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/microscopy.png" class="img-fluid figure-img" style="width:110.0%"></p>
+</figure>
+</div>
+</section>
+<section id="whole-brain-microscopy-1" class="level2">
+<h2 class="anchored" data-anchor-id="whole-brain-microscopy-1">Whole brain microscopy</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/serial2p.png" class="img-fluid figure-img" style="width:110.0%"></p>
+</figure>
+</div>
+</section>
+<section id="whole-brain-microscopy-2" class="level2">
+<h2 class="anchored" data-anchor-id="whole-brain-microscopy-2">Whole brain microscopy</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/serial2p_crop.png" class="img-fluid figure-img" style="width:110.0%"></p>
+</figure>
+</div>
+</section>
+<section id="brainreg-1" class="level2">
+<h2 class="anchored" data-anchor-id="brainreg-1">brainreg</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/brainreg.png" class="img-fluid figure-img" style="width:110.0%"></p>
+</figure>
+</div>
+<div class="footer">
+<p><a href="https://doi.org/10.1038/s41598-021-04676-9">Tyson, A. L., Vélez-Fort, M., Rousseau, C. V. et al.&nbsp;(2022) “Accurate determination of marker location within whole-brain microscopy images” Scientific Reports, 12, 867</a></p>
+</div>
+</section>
+<section id="cellfinder-4" class="level2">
+<h2 class="anchored" data-anchor-id="cellfinder-4">cellfinder</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/raw.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+<div class="footer">
+<p><a href="https://doi.org/10.1371/journal.pcbi.1009074">Tyson, A. L., Rousseau, C. V., Niedworok, C. J. et al.&nbsp;(2021) “A deep learning algorithm for 3D cell detection in whole mouse brain image datasets” PLoS Comp Biol 17(5): e1009074.</a></p>
+</div>
+</section>
+<section id="cellfinder-5" class="level2">
+<h2 class="anchored" data-anchor-id="cellfinder-5">cellfinder</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/detect.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+<div class="footer">
+<p><a href="https://doi.org/10.1371/journal.pcbi.1009074">Tyson, A. L., Rousseau, C. V., Niedworok, C. J. et al.&nbsp;(2021) “A deep learning algorithm for 3D cell detection in whole mouse brain image datasets” PLoS Comp Biol 17(5): e1009074.</a></p>
+</div>
+</section>
+<section id="cellfinder-6" class="level2">
+<h2 class="anchored" data-anchor-id="cellfinder-6">cellfinder</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/classify.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+<div class="footer">
+<p><a href="https://doi.org/10.1371/journal.pcbi.1009074">Tyson, A. L., Rousseau, C. V., Niedworok, C. J. et al.&nbsp;(2021) “A deep learning algorithm for 3D cell detection in whole mouse brain image datasets” PLoS Comp Biol 17(5): e1009074.</a></p>
+</div>
+</section>
+<section id="cellfinder-7" class="level2">
+<h2 class="anchored" data-anchor-id="cellfinder-7">cellfinder</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/cells.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+<div class="footer">
+<p><a href="https://doi.org/10.1371/journal.pcbi.1009074">Tyson, A. L., Rousseau, C. V., Niedworok, C. J. et al.&nbsp;(2021) “A deep learning algorithm for 3D cell detection in whole mouse brain image datasets” PLoS Comp Biol 17(5): e1009074.</a></p>
+</div>
+</section>
+<section id="brainglobe-segmentation-1" class="level2">
+<h2 class="anchored" data-anchor-id="brainglobe-segmentation-1">brainglobe-segmentation</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/brainglobe-seg.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+<div class="footer">
+<p><a href="https://doi.org/10.1038/s41598-021-04676-9">Tyson, A. L., Vélez-Fort, M., Rousseau, C. V. et al.&nbsp;(2022) “Accurate determination of marker location within whole-brain microscopy images” Scientific Reports, 12, 867</a></p>
+</div>
+</section>
+<section id="brainglobe-segmentation-2" class="level2">
+<h2 class="anchored" data-anchor-id="brainglobe-segmentation-2">brainglobe-segmentation</h2>
+<div class="columns">
+<div class="column" style="width:25%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/bg-seg-users.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+</div><div class="column" style="width:25%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/bg-seg-midvisp.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/bg-seg-means.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="footer">
+<p><a href="https://doi.org/10.1038/s41598-021-04676-9">Tyson, A. L., Vélez-Fort, M., Rousseau, C. V. et al.&nbsp;(2022) “Accurate determination of marker location within whole-brain microscopy images” Scientific Reports, 12, 867</a></p>
+</div>
+</section>
+<section id="brainglobe-segmentation-3" class="level2">
+<h2 class="anchored" data-anchor-id="brainglobe-segmentation-3">brainglobe-segmentation</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="img/brainglobe-segmentation.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+<div class="footer">
+<p><a href="https://doi.org/10.1038/s41598-021-04676-9">Tyson, A. L., Vélez-Fort, M., Rousseau, C. V. et al.&nbsp;(2022) “Accurate determination of marker location within whole-brain microscopy images” Scientific Reports, 12, 867</a></p>
+</div>
+</section>
+</section>
+<section id="brainglobe-website" class="level1">
+<h1><a href="https://brainglobe.info/" data-preview-link="true" style="text-align: center">BrainGlobe website</a></h1>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

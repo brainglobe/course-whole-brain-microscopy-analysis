@@ -4,7 +4,7 @@
 
 **Create a new conda environment and install napari**
 ```bash
-conda create --name brainglobe python=3.10 -y
+conda create --name brainglobe python=3.12 -c conda-forge -y
 conda activate brainglobe
 conda install -c conda-forge napari pyqt
 ```

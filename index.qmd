@@ -1,14 +1,12 @@
 ---
-title: BrainGlobe and napari
-subtitle: Whole brain microscopy analysis
-author: Adam Tyson, Alessandro Felder & Laura Porta
+title: Whole brain microscopy analysis
+subtitle: With BrainGlobe and napari
 execute: 
   enabled: true
 format:
     revealjs:
         theme: [default, bg-light.scss]
         logo: img/BG_logo.png
-        footer: "SWC | 2023-12-06"
         slide-number: c
         menu:
             numbers: true
@@ -28,7 +26,6 @@ format:
     html:
         theme: [default, bg-light.scss]
         logo: img/BG_logo.png
-        date: "2023-12-06"
         toc: true
         code-overflow: scroll
         highlight-style: atom-one
@@ -42,103 +39,40 @@ format:
 ---
 # Welcome
 
-## Schedule
-
-### Morning
+## Schedule{.smaller}
 ::: {.incremental}
-* Installation (AT & AF)
-* Introduction to BrainGlobe (AT)
-* Introduction to napari (AF)
-* Napari demo (AF)
-* BrainGlobe & napari (AF) 
-* Whole brain atlas registration & segmentation (AT)
-:::
-
-## Schedule
-
-### Afternoon
-::: {.incremental}
-* 3D cell detection (AT)
-* Analysing silicon probe tracks (AT)
-* Analysing bulk fluorescence (AT)
-* Using BrainGlobe in your own software (AF)
-* Wrap up and Q&A (AT & AF)
+- Installing BrainGlobe (30 mins)
+- Introduction to BrainGlobe (30 mins)
+- Registering whole brain microscopy images with brainreg (30 mins)
+- Segmenting structures in whole brain microscopy images with brainglobe-segmentation (30 mins)
+- Detecting cells in large 3D images with cellfinder (90 mins)
+- Analysing cell positions in atlas space (30 mins)
+- Visualisation of data in atlas space with brainrender and brainrender-napari (30 mins)
+- Tour of other BrainGlobe tools and wrap-up (30 mins)
 :::
 
 # Installation
 
 {{< include slides/installation.qmd >}}
 
-## Initial checkup
-
-{{< include slides/mentimeter.qmd >}}
 
 # BrainGlobe
 
 {{< include slides/brainglobe-intro.qmd >}}
   
+# Tutorials
 
-# [napari](https://napari.org/){preview-link="true" style="text-align: center"}
+## Registering whole brain microscopy images with brainreg
 
-{{< include slides/napari-intro.qmd >}}
+## Segmenting structures in whole brain microscopy images with brainglobe-segmentation
 
-# napari demo
+## Detecting cells in large 3D images with cellfinder
 
-{{< include slides/napari-demo.qmd >}}
+## Analysing cell positions in atlas space
 
-# Registration & segmentation
+## Visualisation of data in atlas space with brainrender and brainrender-napari
 
-# Cell detection
-
-# Silicon probe tracing
-
-# Bulk fluorescence mapping
-
-# BrainGlobe & your software
-
-## BrainGlobe & your software
-* Not just standalone tools
-* Python APIs to help you build your own software
-* Easy compatibility with other packages
-* [Released tools](https://brainglobe.info/community/external-tools.html){preview-link="true"}
-
-## Example script
-* Find all hippocampal regions (`bg-atlasapi`)
-* Display them in napari (`brainrender-napari`)
-
-## Example script (demo)
-```{.python}
-import napari
-from bg_atlasapi import BrainGlobeAtlas
-from brainrender_napari.napari_atlas_representation import NapariAtlasRepresentation
-
-# setup a napari viewer and a brainglobe atlas
-viewer = napari.viewer.Viewer()
-viewer.dims.ndisplay = 3 # set to 3d mode
-atlas = BrainGlobeAtlas("allen_mouse_100um")
-
-# find all hippocampal regions
-hip_id = 1080 # the id of the hippocampus is 1080
-hip_regions = [
-    region["acronym"] 
-    for region in atlas.structures_list 
-    if hip_id in region["structure_id_path"]
-]
-
-# make a representation of the brainglobe atlas in napari
-napari_atlas = NapariAtlasRepresentation(atlas, viewer)
-
-# add all hippocampal regions to the napari viewer
-for hip_region in hip_regions:
-    napari_atlas.add_structure_to_viewer(hip_region)
-
-# add the whole brain mesh as a help for orientation
-napari_atlas.add_structure_to_viewer("root")
-
-# run this script
-if __name__ == "__main__":
-    napari.run()
-```
+## Tour of other BrainGlobe tools and wrap-up
 
 # Wrap up
 
@@ -149,13 +83,5 @@ if __name__ == "__main__":
 * [GitHub](https://github.com/brainglobe/){preview-link="true"}
 
 You are welcome to contribute to BrainGlobe - get in touch anytime and we will support you!
-
-## Q+A
-
-{{< include slides/mentimeter.qmd >}}
-
-## Feedback
-
-Please give us [some feedback](https://ideaboardz.com/for/BrainGlobe%20course%20feedback/5139784) on this pilot course.
 
 # Thank you!
