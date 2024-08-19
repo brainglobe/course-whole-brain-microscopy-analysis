@@ -48,7 +48,7 @@ opens a new `napari` window.
 More details about using conda are available at [brainglobe.info](https://brainglobe.info/documentation/setting-up/conda.html){preview-link="true"}
 :::
 
-## Install brainglobe napari plugins
+## Install BrainGlobe napari plugins
 
 ::: {.callout-caution}
 ## Silicon Mac users 
