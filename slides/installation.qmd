@@ -62,3 +62,16 @@ Install all brainglobe tools with
 ```{.bash}
 pip install brainglobe
 ```
+
+## Install BrainGlobe atlases
+
+Run
+```bash
+brainglobe install -a allen_mouse_50um
+brainglobe install -a allen_mouse_10um
+```
+
+To check whether this worked:
+```bash
+brainglobe list
+```
