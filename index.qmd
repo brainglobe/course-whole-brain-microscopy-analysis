@@ -64,13 +64,20 @@ format:
 
 ## Registering whole brain microscopy images with brainreg
 
+[Tutorial](https://brainglobe.info/tutorials/tutorial-whole-brain-registration.html)
+
 ## Segmenting structures in whole brain microscopy images with brainglobe-segmentation
+
+[Tutorial (1D)](https://brainglobe.info/tutorials/segmenting-1d-tracks.html)
+[Tutorial (2D/3D)](https://brainglobe.info/tutorials/segmenting-3d-structures.html)
 
 ## Detecting cells in large 3D images with cellfinder
 
 ## Analysing cell positions in atlas space
 
 ## Visualisation of data in atlas space with brainrender and brainrender-napari
+
+[Tutorial (brainrender-napari)](https://brainglobe.info/tutorials/visualise-atlas-napari.html)
 
 ## Tour of other BrainGlobe tools and wrap-up
 
