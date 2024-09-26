@@ -9,7 +9,7 @@ pip install cellfinder brainrender brainrender-napari brainglobe-segmentation
 ```
 
 
-#### all other users
+#### All other users
 Install all brainglobe tools with
 ```{.bash}
 pip install brainglobe
