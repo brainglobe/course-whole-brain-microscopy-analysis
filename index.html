@@ -8,7 +8,7 @@
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="index_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.56">
+  <meta name="generator" content="quarto-1.5.57">
 
   <title>Whole brain microscopy analysis</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -425,78 +425,34 @@
 <h1>Installation</h1>
 
 </section>
-<section id="command-line-installation" class="slide level2">
-<h2>Command line installation</h2>
-<div class="fragment">
-<p><strong>Create a new conda environment and install napari</strong></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="ex">conda</span> create <span class="at">--name</span> brainglobe python=3.12 <span class="at">-c</span> conda-forge <span class="at">-y</span></span>
-<span id="cb1-2"><a href=""></a><span class="ex">conda</span> activate brainglobe</span>
-<span id="cb1-3"><a href=""></a><span class="ex">conda</span> install <span class="at">-c</span> conda-forge napari pyqt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Double-check that running</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href=""></a><span class="ex">napari</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>opens a new <code>napari</code> window.</p>
-</div>
-<div class="fragment">
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>More details</strong></p>
-</div>
-<div class="callout-content">
-<p>More details about using conda are available at <a href="https://brainglobe.info/documentation/setting-up/conda.html" data-preview-link="true">brainglobe.info</a></p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="command-line-installation-alternative" class="slide level2 smaller">
-<h2>Command line installation (alternative)</h2>
-<div class="fragment">
-<p><strong>Create a new conda environment and install napari with pip</strong></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href=""></a><span class="ex">conda</span> create <span class="at">--name</span> brainglobe python=3.10 <span class="at">-y</span></span>
-<span id="cb3-2"><a href=""></a><span class="ex">conda</span> activate brainglobe</span>
-<span id="cb3-3"><a href=""></a><span class="ex">pip</span> install <span class="st">"napari[pyqt5]"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Double-check that running</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href=""></a><span class="ex">napari</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>opens a new <code>napari</code> window.</p>
-</div>
-<div class="fragment">
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>More details</strong></p>
-</div>
-<div class="callout-content">
-<p>More details about using conda are available at <a href="https://brainglobe.info/documentation/setting-up/conda.html" data-preview-link="true">brainglobe.info</a></p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="install-brainglobe-napari-plugins" class="slide level2">
-<h2>Install BrainGlobe napari plugins</h2>
-<div class="callout callout-caution callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Silicon Mac users</strong></p>
-</div>
-<div class="callout-content">
-<p>Run this first:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href=""></a><span class="ex">conda</span> install hdf5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</div>
+<section id="install-napari-and-brainglobe" class="slide level2">
+<h2>Install napari and BrainGlobe</h2>
+<h4 id="silicon-mac-users">Silicon mac users</h4>
+<p>Install brainglobe tools individually:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="ex">conda</span> install brainreg</span>
+<span id="cb1-2"><a href=""></a><span class="ex">pip</span> install cellfinder brainrender brainrender-napari brainglobe-segmentation</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h4 id="all-other-users">All other users</h4>
 <p>Install all brainglobe tools with</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href=""></a><span class="ex">pip</span> install brainglobe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href=""></a><span class="ex">pip</span> install brainglobe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="double-check-installation" class="slide level2 smaller">
+<h2>Double-check installation</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Double-check that running</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href=""></a><span class="ex">napari</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>opens a new <code>napari</code> window, with brainglobe plugins available under <code>Plugins</code>.</p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="img/napari-plugins.png"></p>
+</div></div>
+</section>
+<section id="install-brainglobe-atlases" class="slide level2">
+<h2>Install BrainGlobe atlases</h2>
+<p>Run</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href=""></a><span class="ex">brainglobe</span> install <span class="at">-a</span> allen_mouse_50um</span>
+<span id="cb4-2"><a href=""></a><span class="ex">brainglobe</span> install <span class="at">-a</span> allen_mouse_10um</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To check whether this worked:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href=""></a><span class="ex">brainglobe</span> list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section>
 <section id="brainglobe" class="title-slide slide level1 center">
@@ -655,28 +611,28 @@
 </section>
 <section id="brainglobe-atlas-api-2" class="slide level2 smaller">
 <h2>BrainGlobe Atlas API</h2>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href=""></a><span class="im">from</span> brainglobe_atlasapi.bg_atlas <span class="im">import</span> BrainGlobeAtlas</span>
-<span id="cb7-2"><a href=""></a>atlas <span class="op">=</span> BrainGlobeAtlas(<span class="st">"allen_mouse_25um"</span>)</span>
-<span id="cb7-3"><a href=""></a></span>
-<span id="cb7-4"><a href=""></a>reference_image <span class="op">=</span> atlas.reference</span>
-<span id="cb7-5"><a href=""></a><span class="bu">print</span>(reference_image.shape)</span>
-<span id="cb7-6"><a href=""></a><span class="co"># (528, 320, 456)</span></span>
-<span id="cb7-7"><a href=""></a></span>
-<span id="cb7-8"><a href=""></a>annotation_image <span class="op">=</span> atlas.annotation</span>
-<span id="cb7-9"><a href=""></a><span class="bu">print</span>(annotation_image.shape)</span>
-<span id="cb7-10"><a href=""></a><span class="co"># (528, 320, 456)</span></span>
-<span id="cb7-11"><a href=""></a></span>
-<span id="cb7-12"><a href=""></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span>
-<span id="cb7-13"><a href=""></a>VISp <span class="op">=</span> atlas.structures[<span class="st">"VISp"</span>]</span>
-<span id="cb7-14"><a href=""></a>pprint(VISp)</span>
-<span id="cb7-15"><a href=""></a></span>
-<span id="cb7-16"><a href=""></a><span class="co"># {'acronym': 'VISp',</span></span>
-<span id="cb7-17"><a href=""></a><span class="co">#  'id': 385,</span></span>
-<span id="cb7-18"><a href=""></a><span class="co">#  'mesh': None,</span></span>
-<span id="cb7-19"><a href=""></a><span class="co">#  'mesh_filename': PosixPath('/home/user/.brainglobe/allen_mouse_25um_v0.3/meshes/385.obj'),</span></span>
-<span id="cb7-20"><a href=""></a><span class="co">#  'name': 'Primary visual area',</span></span>
-<span id="cb7-21"><a href=""></a><span class="co">#  'rgb_triplet': [8, 133, 140],</span></span>
-<span id="cb7-22"><a href=""></a><span class="co">#  'structure_id_path': [997, 8, 567, 688, 695, 315, 669, 385]}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a><span class="im">from</span> brainglobe_atlasapi.bg_atlas <span class="im">import</span> BrainGlobeAtlas</span>
+<span id="cb6-2"><a href=""></a>atlas <span class="op">=</span> BrainGlobeAtlas(<span class="st">"allen_mouse_25um"</span>)</span>
+<span id="cb6-3"><a href=""></a></span>
+<span id="cb6-4"><a href=""></a>reference_image <span class="op">=</span> atlas.reference</span>
+<span id="cb6-5"><a href=""></a><span class="bu">print</span>(reference_image.shape)</span>
+<span id="cb6-6"><a href=""></a><span class="co"># (528, 320, 456)</span></span>
+<span id="cb6-7"><a href=""></a></span>
+<span id="cb6-8"><a href=""></a>annotation_image <span class="op">=</span> atlas.annotation</span>
+<span id="cb6-9"><a href=""></a><span class="bu">print</span>(annotation_image.shape)</span>
+<span id="cb6-10"><a href=""></a><span class="co"># (528, 320, 456)</span></span>
+<span id="cb6-11"><a href=""></a></span>
+<span id="cb6-12"><a href=""></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span>
+<span id="cb6-13"><a href=""></a>VISp <span class="op">=</span> atlas.structures[<span class="st">"VISp"</span>]</span>
+<span id="cb6-14"><a href=""></a>pprint(VISp)</span>
+<span id="cb6-15"><a href=""></a></span>
+<span id="cb6-16"><a href=""></a><span class="co"># {'acronym': 'VISp',</span></span>
+<span id="cb6-17"><a href=""></a><span class="co">#  'id': 385,</span></span>
+<span id="cb6-18"><a href=""></a><span class="co">#  'mesh': None,</span></span>
+<span id="cb6-19"><a href=""></a><span class="co">#  'mesh_filename': PosixPath('/home/user/.brainglobe/allen_mouse_25um_v0.3/meshes/385.obj'),</span></span>
+<span id="cb6-20"><a href=""></a><span class="co">#  'name': 'Primary visual area',</span></span>
+<span id="cb6-21"><a href=""></a><span class="co">#  'rgb_triplet': [8, 133, 140],</span></span>
+<span id="cb6-22"><a href=""></a><span class="co">#  'structure_id_path': [997, 8, 567, 688, 695, 315, 669, 385]}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="footer">
 <p><a href="https://doi.org/10.21105/joss.02668">Claudi, F. et al.&nbsp;(2020) “BrainGlobe Atlas API: a common interface for neuroanatomical atlases” JOSS, v5(54), 2668</a></p>
 </div>
@@ -884,9 +840,11 @@
 </section>
 <section id="registering-whole-brain-microscopy-images-with-brainreg" class="slide level2">
 <h2>Registering whole brain microscopy images with brainreg</h2>
+<p><a href="https://brainglobe.info/tutorials/tutorial-whole-brain-registration.html">Tutorial</a></p>
 </section>
 <section id="segmenting-structures-in-whole-brain-microscopy-images-with-brainglobe-segmentation" class="slide level2">
 <h2>Segmenting structures in whole brain microscopy images with brainglobe-segmentation</h2>
+<p><a href="https://brainglobe.info/tutorials/segmenting-1d-tracks.html">Tutorial (1D)</a> <a href="https://brainglobe.info/tutorials/segmenting-3d-structures.html">Tutorial (2D/3D)</a></p>
 </section>
 <section id="detecting-cells-in-large-3d-images-with-cellfinder" class="slide level2">
 <h2>Detecting cells in large 3D images with cellfinder</h2>
@@ -896,6 +854,7 @@
 </section>
 <section id="visualisation-of-data-in-atlas-space-with-brainrender-and-brainrender-napari" class="slide level2">
 <h2>Visualisation of data in atlas space with brainrender and brainrender-napari</h2>
+<p><a href="https://brainglobe.info/tutorials/visualise-atlas-napari.html">Tutorial (brainrender-napari)</a></p>
 </section>
 <section id="tour-of-other-brainglobe-tools-and-wrap-up" class="slide level2">
 <h2>Tour of other BrainGlobe tools and wrap-up</h2>
