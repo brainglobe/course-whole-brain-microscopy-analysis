@@ -1,64 +1,47 @@
-## Command line installation
 
-. . .
+## Install napari and BrainGlobe
 
-**Create a new conda environment and install napari**
+#### Silicon mac users
+Install brainglobe tools individually:
 ```bash
-conda create --name brainglobe python=3.12 -c conda-forge -y
-conda activate brainglobe
-conda install -c conda-forge napari pyqt
+conda install brainreg
+pip install cellfinder brainrender brainrender-napari brainglobe-segmentation
 ```
 
-Double-check that running
-```bash
-napari
-```
-opens a new `napari` window.
 
-. . .
-
-::: {.callout-tip}
-## More details
-
-More details about using conda are available at [brainglobe.info](https://brainglobe.info/documentation/setting-up/conda.html){preview-link="true"}
-:::
-
-## Command line installation (alternative) {.smaller}
-
-. . .
-
-**Create a new conda environment and install napari with pip**
-```bash
-conda create --name brainglobe python=3.10 -y
-conda activate brainglobe
-pip install "napari[pyqt5]"
-```
-
-Double-check that running
-```bash
-napari
-```
-opens a new `napari` window.
-
-. . .
-
-::: {.callout-tip}
-## More details
-
-More details about using conda are available at [brainglobe.info](https://brainglobe.info/documentation/setting-up/conda.html){preview-link="true"}
-:::
-
-## Install BrainGlobe napari plugins
-
-::: {.callout-caution}
-## Silicon Mac users 
-Run this first:
-```bash
-conda install hdf5
-```
-:::
-
+#### All other users
 Install all brainglobe tools with
 ```{.bash}
 pip install brainglobe
+```
+
+
+## Double-check installation {.smaller}
+:::: {.columns}
+
+::: {.column width="50%"}
+Double-check that running
+```bash
+napari
+```
+opens a new `napari` window, with brainglobe plugins available under `Plugins`.
+:::
+
+::: {.column width="50%"}
+![](img/napari-plugins.png)
+:::
+
+::::
+
+## Install BrainGlobe atlases
+
+Run
+```bash
+brainglobe install -a allen_mouse_50um
+brainglobe install -a allen_mouse_10um
+```
+
+To check whether this worked:
+```bash
+brainglobe list
 ```
