@@ -1,0 +1,213 @@
+## Opening Napari
+
+```{.bash}
+napari
+```
+
+![](img/blank-napari-ui.png){alt="A screenshot of the default Napari user 
+interface"}
+
+## Opening images
+
+`File > Open Files(s)`, then navigate to `calcium imaging folder` and open `translation1_00001_ce.tif`
+
+![](img/cells-napari.png){alt="A screenshot of a some fluorescent cells"}
+
+## Napari's User interface
+
+
+![](img/ui-sections-napari.png){alt="A screenshot of Napari with the main user 
+interface sections labelled"}
+
+## Main menu
+
+![](img/ui-sections-napari.png){alt="A screenshot of Napari with the main user 
+interface sections labelled"}
+
+::: {.notes}
+We already used the main menu in the last section to view the BrainGlobe plugins. The 
+main menu contains various commands for opening images, changing preferences and 
+installing plugins (we'll see more of these options in later episodes).
+:::
+
+## Canvas
+
+Try moving around the image with the following commands:
+```
+Pan - Click and drag
+Zoom - Scroll in/out
+```
+
+![](img/cells-napari-pan-zoom.png){alt="A screenshot of a some fluorescent cells, closer up than before."}
+
+## Dimension sliders
+
+
+![](img/dim-slider-closeup.png){alt="Closeup of Napari's dimension slider with
+labels" width='80%'}
+
+![](img/dim-slider-0.png){width="30%" alt="Three screenshots of the cells image in napari, at 
+different z depths"}
+![](img/dim-slider-50.png){width="30%" alt="Three screenshots of the cells image in napari, at 
+different z depths"}
+![](img/dim-slider-100.png){width="30%" alt="Three screenshots of the cells image in napari, at 
+different z depths"}
+
+::: {.notes}
+Dimension sliders appear at the bottom of the canvas depending on the type of 
+image displayed. For example, here we have a 3D image of some cells, which 
+consists of a stack of 2D images. If we drag the slider at the bottom of the 
+image, we move up and down in this stack:
+
+Pressing the arrow buttons at either end of the slider steps through one slice 
+at a time. Also, pressing the 'play' button at the very left of the slider moves 
+automatically through the stack until pressed again.
+
+We will see in later episodes that more sliders can appear if our image has more 
+dimensions (e.g. time series, or further channels).
+:::
+
+## Viewer buttons {.smaller}
+
+The viewer buttons (the row of buttons at the bottom left of Napari) control 
+various aspects of the Napari viewer:
+
+:::: {.columns}
+
+::: {.column width=50%}
+ - Console ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/console.svg
+){alt="A screenshot of Napari's console button" height='30px'}
+
+ - 2D/3D ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/2D.svg
+){alt="A screenshot of Napari's 2D button" height='25px'}  / ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/3D.svg
+){alt="A screenshot of Napari's 3D button" height='25px'}
+
+ - Roll dimensions ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/roll.svg
+){alt="A screenshot of Napari's roll dimensions button" height='25px'} 
+
+ - Transpose dimensions ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/transpose.svg
+){alt="A screenshot of Napari's transpose dimensions button" height='25px'}
+
+ - Grid ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/grid.svg
+){alt="A screenshot of Napari's grid button" height='25px'}
+
+ - Home ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/home.svg
+){alt="A screenshot of Napari's home button" height='25px'}
+:::
+
+::: {.column width=50%}
+![](img/cells-napari.png){alt="A screenshot of a some fluorescent cells"}
+:::
+::::
+
+## Layer list
+
+![](img/cells-napari.png){alt="A screenshot of a some fluorescent cells"}
+
+::: {.notes}
+We can show/hide each layer by clicking the eye icon on the left side of their 
+row. 
+We can also rename them by double clicking on the row.
+
+We can change the order of layers by dragging and dropping items in the layer 
+list. For example, try dragging the membrane layer above the nuclei. You should 
+see the nuclei disappear from the viewer (as they are now hidden by the membrane 
+image on top).
+
+Now that we've seen the main controls for the viewer, let's look at the layer 
+list. 'Layers' are how Napari displays multiple items together in the viewer. 
+For example, currently our layer list contains two items - 'nuclei' and 
+'membrane'. These are both `Image` layers and are displayed in order, with 
+the nuclei on top and membrane underneath.
+
+Here we only have `Image` layers, but there are many more types like `Points`, 
+`Shapes` and `Labels`, some of which we will see [later in the episode
+](#layer-buttons).
+:::
+
+## Layer controls
+
+This area shows controls only for the currently selected layer (i.e. the one that is highlighted in blue in the layer 
+list).
+
+:::: {.columns}
+::: {.column width=30%}
+ - Opacity  
+ - Contrast limits 
+ - ...
+:::
+
+::: {.column width=60%}
+![](img/cells-napari.png){alt="A screenshot of a some fluorescent cells"}
+:::
+::::
+
+::: {.notes}
+
+This changes the opacity of the layer - lower values are more transparent. For 
+example, reducing the opacity of the membrane layer (if it is still on top of 
+the nuclei), allows us to see the nuclei again.
+
+briefly - the contrast 
+limits adjust what parts of the image we can see and how bright they appear in 
+the viewer. Moving the left node adjusts what is shown as fully black, while 
+moving the right node adjusts what is shown as fully bright. This doesn't change the values
+in the image, just how they are displayed.
+:::
+
+## Layer buttons
+
+:::: {.columns}
+
+::: {.column width=40%}
+Create and remove.
+
+ - Points ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/new_points.svg
+){alt="A screenshot of Napari's point layer button" height='30px'}
+
+ - Shapes ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/new_shapes.svg
+){alt="A screenshot of Napari's shape layer button" height='30px'} 
+
+ - Labels ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/new_labels.svg
+){alt="A screenshot of Napari's labels layer button" height='30px'}
+
+ - Remove layer ![](
+https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg
+){alt="A screenshot of Napari's delete layer button" height='30px'}  
+:::
+
+
+::: {.column width=55%}
+![](img/cells-napari.png){alt="A screenshot of a some fluorescent cells"}
+:::
+
+::::
+
+## Other layer types
+
+Note that there are some layer types that can't be added via clicking buttons
+in the user interface, like
+
+* [surfaces](https://napari.org/stable/howtos/layers/surface.html),
+* [tracks](https://napari.org/stable/howtos/layers/tracks.html) and 
+* [vectors](https://napari.org/stable/howtos/layers/vectors.html). 
+
+These require 
+calling python commands in Napari's console or an external python script.
+
+## Key points 
+
+- Napari's user interface is split into a few main sections including the 
+canvas, layer list, layer controls...
+- Layers can be of different types e.g. `Image`, `Point`, `Label`
+- Different layer types have different layer controls
