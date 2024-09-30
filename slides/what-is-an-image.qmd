@@ -107,7 +107,6 @@ The array size (also known as its dimensions) is stored in the `.shape`. Three v
 The other key feature of an image array is its 'data type' - this controls which 
 values can be stored inside of it.
 ``` {.python}
-
 image.dtype.name
 ```
 The data type consists of type and bit-depth.
