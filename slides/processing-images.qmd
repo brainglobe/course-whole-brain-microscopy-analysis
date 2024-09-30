@@ -1,0 +1,53 @@
+## Processing images
+
+Now we understand what an image is, and how to look at it in napari, we can start measuring things!
+But we need to find ("segment") "things" first!
+
+![](img/cells-napari.png){alt="A screenshot of a some fluorescent cells"}
+
+## Reduce noise with a median filter
+
+``` {.python}
+from scipy.signal import medfilt2d
+image = viewer.layers[0].data
+filtered = medfilt2d(image)
+viewer.add_image(filtered)
+```
+
+![](img/filtered.png){alt="A median-filtered version of the example image"}
+
+## Isolate neurons with a threshold {.smaller}
+
+Example of "semantic" segmentation
+``` {.python}
+thresholded = filtered > 8000 # True or False array
+thresholded = thresholded*255 # convert to unsigned int 8-bit
+viewer.add_image(thresholded)
+```
+![](img/thresholded.png){alt="A thresholded version of the example image"}
+
+## Label each neuron with a number {.smaller}
+
+Example of "instance" segmentation
+``` {.python}
+from skimage.measure import regionprops, label
+labelled = label(thresholded)
+viewer.add_labels(labelled)
+```
+![](img/labelled.png){alt="A labelled version of the example image"}
+
+## Pixels in each neuron {.smaller}
+
+``` {.python}
+properties = regionprops(labelled)
+pixels_in_each_region = [prop.area for prop in properties]
+print(pixels_in_each_region)
+```
+![](img/regionprops.png){alt="A list of pixel counts for each region of the example image"}
+
+## Key points
+
+* Segmentation can be broadly split into ‘semantic segmentation’ and ‘instance segmentation’. Semantic segmentation assigns pixels to specific classes (like neuron or background), while instance segmentation assigns pixels to individual ‘instances’ of a class (like individual neurons).
+* Segmentations are represented in the computer in the same way as standard images. The difference is that pixel values represent classes or instances, rather than light intensity.
+* Napari uses Labels layers for segmentations.
+* Segmentation is helpful for analysis.

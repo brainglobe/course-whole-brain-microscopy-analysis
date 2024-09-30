@@ -42,6 +42,7 @@ format:
 ## Schedule{.smaller}
 ::: {.incremental}
 - Installing BrainGlobe (30 mins)
+- Introduction to Image analysis with Napari
 - Introduction to BrainGlobe (30 mins)
 - Registering whole brain microscopy images with brainreg (30 mins)
 - Segmenting structures in whole brain microscopy images with brainglobe-segmentation (30 mins)
@@ -54,6 +55,14 @@ format:
 # Installation
 
 {{< include slides/installation.qmd >}}
+
+
+# Image Analysis
+Adapted from [https://github.com/HealthBioscienceIDEAS/microscopy-novice/](https://github.com/HealthBioscienceIDEAS/microscopy-novice/) (under CC BY 4.0 license)
+
+{{< include slides/intro-napari.qmd >}}
+{{< include slides/what-is-an-image.qmd >}}
+{{< include slides/processing-images.qmd >}}
 
 
 # BrainGlobe
