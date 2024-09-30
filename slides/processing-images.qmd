@@ -47,7 +47,7 @@ print(pixels_in_each_region)
 
 ## Key points
 
-* Segmentation can be broadly split into ‘semantic segmentation’ and ‘instance segmentation’. Semantic segmentation assigns pixels to specific classes (like neuron or background), while instance segmentation assigns pixels to individual ‘instances’ of a class (like individual neurons).
-* Segmentations are represented in the computer in the same way as standard images. The difference is that pixel values represent classes or instances, rather than light intensity.
-* Napari uses Labels layers for segmentations.
+* Segmentation can be broadly split into ‘semantic segmentation’ (e.g. neuron vs background) and ‘instance segmentation’ (e.g. individual neuron).
+* Segmentations are represented in the computer in the same way as images, but pixels represent an abstraction, rather than light intensity.
+* Napari uses "Labels" layers for segmentations.
 * Segmentation is helpful for analysis.
