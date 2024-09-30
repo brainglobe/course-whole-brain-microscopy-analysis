@@ -410,6 +410,7 @@
 <div>
 <ul>
 <li class="fragment">Installing BrainGlobe (30 mins)</li>
+<li class="fragment">Introduction to Image analysis with Napari</li>
 <li class="fragment">Introduction to BrainGlobe (30 mins)</li>
 <li class="fragment">Registering whole brain microscopy images with brainreg (30 mins)</li>
 <li class="fragment">Segmenting structures in whole brain microscopy images with brainglobe-segmentation (30 mins)</li>
@@ -453,6 +454,419 @@
 <span id="cb4-2"><a href=""></a><span class="ex">brainglobe</span> install <span class="at">-a</span> allen_mouse_10um</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To check whether this worked:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href=""></a><span class="ex">brainglobe</span> list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section></section>
+<section>
+<section id="image-analysis" class="title-slide slide level1 center">
+<h1>Image Analysis</h1>
+<p>Adapted from <a href="https://github.com/HealthBioscienceIDEAS/microscopy-novice/">https://github.com/HealthBioscienceIDEAS/microscopy-novice/</a> (under CC BY 4.0 license)</p>
+</section>
+<section id="opening-napari" class="slide level2">
+<h2>Opening Napari</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href=""></a><span class="ex">napari</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<img data-src="img/blank-napari-ui.png" alt="A screenshot of the default Napari user  interface" class="r-stretch"></section>
+<section id="opening-images" class="slide level2">
+<h2>Opening images</h2>
+<p><code>File &gt; Open Files(s)</code>, then navigate to <code>calcium imaging folder</code> and open <code>translation1_00001_ce.tif</code></p>
+
+<img data-src="img/cells-napari.png" alt="A screenshot of a some fluorescent cells" class="r-stretch"></section>
+<section id="naparis-user-interface" class="slide level2">
+<h2>Napari’s User interface</h2>
+
+<img data-src="img/ui-sections-napari.png" alt="A screenshot of Napari with the main user  interface sections labelled" class="r-stretch"></section>
+<section id="main-menu" class="slide level2">
+<h2>Main menu</h2>
+
+<img data-src="img/ui-sections-napari.png" alt="A screenshot of Napari with the main user  interface sections labelled" class="r-stretch"><aside class="notes">
+<p>We already used the main menu in the last section to view the BrainGlobe plugins. The main menu contains various commands for opening images, changing preferences and installing plugins (we’ll see more of these options in later episodes).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="canvas" class="slide level2">
+<h2>Canvas</h2>
+<p>Try moving around the image with the following commands:</p>
+<pre><code>Pan - Click and drag
+Zoom - Scroll in/out</code></pre>
+
+<img data-src="img/cells-napari-pan-zoom.png" alt="A screenshot of a some fluorescent cells, closer up than before." class="r-stretch"></section>
+<section id="dimension-sliders" class="slide level2">
+<h2>Dimension sliders</h2>
+<p><img data-src="img/dim-slider-closeup.png" style="width:80.0%" alt="Closeup of Napari's dimension slider with labels"></p>
+<p><img data-src="img/dim-slider-0.png" style="width:30.0%" alt="Three screenshots of the cells image in napari, at  different z depths"> <img data-src="img/dim-slider-50.png" style="width:30.0%" alt="Three screenshots of the cells image in napari, at  different z depths"> <img data-src="img/dim-slider-100.png" style="width:30.0%" alt="Three screenshots of the cells image in napari, at  different z depths"></p>
+<aside class="notes">
+<p>Dimension sliders appear at the bottom of the canvas depending on the type of image displayed. For example, here we have a 3D image of some cells, which consists of a stack of 2D images. If we drag the slider at the bottom of the image, we move up and down in this stack:</p>
+<p>Pressing the arrow buttons at either end of the slider steps through one slice at a time. Also, pressing the ‘play’ button at the very left of the slider moves automatically through the stack until pressed again.</p>
+<p>We will see in later episodes that more sliders can appear if our image has more dimensions (e.g.&nbsp;time series, or further channels).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="viewer-buttons" class="slide level2 smaller">
+<h2>Viewer buttons</h2>
+<p>The viewer buttons (the row of buttons at the bottom left of Napari) control various aspects of the Napari viewer:</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><p>Console <img data-src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/console.svg" alt="A screenshot of Napari's console button" height="30"></p></li>
+<li><p>2D/3D <img data-src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/2D.svg" alt="A screenshot of Napari's 2D button" height="25"> / <img data-src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/3D.svg" alt="A screenshot of Napari's 3D button" height="25"></p></li>
+<li><p>Roll dimensions <img data-src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/roll.svg" alt="A screenshot of Napari's roll dimensions button" height="25"></p></li>
+<li><p>Transpose dimensions <img data-src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/transpose.svg" alt="A screenshot of Napari's transpose dimensions button" height="25"></p></li>
+<li><p>Grid <img data-src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/grid.svg" alt="A screenshot of Napari's grid button" height="25"></p></li>
+<li><p>Home <img data-src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/home.svg" alt="A screenshot of Napari's home button" height="25"></p></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><img data-src="img/cells-napari.png" alt="A screenshot of a some fluorescent cells"></p>
+</div></div>
+</section>
+<section id="layer-list" class="slide level2">
+<h2>Layer list</h2>
+
+<img data-src="img/cells-napari.png" alt="A screenshot of a some fluorescent cells" class="r-stretch"><aside class="notes">
+<p>We can show/hide each layer by clicking the eye icon on the left side of their row. We can also rename them by double clicking on the row.</p>
+<p>We can change the order of layers by dragging and dropping items in the layer list. For example, try dragging the membrane layer above the nuclei. You should see the nuclei disappear from the viewer (as they are now hidden by the membrane image on top).</p>
+<p>Now that we’ve seen the main controls for the viewer, let’s look at the layer list. ‘Layers’ are how Napari displays multiple items together in the viewer. For example, currently our layer list contains two items - ‘nuclei’ and ‘membrane’. These are both <code>Image</code> layers and are displayed in order, with the nuclei on top and membrane underneath.</p>
+<p>Here we only have <code>Image</code> layers, but there are many more types like <code>Points</code>, <code>Shapes</code> and <code>Labels</code>, some of which we will see <a href="#/layer-buttons">later in the episode</a>.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="layer-controls" class="slide level2">
+<h2>Layer controls</h2>
+<p>This area shows controls only for the currently selected layer (i.e.&nbsp;the one that is highlighted in blue in the layer list).</p>
+<div class="columns">
+<div class="column" style="width:30%;">
+<ul>
+<li>Opacity<br>
+</li>
+<li>Contrast limits</li>
+<li>…</li>
+</ul>
+</div><div class="column" style="width:60%;">
+<p><img data-src="img/cells-napari.png" alt="A screenshot of a some fluorescent cells"></p>
+</div></div>
+<aside class="notes">
+<p>This changes the opacity of the layer - lower values are more transparent. For example, reducing the opacity of the membrane layer (if it is still on top of the nuclei), allows us to see the nuclei again.</p>
+<p>briefly - the contrast limits adjust what parts of the image we can see and how bright they appear in the viewer. Moving the left node adjusts what is shown as fully black, while moving the right node adjusts what is shown as fully bright. This doesn’t change the values in the image, just how they are displayed.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="layer-buttons" class="slide level2">
+<h2>Layer buttons</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>Create and remove.</p>
+<ul>
+<li><p>Points <img data-src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/new_points.svg" alt="A screenshot of Napari's point layer button" height="30"></p></li>
+<li><p>Shapes <img data-src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/new_shapes.svg" alt="A screenshot of Napari's shape layer button" height="30"></p></li>
+<li><p>Labels <img data-src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/new_labels.svg" alt="A screenshot of Napari's labels layer button" height="30"></p></li>
+<li><p>Remove layer <img data-src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg" alt="A screenshot of Napari's delete layer button" height="30"><br>
+</p></li>
+</ul>
+</div><div class="column" style="width:55%;">
+<p><img data-src="img/cells-napari.png" alt="A screenshot of a some fluorescent cells"></p>
+</div></div>
+</section>
+<section id="other-layer-types" class="slide level2">
+<h2>Other layer types</h2>
+<p>Note that there are some layer types that can’t be added via clicking buttons in the user interface, like</p>
+<ul>
+<li><a href="https://napari.org/stable/howtos/layers/surface.html">surfaces</a>,</li>
+<li><a href="https://napari.org/stable/howtos/layers/tracks.html">tracks</a> and</li>
+<li><a href="https://napari.org/stable/howtos/layers/vectors.html">vectors</a>.</li>
+</ul>
+<p>These require calling python commands in Napari’s console or an external python script.</p>
+</section>
+<section id="key-points" class="slide level2">
+<h2>Key points</h2>
+<ul>
+<li>Napari’s user interface is split into a few main sections including the canvas, layer list, layer controls…</li>
+<li>Layers can be of different types e.g.&nbsp;<code>Image</code>, <code>Point</code>, <code>Label</code></li>
+<li>Different layer types have different layer controls</li>
+</ul>
+</section>
+<section id="a-deeper-look" class="slide level2">
+<h2>A deeper look</h2>
+<p><code>File &gt; Open Files(s)</code>, then navigate to <code>calcium imaging folder</code> and open <code>translation1_00001_ce.tif</code></p>
+
+<img data-src="img/cells-napari.png" alt="A screenshot of a some fluorescent cells" class="r-stretch"></section>
+<section id="pixels" class="slide level2">
+<h2>Pixels</h2>
+<aside class="notes">
+<p>This 2D image shows the nuclei of human cells undergoing mitosis. If we really zoom in up-close by scrolling, we can see that this image is actually made up of many small squares with different brightness values. These squares are the image’s pixels (or ‘picture elements’) and are the individual units that make up all digital images.</p>
+<p>If we hover over these pixels with the mouse cursor, we can see that each pixel has a specific value. Try hovering over pixels in dark and bright areas of the image and see how the value changes in the bottom left of the viewer:</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+
+<img data-src="img/pixel-value.png" alt="A screenshot of Napari - with the mouse cursor  hovering over a pixel and highlighting the corresponding pixel value" class="r-stretch"></section>
+<section id="images-are-arrays-of-numbers" class="slide level2 smaller">
+<h2>Images are arrays of numbers</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p>Open Napari’s built-in console <img data-src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/console.svg" alt="A screenshot of Napari's console button" height="30"> and run:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href=""></a><span class="co"># Get the image data for the first layer in Napari</span></span>
+<span id="cb8-2"><a href=""></a>image <span class="op">=</span> viewer.layers[<span class="dv">0</span>].data</span>
+<span id="cb8-3"><a href=""></a></span>
+<span id="cb8-4"><a href=""></a><span class="co"># Print the image values and type</span></span>
+<span id="cb8-5"><a href=""></a><span class="bu">print</span>(image)</span>
+<span id="cb8-6"><a href=""></a><span class="bu">print</span>(<span class="bu">type</span>(image))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:55%;">
+<p><img data-src="img/napari-console.png" alt="A screenshot of Napari's console"></p>
+</div></div>
+<aside class="notes">
+<p>We’ve seen that images are made of individual units called pixels that have specific values - but how is an image really represented in the computer? Let’s dig deeper into Napari’s <code>Image</code> layers…</p>
+<p>All of the information about the Napari viewer can be accessed through the console with a variable called <code>viewer</code>. A <code>viewer</code> has 1 to many layers, and here we access the top (first) layer with <code>viewer.layers[0]</code>. Then, to access the actual image data stored in that layer, we retrieve it with <code>.data</code>:</p>
+<p>You should see that a series of numbers are printed out that are stored in a Python data type called a <code>numpy.ndarray</code>. Fundamentally, this means that all images are really just arrays of numbers (one number per pixel). Arrays are just rectangular grids of numbers, much like a spreadsheet. Napari is reading those values and converting them into squares of particular colours for us to see in the viewer, but this is only to help us interpret the image contents - the numbers are the real underlying data.</p>
+<p>In Napari this array is a <code>numpy.ndarray</code>. <a href="https://numpy.org/">NumPy</a> is a popular python package that provides ‘n-dimensional arrays’ (or ‘ndarray’ for short). N-dimensional just means they can support any number of dimensions - for example, 2D (squares/rectangles of numbers), 3D (cubes/cuboids of numbers) and beyond (like time series, images with many channels etc. where we would have multiple rectangles or cuboids of data which provide further information all at the same location).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="image-dimensions" class="slide level2">
+<h2>Image dimensions</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p>We can find out the dimensions by running the following in Napari’s console:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href=""></a>image.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:55%;">
+<p><img data-src="img/napari-console.png" alt="A screenshot of Napari's console"></p>
+</div></div>
+<aside class="notes">
+<p>Let’s return to our image and explore some of the key features of its image array. First, what size is it?</p>
+<p>The array size (also known as its dimensions) is stored in the <code>.shape</code>. Three values are printed as this image is three dimensional (3D), for a 2D image there would be 2, for a 4D image there would be 4 and so on…</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="image-data-type" class="slide level2">
+<h2>Image data type</h2>
+<div class="columns">
+<div class="column" style="width:45%;">
+<p>The other key feature of an image array is its ‘data type’ - this controls which values can be stored inside of it.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href=""></a>image.dtype.name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The data type consists of type and bit-depth.</p>
+</div><div class="column" style="width:55%;">
+<p><img data-src="img/napari-console.png" alt="A screenshot of Napari's console"></p>
+</div></div>
+<aside class="notes">
+<p>For example, let’s look at the data type for our image - this is stored in <code>.dtype</code>:</p>
+<p>We see that the data type (or ‘dtype’ for short) is <code>uint16</code>. This is short for ‘unsigned integer 16-bit’. Let’s break this down further into two parts - the type (unsigned integer) and the bit-depth (16-bit).</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="type" class="slide level2">
+<h2>Type</h2>
+<p>The type determines what kind of values can be stored in the array, for example:</p>
+<ul>
+<li>Unsigned integer: positive whole numbers</li>
+<li>Signed integer: positive and negative whole numbers</li>
+<li>Float: positive and negative numbers with a decimal point e.g.&nbsp;3.14</li>
+</ul>
+<aside class="notes">
+<p>For our calcium image, ‘unsigned integer’ means that only positive whole numbers can be stored inside. You can see this by hovering over the pixels in the image again in Napari - the pixel value down in the bottom left is always a positive whole number.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="bit-depth" class="slide level2">
+<h2>Bit depth</h2>
+<p>The bit depth determines the range of values that can be stored e.g.&nbsp;only values between 0 and <span class="math inline">\(2^{16}-1\)</span>.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href=""></a><span class="bu">print</span>(image.<span class="bu">min</span>())</span>
+<span id="cb11-2"><a href=""></a><span class="bu">print</span>(image.<span class="bu">max</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="common-data-types" class="slide level2 smaller">
+<h2>Common data types</h2>
+<p>NumPy supports a <a href="https://numpy.org/doc/stable/reference/arrays.scalars.html#sized-aliases">very wide range of data types</a>, but there are a few that are most common for image data:</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 37%">
+<col style="width: 37%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">NumPy datatype</th>
+<th style="text-align: left;">Full name</th>
+<th style="text-align: left;">Range of values</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>uint8</code></td>
+<td style="text-align: left;">Unsigned integer 8-bit</td>
+<td style="text-align: left;">0…255</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>uint16</code></td>
+<td style="text-align: left;">Unsigned integer 16-bit</td>
+<td style="text-align: left;">0…65535</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>float32</code></td>
+<td style="text-align: left;">Float 32-bit</td>
+<td style="text-align: left;"><span class="math inline">\(-3.4 \times 10^{38}...+3.4 \times 10^{38}\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>float64</code></td>
+<td style="text-align: left;">Float 64-bit</td>
+<td style="text-align: left;"><span class="math inline">\(-1.7 \times 10^{308}...+1.7  \times 10^{308}\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><code>uint8</code> and <code>uint16</code> are most common for images from light microscopes. <code>float32</code> and <code>float64</code> are common during image processing (as we will see in later episodes).</p>
+</section>
+<section id="coordinate-system" class="slide level2 smaller">
+<h2>Coordinate system</h2>
+<p><img data-src="img/coordinate-system.png" style="width:60.0%" alt="Diagram comparing a standard graph  coordinate system (left) and the image coordinate system (right)"> <img data-src="img/coordinates-on-image.png" style="width:30.0%" alt="A diagram showing how pixel coordinates change over a simple 4x4 image"></p>
+<ul>
+<li>For 2d images, <code>y</code> is the first coordinate</li>
+<li>For 3d images, <code>z</code> is the first coordinate</li>
+</ul>
+<aside class="notes">
+<p>We’ve seen that images are arrays of numbers with a specific shape (dimensions) and data type. How do we access specific values from this array? What coordinate system is Napari using?</p>
+<p>As you move around, you should see that the lowest coordinate values are at the top left corner, with the first value increasing as you move down and the second value increasing as you move to the right. This is different to the standard coordinate systems you may be used to (for example, from making graphs):</p>
+<p>Note that Napari lists coordinates as [y, x] or [rows, columns], so e.g.&nbsp;[1,3] would be the pixel in row 1 and column 3. Remember that these coordinates always start from 0 as you can see in the diagram:</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="key-points-1" class="slide level2">
+<h2>Key points</h2>
+<ul>
+<li>Digital images are made of pixels</li>
+<li>Digital images store these pixels as arrays of numbers</li>
+<li>Napari (and Python more widely) use NumPy arrays to store images - these have a <code>shape</code> and <code>dtype</code></li>
+<li>Most images are 8-bit or 16-bit unsigned integer</li>
+<li>Images use a coordinate system with (0,0) at the top left, x increasing to the right, and y increasing down</li>
+</ul>
+</section>
+<section id="processing-images" class="slide level2">
+<h2>Processing images</h2>
+<p>Now we understand what an image is, and how to look at it in napari, we can start measuring things! But we need to find (“segment”) “things” first!</p>
+
+<img data-src="img/cells-napari.png" alt="A screenshot of a some fluorescent cells" class="r-stretch"></section>
+<section id="reduce-noise-with-a-median-filter" class="slide level2">
+<h2>Reduce noise with a median filter</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href=""></a><span class="im">from</span> scipy.signal <span class="im">import</span> medfilt2d</span>
+<span id="cb12-2"><a href=""></a>image <span class="op">=</span> viewer.layers[<span class="dv">0</span>].data</span>
+<span id="cb12-3"><a href=""></a>filtered <span class="op">=</span> medfilt2d(image)</span>
+<span id="cb12-4"><a href=""></a>viewer.add_image(filtered)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<img data-src="img/filtered.png" alt="A median-filtered version of the example image" class="r-stretch"></section>
+<section id="isolate-neurons-with-a-threshold" class="slide level2 smaller">
+<h2>Isolate neurons with a threshold</h2>
+<p>Example of “semantic” segmentation</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href=""></a>thresholded <span class="op">=</span> filtered <span class="op">&gt;</span> <span class="dv">8000</span> <span class="co"># True or False array</span></span>
+<span id="cb13-2"><a href=""></a>thresholded <span class="op">=</span> thresholded<span class="op">*</span><span class="dv">255</span> <span class="co"># convert to unsigned int 8-bit</span></span>
+<span id="cb13-3"><a href=""></a>viewer.add_image(thresholded)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<img data-src="img/thresholded.png" alt="A thresholded version of the example image" class="r-stretch"></section>
+<section id="label-each-neuron-with-a-number" class="slide level2 smaller">
+<h2>Label each neuron with a number</h2>
+<p>Example of “instance” segmentation</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href=""></a><span class="im">from</span> skimage.measure <span class="im">import</span> regionprops, label</span>
+<span id="cb14-2"><a href=""></a>labelled <span class="op">=</span> label(thresholded)</span>
+<span id="cb14-3"><a href=""></a>viewer.add_labels(labelled)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<img data-src="img/labelled.png" alt="A labelled version of the example image" class="r-stretch"></section>
+<section id="pixels-in-each-neuron" class="slide level2 smaller">
+<h2>Pixels in each neuron</h2>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href=""></a>properties <span class="op">=</span> regionprops(labelled)</span>
+<span id="cb15-2"><a href=""></a>pixels_in_each_region <span class="op">=</span> [prop.area <span class="cf">for</span> prop <span class="kw">in</span> properties]</span>
+<span id="cb15-3"><a href=""></a><span class="bu">print</span>(pixels_in_each_region)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+<img data-src="img/regionprops.png" alt="A list of pixel counts for each region of the example image" class="r-stretch"></section>
+<section id="key-points-2" class="slide level2">
+<h2>Key points</h2>
+<ul>
+<li>Segmentation can be broadly split into ‘semantic segmentation’ (e.g.&nbsp;neuron vs background) and ‘instance segmentation’ (e.g.&nbsp;individual neuron).</li>
+<li>Segmentations are represented in the computer in the same way as images, but pixels represent an abstraction, rather than light intensity.</li>
+<li>Napari uses “Labels” layers for segmentations.</li>
+<li>Segmentation is helpful for analysis.</li>
+</ul>
 </section></section>
 <section>
 <section id="brainglobe" class="title-slide slide level1 center">
@@ -611,28 +1025,28 @@
 </section>
 <section id="brainglobe-atlas-api-2" class="slide level2 smaller">
 <h2>BrainGlobe Atlas API</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a><span class="im">from</span> brainglobe_atlasapi.bg_atlas <span class="im">import</span> BrainGlobeAtlas</span>
-<span id="cb6-2"><a href=""></a>atlas <span class="op">=</span> BrainGlobeAtlas(<span class="st">"allen_mouse_25um"</span>)</span>
-<span id="cb6-3"><a href=""></a></span>
-<span id="cb6-4"><a href=""></a>reference_image <span class="op">=</span> atlas.reference</span>
-<span id="cb6-5"><a href=""></a><span class="bu">print</span>(reference_image.shape)</span>
-<span id="cb6-6"><a href=""></a><span class="co"># (528, 320, 456)</span></span>
-<span id="cb6-7"><a href=""></a></span>
-<span id="cb6-8"><a href=""></a>annotation_image <span class="op">=</span> atlas.annotation</span>
-<span id="cb6-9"><a href=""></a><span class="bu">print</span>(annotation_image.shape)</span>
-<span id="cb6-10"><a href=""></a><span class="co"># (528, 320, 456)</span></span>
-<span id="cb6-11"><a href=""></a></span>
-<span id="cb6-12"><a href=""></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span>
-<span id="cb6-13"><a href=""></a>VISp <span class="op">=</span> atlas.structures[<span class="st">"VISp"</span>]</span>
-<span id="cb6-14"><a href=""></a>pprint(VISp)</span>
-<span id="cb6-15"><a href=""></a></span>
-<span id="cb6-16"><a href=""></a><span class="co"># {'acronym': 'VISp',</span></span>
-<span id="cb6-17"><a href=""></a><span class="co">#  'id': 385,</span></span>
-<span id="cb6-18"><a href=""></a><span class="co">#  'mesh': None,</span></span>
-<span id="cb6-19"><a href=""></a><span class="co">#  'mesh_filename': PosixPath('/home/user/.brainglobe/allen_mouse_25um_v0.3/meshes/385.obj'),</span></span>
-<span id="cb6-20"><a href=""></a><span class="co">#  'name': 'Primary visual area',</span></span>
-<span id="cb6-21"><a href=""></a><span class="co">#  'rgb_triplet': [8, 133, 140],</span></span>
-<span id="cb6-22"><a href=""></a><span class="co">#  'structure_id_path': [997, 8, 567, 688, 695, 315, 669, 385]}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href=""></a><span class="im">from</span> brainglobe_atlasapi.bg_atlas <span class="im">import</span> BrainGlobeAtlas</span>
+<span id="cb16-2"><a href=""></a>atlas <span class="op">=</span> BrainGlobeAtlas(<span class="st">"allen_mouse_25um"</span>)</span>
+<span id="cb16-3"><a href=""></a></span>
+<span id="cb16-4"><a href=""></a>reference_image <span class="op">=</span> atlas.reference</span>
+<span id="cb16-5"><a href=""></a><span class="bu">print</span>(reference_image.shape)</span>
+<span id="cb16-6"><a href=""></a><span class="co"># (528, 320, 456)</span></span>
+<span id="cb16-7"><a href=""></a></span>
+<span id="cb16-8"><a href=""></a>annotation_image <span class="op">=</span> atlas.annotation</span>
+<span id="cb16-9"><a href=""></a><span class="bu">print</span>(annotation_image.shape)</span>
+<span id="cb16-10"><a href=""></a><span class="co"># (528, 320, 456)</span></span>
+<span id="cb16-11"><a href=""></a></span>
+<span id="cb16-12"><a href=""></a><span class="im">from</span> pprint <span class="im">import</span> pprint</span>
+<span id="cb16-13"><a href=""></a>VISp <span class="op">=</span> atlas.structures[<span class="st">"VISp"</span>]</span>
+<span id="cb16-14"><a href=""></a>pprint(VISp)</span>
+<span id="cb16-15"><a href=""></a></span>
+<span id="cb16-16"><a href=""></a><span class="co"># {'acronym': 'VISp',</span></span>
+<span id="cb16-17"><a href=""></a><span class="co">#  'id': 385,</span></span>
+<span id="cb16-18"><a href=""></a><span class="co">#  'mesh': None,</span></span>
+<span id="cb16-19"><a href=""></a><span class="co">#  'mesh_filename': PosixPath('/home/user/.brainglobe/allen_mouse_25um_v0.3/meshes/385.obj'),</span></span>
+<span id="cb16-20"><a href=""></a><span class="co">#  'name': 'Primary visual area',</span></span>
+<span id="cb16-21"><a href=""></a><span class="co">#  'rgb_triplet': [8, 133, 140],</span></span>
+<span id="cb16-22"><a href=""></a><span class="co">#  'structure_id_path': [997, 8, 567, 688, 695, 315, 669, 385]}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="footer">
 <p><a href="https://doi.org/10.21105/joss.02668">Claudi, F. et al.&nbsp;(2020) “BrainGlobe Atlas API: a common interface for neuroanatomical atlases” JOSS, v5(54), 2668</a></p>
 </div>
