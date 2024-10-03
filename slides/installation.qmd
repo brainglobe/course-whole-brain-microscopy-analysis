@@ -4,8 +4,8 @@
 #### Silicon mac users
 Install brainglobe tools individually:
 ```bash
-conda install brainreg
-pip install cellfinder brainrender brainrender-napari brainglobe-segmentation
+pip install brainglobe
+conda install niftyreg
 ```
 
 
