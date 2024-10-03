@@ -78,17 +78,35 @@ Adapted from [https://github.com/HealthBioscienceIDEAS/microscopy-novice/](https
 ## Segmenting structures in whole brain microscopy images with brainglobe-segmentation
 
 [Tutorial (1D)](https://brainglobe.info/tutorials/segmenting-1d-tracks.html)
+
 [Tutorial (2D/3D)](https://brainglobe.info/tutorials/segmenting-3d-structures.html)
 
 ## Detecting cells in large 3D images with cellfinder
 
+[Cell detection tutorial](https://brainglobe.info/tutorials/cellfinder-detection.html)
+
+[Retraining tutorial](https://brainglobe.info/tutorials/cellfinder-retraining.html)
+
 ## Analysing cell positions in atlas space
+
+[Tutorial](https://brainglobe.info/tutorials/transform-cells-atlas.html)
 
 ## Visualisation of data in atlas space with brainrender and brainrender-napari
 
 [Tutorial (brainrender-napari)](https://brainglobe.info/tutorials/visualise-atlas-napari.html)
 
-## Tour of other BrainGlobe tools and wrap-up
+[Example brainrender scripts](https://github.com/brainglobe/brainrender/tree/main/examples)
+
+## Tour of other BrainGlobe tools and wrap-up {.smaller}
+- [`brainglobe-atlasapi`](https://github.com/brainglobe/brainglobe-atlasapi)
+- [`brainglobe-heatmap`](https://github.com/brainglobe/brainglobe-heatmap)
+- [`brainglobe-registration`](https://github.com/brainglobe/brainglobe-registration)
+- [`brainglobe-space`](https://github.com/brainglobe/brainglobe-space)
+- [`brainglobe-stitch`](https://github.com/brainglobe/brainglobe-stitch)
+- [`brainglobe-template-builder`](https://github.com/brainglobe/brainglobe-template-builder)
+- [`brainglobe-utils`](https://github.com/brainglobe/brainglobe-utils)
+- [`morphapi`](https://github.com/brainglobe/morphapi)
+
 
 # Wrap up
 
