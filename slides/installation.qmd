@@ -2,7 +2,6 @@
 ## Install napari and BrainGlobe
 
 #### Silicon mac users
-Install brainglobe tools individually:
 ```bash
 pip install brainglobe
 conda install niftyreg
@@ -10,7 +9,6 @@ conda install niftyreg
 
 
 #### All other users
-Install all brainglobe tools with
 ```{.bash}
 pip install brainglobe
 ```
