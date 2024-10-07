@@ -1,18 +1,17 @@
 
 ## Install napari and BrainGlobe
 
-#### Silicon mac users
-```bash
+### Everyone
+```{.bash}
+conda create -n brainglobe-env python=3.12
+conda activate brainglobe-env
 pip install brainglobe
+```
+
+#### Silicon mac users (additionally)
+```bash
 conda install niftyreg
 ```
-
-
-#### All other users
-```{.bash}
-pip install brainglobe
-```
-
 
 ## Double-check installation {.smaller}
 :::: {.columns}

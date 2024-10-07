@@ -41,8 +41,8 @@ format:
 
 ## Schedule{.smaller}
 ::: {.incremental}
-- Installing BrainGlobe (30 mins)
-- Introduction to Image analysis with Napari
+- Installing BrainGlobe and Napari (30 mins)
+- Introduction to Image analysis with Napari (60 mins) 
 - Introduction to BrainGlobe (30 mins)
 - Registering whole brain microscopy images with brainreg (30 mins)
 - Segmenting structures in whole brain microscopy images with brainglobe-segmentation (30 mins)
