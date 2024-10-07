@@ -409,8 +409,8 @@
 <h2>Schedule</h2>
 <div>
 <ul>
-<li class="fragment">Installing BrainGlobe (30 mins)</li>
-<li class="fragment">Introduction to Image analysis with Napari</li>
+<li class="fragment">Installing BrainGlobe and Napari (30 mins)</li>
+<li class="fragment">Introduction to Image analysis with Napari (60 mins)</li>
 <li class="fragment">Introduction to BrainGlobe (30 mins)</li>
 <li class="fragment">Registering whole brain microscopy images with brainreg (30 mins)</li>
 <li class="fragment">Segmenting structures in whole brain microscopy images with brainglobe-segmentation (30 mins)</li>
@@ -428,11 +428,12 @@
 </section>
 <section id="install-napari-and-brainglobe" class="slide level2">
 <h2>Install napari and BrainGlobe</h2>
-<h4 id="silicon-mac-users">Silicon mac users</h4>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="ex">pip</span> install brainglobe</span>
-<span id="cb1-2"><a href=""></a><span class="ex">conda</span> install niftyreg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<h4 id="all-other-users">All other users</h4>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href=""></a><span class="ex">pip</span> install brainglobe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h3 id="everyone">Everyone</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="ex">conda</span> create <span class="at">-n</span> brainglobe-env python=3.12</span>
+<span id="cb1-2"><a href=""></a><span class="ex">conda</span> activate brainglobe-env</span>
+<span id="cb1-3"><a href=""></a><span class="ex">pip</span> install brainglobe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<h4 id="silicon-mac-users-additionally">Silicon mac users (additionally)</h4>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href=""></a><span class="ex">conda</span> install niftyreg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="double-check-installation" class="slide level2 smaller">
 <h2>Double-check installation</h2>
