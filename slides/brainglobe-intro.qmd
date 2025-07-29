@@ -270,7 +270,7 @@ Expanding access
 :::
 
 ## Support for more data types
-![](img/brainglobe-registration-demo.png){fig-align="center"}
+![](img/annotations_front_light_mode.png){fig-align="center"}
 
 ::: footer
 [github.com/brainglobe/brainglobe-registration](https://github.com/brainglobe/brainglobe-registration)
