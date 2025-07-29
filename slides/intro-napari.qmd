@@ -76,29 +76,29 @@ various aspects of the Napari viewer:
 
 ::: {.column width=50%}
  - Console ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/console.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/console.svg
 ){alt="A screenshot of Napari's console button" height='30px'}
 
  - 2D/3D ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/2D.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/2D.svg
 ){alt="A screenshot of Napari's 2D button" height='25px'}  / ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/3D.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/3D.svg
 ){alt="A screenshot of Napari's 3D button" height='25px'}
 
  - Roll dimensions ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/roll.svg
-){alt="A screenshot of Napari's roll dimensions button" height='25px'} 
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/roll.svg
+){alt="A screenshot of Napari's roll dimensions button" height='25px'}
 
  - Transpose dimensions ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/transpose.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/transpose.svg
 ){alt="A screenshot of Napari's transpose dimensions button" height='25px'}
 
  - Grid ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/grid.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/canvas-grid-view.svg
 ){alt="A screenshot of Napari's grid button" height='25px'}
 
  - Home ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/home.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/home.svg
 ){alt="A screenshot of Napari's home button" height='25px'}
 :::
 
@@ -170,19 +170,19 @@ in the image, just how they are displayed.
 Create and remove.
 
  - Points ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/new_points.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/new_points.svg
 ){alt="A screenshot of Napari's point layer button" height='30px'}
 
  - Shapes ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/new_shapes.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/new_shapes.svg
 ){alt="A screenshot of Napari's shape layer button" height='30px'} 
 
  - Labels ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/new_labels.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/new_labels.svg
 ){alt="A screenshot of Napari's labels layer button" height='30px'}
 
  - Remove layer ![](
-https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/delete.svg
+https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg
 ){alt="A screenshot of Napari's delete layer button" height='30px'}  
 :::
 
