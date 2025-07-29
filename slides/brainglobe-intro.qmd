@@ -74,7 +74,7 @@ Initial observation - lots of similar communities working independently
 
 ## BrainGlobe Atlas API {.smaller}
 ```python
-from brainglobe_atlasapi.bg_atlas import BrainGlobeAtlas
+from brainglobe_atlasapi import BrainGlobeAtlas
 atlas = BrainGlobeAtlas("allen_mouse_25um")
 
 reference_image = atlas.reference
