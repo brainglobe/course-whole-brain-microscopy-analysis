@@ -21,7 +21,6 @@ viewer.add_image(filtered)
 Example of "semantic" segmentation
 ``` {.python}
 thresholded = filtered > 8000 # True or False array
-thresholded = thresholded*255 # convert to unsigned int 8-bit
 viewer.add_image(thresholded)
 ```
 ![](img/thresholded.png){alt="A thresholded version of the example image"}

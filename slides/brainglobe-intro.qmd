@@ -74,7 +74,7 @@ Initial observation - lots of similar communities working independently
 
 ## BrainGlobe Atlas API {.smaller}
 ```python
-from brainglobe_atlasapi.bg_atlas import BrainGlobeAtlas
+from brainglobe_atlasapi import BrainGlobeAtlas
 atlas = BrainGlobeAtlas("allen_mouse_25um")
 
 reference_image = atlas.reference
@@ -270,7 +270,7 @@ Expanding access
 :::
 
 ## Support for more data types
-![](img/brainglobe-registration-demo.png){fig-align="center"}
+![](img/annotations_front_light_mode.png){fig-align="center"}
 
 ::: footer
 [github.com/brainglobe/brainglobe-registration](https://github.com/brainglobe/brainglobe-registration)
