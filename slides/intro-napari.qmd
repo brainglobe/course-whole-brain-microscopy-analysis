@@ -18,6 +18,10 @@ interface"}
 
 ![](img/cells-napari.png){alt="A screenshot of a some fluorescent cells"}
 
+::: aside
+If `napari` asks, select `napari builtins` as the reader in the pop-up window
+:::
+
 ## Napari's User interface
 
 
