@@ -1,0 +1,53 @@
+## BrainGlobe and the scientific Python ecoystem
+
+::: {.columns}
+::: {.column width="55%"}
+BrainGlobe makes the scientific Python ecosystem accessible to neuroscientists.
+:::
+
+:::
+::: {.column width="45%"}
+![](img/ecosystem.png)
+:::
+:::
+
+## A [selection of tools built by the community](https://brainglobe.info/community/external-tools.html)
+
+::: {.columns}
+::: {.column width="55%"}
+Other neuroscience tools depend on BrainGlobe
+:::
+::: {.column width="45%"}
+![](img/community-examples.png)
+:::
+:::
+
+## The open-source ecology
+
+[E.g. `brainglobe-atlasapi`](https://github.com/brainglobe/brainglobe-atlasapi/network/dependents)
+
+## You are part of the ecosystem {.smaller}
+
+::: {.columns}
+::: {.column}
+* we welcome contributions
+  * raise issues
+  * write tutorials
+  * developer guide
+  * we can mentor
+:::
+::: {.column}
+![](img/tracing.png)
+:::
+::::
+## Some wider starting points
+
+::: {.columns}
+::: {.column}
+* [guide to first open-source contributions](https://www.pyopensci.org/lessons/contribute-open-source/your-first-contribution.html)
+* [good first issues in open-source](https://goodfirstissue.dev/)
+::: 
+::: {.column}
+![](img/tracing.png)
+:::
+:::
