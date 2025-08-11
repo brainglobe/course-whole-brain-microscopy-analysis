@@ -1052,9 +1052,46 @@ Zoom - Scroll in/out</code></pre>
 </section>
 
 <section>
-<section id="tutorials" class="title-slide slide level1 center">
-<h1>Tutorials</h1>
+<section id="tutorials-1" class="title-slide slide level1 center">
+<h1>Tutorials 1</h1>
 
+</section>
+<section id="tutorials-1-1" class="slide level2 smaller">
+<h2>Tutorials 1</h2>
+<ul>
+<li>registering whole-brain microscopy to an atlas</li>
+<li>cell detection in whole-brain microscopy
+<ul>
+<li>retraining <code>cellfinder</code> to fine-tune cell detection</li>
+</ul></li>
+<li>combining registration and cell detection</li>
+</ul>
+</section>
+<section id="data" class="slide level2 smaller">
+<h2>Data</h2>
+<ul>
+<li>feel free to experiment with your own data</li>
+<li>small sample data comes with <code>napari</code></li>
+<li>large sample data <code>MS_cx_left</code>
+<ul>
+<li>on HD: share</li>
+</ul></li>
+</ul>
+
+<aside><div>
+<p><code>MS_cx_left</code> data courtesy of Brown APY, Cossell L,Strom M, Tyson AL, Vélez-Fort M, Margrie TW. Analysis of segmentationontology reveals the similarities and differences in connectivity onto L2/3 neurons in mouse V1. Scientific Reports. 2021; 11 (4983). <a href="https://doi.org/10.1038/s41598-021-82353-7" class="uri">https://doi.org/10.1038/s41598-021-82353-7</a></p>
+</div></aside></section>
+<section id="quick-excursion-into-brainglobe-orientation" class="slide level2 smaller">
+<h2>Quick excursion into BrainGlobe orientation</h2>
+<ul>
+<li>three letters define position of pixel (0,0,0)</li>
+<li>e.g.&nbsp;<code>psl</code> - pixel (0,0,0) is Posterior, Superior, Left</li>
+<li>all BrainGlobe atlases are <code>asr</code></li>
+<li>to verify: open data in napari and scroll through data
+<ul>
+<li>demo</li>
+</ul></li>
+</ul>
 </section>
 <section id="registering-whole-brain-microscopy-images-with-brainreg" class="slide level2">
 <h2>Registering whole brain microscopy images with brainreg</h2>
@@ -1069,6 +1106,45 @@ Zoom - Scroll in/out</code></pre>
 <h2>Detecting cells in large 3D images with cellfinder</h2>
 <p><a href="https://brainglobe.info/tutorials/cellfinder-detection.html">Cell detection tutorial</a></p>
 <p><a href="https://brainglobe.info/tutorials/cellfinder-retraining.html">Retraining tutorial</a></p>
+</section>
+<section id="pulling-things-together-brainmapper-cli" class="slide level2">
+<h2>Pulling things together: <code>brainmapper</code> CLI</h2>
+<div class="columns">
+<div class="column">
+<ul>
+<li><code>brainmapper</code> is the name of <a href="https://brainglobe.info/tutorials/brainmapper/index.html">our command line tool</a> to combine cell detection and atlas registration.</li>
+</ul>
+</div><div class="column">
+<p><img data-src="img/brainmapper-cli.png"></p>
+</div></div>
+</section>
+<section id="brainmapper-cli" class="slide level2">
+<h2><code>brainmapper</code> CLI</h2>
+<ul>
+<li>Required arguments
+<ul>
+<li><code>-s</code> The primary signal channel</li>
+<li><code>-b</code> The secondary autofluorescence channel</li>
+<li><code>-o</code> The output directory</li>
+<li><code>--orientation</code> e.g.&nbsp;`psl</li>
+<li><code>-v</code> The voxel spacing (microns) in the same order as the data orientation (<code>psl</code>): 5 2 2.</li>
+<li><code>--atlas</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="quick-reminder-of-brainglobe-orientation" class="slide level2 smaller">
+<h2>Quick reminder of BrainGlobe orientation</h2>
+<ul>
+<li>three letters define position of pixel (0,0,0)</li>
+<li>e.g.&nbsp;<code>psl</code> - pixel (0,0,0) is Posterior, Superior, Left</li>
+<li>all BrainGlobe atlases are <code>asr</code></li>
+<li>to verify: open data in napari and scroll through data</li>
+</ul>
+</section></section>
+<section>
+<section id="tutorials-2" class="title-slide slide level1 center">
+<h1>Tutorials 2</h1>
+
 </section>
 <section id="analysing-cell-positions-in-atlas-space" class="slide level2">
 <h2>Analysing cell positions in atlas space</h2>
