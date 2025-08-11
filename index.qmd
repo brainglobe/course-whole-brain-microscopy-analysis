@@ -96,6 +96,7 @@ Brown APY, Cossell L,Strom M, Tyson AL, Vélez-Fort M, Margrie TW. Analysis of s
 * e.g. `psl` - pixel (0,0,0) is Posterior, Superior, Left
 * all BrainGlobe atlases are `asr`
 * to verify: open data in napari and scroll through data
+   * demo
 
 ## Registering whole brain microscopy images with brainreg
 
@@ -115,7 +116,14 @@ Brown APY, Cossell L,Strom M, Tyson AL, Vélez-Fort M, Margrie TW. Analysis of s
 
 ## Pulling things together: `brainmapper` CLI
 
+:::: {.columns}
+::: {.column}
 * `brainmapper` is the name of [our command line tool](https://brainglobe.info/tutorials/brainmapper/index.html) to combine cell detection and atlas registration. 
+:::
+::: {.column}
+![](img/brainmapper-cli.png)
+:::
+::::
 
 ## `brainmapper` CLI
 
@@ -127,7 +135,7 @@ Brown APY, Cossell L,Strom M, Tyson AL, Vélez-Fort M, Margrie TW. Analysis of s
   * `-v` The voxel spacing (microns) in the same order as the data orientation (`psl`): 5 2 2.
   * `--atlas`
 
-## Quick reminder into BrainGlobe orientation {.smaller}
+## Quick reminder of BrainGlobe orientation {.smaller}
 
 * three letters define position of pixel (0,0,0)
 * e.g. `psl` - pixel (0,0,0) is Posterior, Superior, Left
