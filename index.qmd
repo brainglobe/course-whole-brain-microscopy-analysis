@@ -69,7 +69,34 @@ Adapted from [https://github.com/HealthBioscienceIDEAS/microscopy-novice/](https
 
 {{< include slides/brainglobe-intro.qmd >}}
   
-# Tutorials
+# Tutorials 1
+
+## Tutorials 1 {.smaller}
+
+* registering whole-brain microscopy to an atlas
+* cell detection in whole-brain microscopy
+  * retraining `cellfinder` to fine-tune cell detection
+* combining registration and cell detection
+
+## Data {.smaller}
+
+* feel free to experiment with your own data
+* small sample data comes with `napari`
+* large sample data `MS_cx_left`
+  * on HD: share
+
+::: aside
+`MS_cx_left` data courtesy of 
+Brown APY, Cossell L,Strom M, Tyson AL, Vélez-Fort M, Margrie TW. Analysis of segmentationontology reveals the similarities and differences in connectivity onto L2/3 neurons in mouse V1. Scientific Reports. 2021; 11 (4983). <https://doi.org/10.1038/s41598-021-82353-7>
+:::
+
+## Quick excursion into BrainGlobe orientation {.smaller}
+
+* three letters define position of pixel (0,0,0)
+* e.g. `psl` - pixel (0,0,0) is Posterior, Superior, Left
+* all BrainGlobe atlases are `asr`
+* to verify: open data in napari and scroll through data
+   * demo
 
 ## Registering whole brain microscopy images with brainreg
 
@@ -86,6 +113,36 @@ Adapted from [https://github.com/HealthBioscienceIDEAS/microscopy-novice/](https
 [Cell detection tutorial](https://brainglobe.info/tutorials/cellfinder-detection.html)
 
 [Retraining tutorial](https://brainglobe.info/tutorials/cellfinder-retraining.html)
+
+## Pulling things together: `brainmapper` CLI
+
+:::: {.columns}
+::: {.column}
+* `brainmapper` is the name of [our command line tool](https://brainglobe.info/tutorials/brainmapper/index.html) to combine cell detection and atlas registration. 
+:::
+::: {.column}
+![](img/brainmapper-cli.png)
+:::
+::::
+
+## `brainmapper` CLI
+
+* Required arguments
+  * `-s` The primary signal channel
+  * `-b` The secondary autofluorescence channel
+  * `-o` The output directory 
+  * `--orientation` e.g. `psl 
+  * `-v` The voxel spacing (microns) in the same order as the data orientation (`psl`): 5 2 2.
+  * `--atlas`
+
+## Quick reminder of BrainGlobe orientation {.smaller}
+
+* three letters define position of pixel (0,0,0)
+* e.g. `psl` - pixel (0,0,0) is Posterior, Superior, Left
+* all BrainGlobe atlases are `asr`
+* to verify: open data in napari and scroll through data
+
+# Tutorials 2
 
 ## Analysing cell positions in atlas space
 
