@@ -178,4 +178,6 @@ Brown APY, Cossell L,Strom M, Tyson AL, Vélez-Fort M, Margrie TW. Analysis of s
 
 You are welcome to contribute to BrainGlobe - get in touch anytime and we will support you!
 
-# Thank you!
+## Thank you!
+
+Please fill out [the feedback form](https://docs.google.com/forms/d/e/1FAIpQLSedaPDrcPC5Z6Rr_naeN63soEISjxWJAOAKfR59jBtLeH6PWg/viewform?usp=dialog).
