@@ -90,9 +90,16 @@ Adapted from [https://github.com/HealthBioscienceIDEAS/microscopy-novice/](https
 
 {{< include slides/brainglobe-intro.qmd >}}
   
-# Tutorials 1
+# Tutorials
 
-## Tutorials 1 {.smaller}
+## Motivation
+By the end of the course (maybe on your own data):
+
+![](img/tracing.png)
+
+## Motivation {background-video="img/cellfinder_small.mp4" background-video-loop="true"}
+
+## Tutorials (day 1) {.smaller}
 
 * registering whole-brain microscopy to an atlas
 * cell detection in whole-brain microscopy
@@ -163,7 +170,7 @@ Brown APY, Cossell L,Strom M, Tyson AL, Vélez-Fort M, Margrie TW. Analysis of s
 * all BrainGlobe atlases are `asr`
 * to verify: open data in napari and scroll through data
 
-# Tutorials 2
+# Tutorials (day 2) 
 
 ## Analysing cell positions in atlas space
 
