@@ -148,15 +148,20 @@ Brown APY, Cossell L,Strom M, Tyson AL, Vélez-Fort M, Margrie TW. Analysis of s
 
 [Tutorial](https://brainglobe.info/tutorials/transform-cells-atlas.html)
 
-## Visualisation of data in atlas space with brainrender and brainrender-napari
+## Visualisation of data in atlas space with brainrender-napari
 
 [Tutorial (brainrender-napari)](https://brainglobe.info/tutorials/visualise-atlas-napari.html)
+
+## Making heatmaps with `brainglobe-heatmap` scripts
+
+[Example brainglobe-heatmap scripts](https://github.com/brainglobe/brainglobe-heatmap/tree/main/examples)
+
+## Making renders with `brainrender` scripts
 
 [Example brainrender scripts](https://github.com/brainglobe/brainrender/tree/main/examples)
 
 ## Tour of other BrainGlobe tools and wrap-up {.smaller}
 - [`brainglobe-atlasapi`](https://github.com/brainglobe/brainglobe-atlasapi)
-- [`brainglobe-heatmap`](https://github.com/brainglobe/brainglobe-heatmap)
 - [`brainglobe-registration`](https://github.com/brainglobe/brainglobe-registration)
 - [`brainglobe-space`](https://github.com/brainglobe/brainglobe-space)
 - [`brainglobe-stitch`](https://github.com/brainglobe/brainglobe-stitch)
@@ -164,18 +169,17 @@ Brown APY, Cossell L,Strom M, Tyson AL, Vélez-Fort M, Margrie TW. Analysis of s
 - [`brainglobe-utils`](https://github.com/brainglobe/brainglobe-utils)
 - [`morphapi`](https://github.com/brainglobe/morphapi)
 
-# BrainGlobe and the scientific Python ecosystem
-
-{{< include slides/contributing.qmd >}}
-
-# Wrap up
-
-## Resources
+## How to get help
 * [BrainGlobe website](https://brainglobe.info/){preview-link="true"}
 * [Help forum](https://forum.image.sc/tag/brainglobe/){preview-link="true"}
 * [Developer forum](https://brainglobe.zulipchat.com/){preview-link="true"}
 * [GitHub](https://github.com/brainglobe/){preview-link="true"}
 
 You are welcome to contribute to BrainGlobe - get in touch anytime and we will support you!
+
+# BrainGlobe and the scientific Python ecosystem
+
+{{< include slides/contributing.qmd >}}
+
 
 # Thank you!
