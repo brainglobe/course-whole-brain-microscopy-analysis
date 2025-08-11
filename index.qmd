@@ -164,6 +164,9 @@ Brown APY, Cossell L,Strom M, Tyson AL, Vélez-Fort M, Margrie TW. Analysis of s
 - [`brainglobe-utils`](https://github.com/brainglobe/brainglobe-utils)
 - [`morphapi`](https://github.com/brainglobe/morphapi)
 
+# BrainGlobe and the scientific Python ecosystem
+
+{{< include slides/contributing.qmd >}}
 
 # Wrap up
 
