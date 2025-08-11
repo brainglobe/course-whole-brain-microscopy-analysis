@@ -1233,6 +1233,36 @@ Zoom - Scroll in/out</code></pre>
 </div><div class="column">
 <p><img data-src="img/tracing.png"></p>
 </div></div>
+</section>
+<section id="contributing-atlases-to-brainglobe" class="slide level2">
+<h2>Contributing atlases to BrainGlobe</h2>
+<p>Before starting, you will need: * Information to credit the atlas (publication, website) * A template reference 3D stack (at least one) * An annotation 3D stack (at finest level of your region hierarchy) * A description of all the structures of the brain and their hierarchy.</p>
+</section>
+<section id="how-do-i-contribute-an-atlas" class="slide level2">
+<h2>How do I contribute an atlas</h2>
+<ul>
+<li>Write a <a href="https://github.com/brainglobe/brainglobe-atlasapi/tree/main/brainglobe_atlasapi/atlas_generation/atlas_scripts">packaging script</a></li>
+<li>Submit a Pull Request</li>
+<li>Core developers upload to data platform</li>
+</ul>
+</section>
+<section id="how-are-atlases-stored" class="slide level2">
+<h2>How are atlases stored?</h2>
+<ul>
+<li>On <a href="https://gin.g-node.org/brainglobe/atlases">“GIN” (German Informatics Node)</a>
+<ul>
+<li>acts as an archive of atlas data</li>
+</ul></li>
+<li>improvements (Atlas API V2) in progress
+<ul>
+<li>use <code>zarr</code> to “stream” atlases</li>
+<li>also avoid data duplication</li>
+</ul></li>
+</ul>
+</section>
+<section id="contributing-atlases-to-brainglobe-1" class="slide level2 smaller">
+<h2>Contributing atlases to BrainGlobe</h2>
+<p>More info on <a href="https://brainglobe.info/documentation/brainglobe-atlasapi/adding-a-new-atlas.html">the BrainGlobe website</a>. Achievable (?) <a href="https://github.com/orgs/neuroinformatics-unit/projects/19/views/1?pane=issue&amp;itemId=122515055&amp;issue=neuroinformatics-unit%7Cosw25-hackday%7C11">hackday idea</a>: * Pick an <a href="https://github.com/brainglobe/brainglobe-atlasapi/issues?q=is%3Aissue%20state%3Aopen%20label%3Anew-atlas">atlas of interest</a> * Intermediate Python knowledge * <a href="https://github.com/brainglobe/brainglobe-atlasapi/tree/main/brainglobe_atlasapi/atlas_generation/atlas_scripts/template_script.py">template script</a> available * Bonus: improve related documentation</p>
 </section></section>
 <section>
 <section id="wrap-up" class="title-slide slide level1 center">
