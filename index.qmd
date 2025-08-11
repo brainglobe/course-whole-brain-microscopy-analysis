@@ -107,7 +107,7 @@ Adapted from [https://github.com/HealthBioscienceIDEAS/microscopy-novice/](https
 - [`brainglobe-utils`](https://github.com/brainglobe/brainglobe-utils)
 - [`morphapi`](https://github.com/brainglobe/morphapi)
 
-## BrainGlobe and the scientific Python ecosystem
+# BrainGlobe and the scientific Python ecosystem
 
 {{< include slides/contributing.qmd >}}
 
