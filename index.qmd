@@ -90,9 +90,16 @@ Adapted from [https://github.com/HealthBioscienceIDEAS/microscopy-novice/](https
 
 {{< include slides/brainglobe-intro.qmd >}}
   
-# Tutorials 1
+# Tutorials
 
-## Tutorials 1 {.smaller}
+## Motivation
+By the end of the course (maybe on your own data):
+
+![](img/tracing.png)
+
+## Motivation {background-video="img/cellfinder_small.mp4" background-video-loop="true"}
+
+## Tutorials (day 1) {.smaller}
 
 * registering whole-brain microscopy to an atlas
 * cell detection in whole-brain microscopy
@@ -163,7 +170,43 @@ Brown APY, Cossell L,Strom M, Tyson AL, Vélez-Fort M, Margrie TW. Analysis of s
 * all BrainGlobe atlases are `asr`
 * to verify: open data in napari and scroll through data
 
-# Tutorials 2
+# Day 2
+
+## Schedule (day 1) {.smaller}
+::: {.incremental}
+- Installing BrainGlobe and Napari (30 mins)
+- Introduction to Image analysis with Napari (60 mins) 
+
+- Introduction to BrainGlobe (30 mins)
+- Registering whole brain microscopy images with brainreg (30 mins)
+- Segmenting structures in whole brain microscopy images with brainglobe-segmentation (30 mins)
+
+- Detecting cells in large 3D images with cellfinder (90 mins)
+
+- Combining `brainreg` and `cellfinder` on the command line (`brainmapper`)(30 mins)
+- Unstructured time (debugging problems, networking, discussions) (60 mins)
+:::
+
+
+## Schedule (day 2) {.smaller}
+::: {.incremental}
+- Analysing `brainmapper` outputs in napari (30 mins)
+- Visualising atlases with `brainrender-napari` (30 mins) 
+- Visualising cells in atlas space (30 mins)
+ 
+- Visualising cell density with `brainglobe-heatmap` (30 mins)
+- Scripting a visualisation with `brainrender` (30 mins)
+- Tour of other BrainGlobe tools (30 mins)
+
+- Where to get help (30 mins)
+- Contributing to BrainGlobe and the Scientific Python ecosystem (30 mins)
+- Contibuting an atlas to BrainGlobe (30 mins)
+
+- Unstructured time (debugging problems, networking, discussions, scripting) (60 mins)
+- Hackday ideas (30 mins)
+:::
+
+# Tutorials (day 2) 
 
 ## Analysing cell positions in atlas space
 
