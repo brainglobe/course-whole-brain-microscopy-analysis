@@ -18,22 +18,15 @@ interface"}
 
 ![](img/cells-napari.png){alt="A screenshot of a some fluorescent cells"}
 
+::: aside
+If `napari` asks, select `napari builtins` as the reader in the pop-up window
+:::
+
 ## Napari's User interface
 
 
 ![](img/ui-sections-napari.png){alt="A screenshot of Napari with the main user 
 interface sections labelled"}
-
-## Main menu
-
-![](img/ui-sections-napari.png){alt="A screenshot of Napari with the main user 
-interface sections labelled"}
-
-::: {.notes}
-We already used the main menu in the last section to view the BrainGlobe plugins. The 
-main menu contains various commands for opening images, changing preferences and 
-installing plugins (we'll see more of these options in later episodes).
-:::
 
 ## Canvas
 

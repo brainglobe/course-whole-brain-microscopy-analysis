@@ -62,3 +62,34 @@ Other neuroscience tools depend on BrainGlobe
 ![](img/tracing.png)
 :::
 :::
+
+## Contributing atlases to BrainGlobe
+
+Before starting, you will need:
+* Information to credit the atlas (publication, website)
+* A template reference 3D stack (at least one)
+* An annotation 3D stack (at finest level of your region hierarchy)
+* A description of all the structures of the brain and their hierarchy.
+
+## How do I contribute an atlas
+
+* Write a [packaging script](https://github.com/brainglobe/brainglobe-atlasapi/tree/main/brainglobe_atlasapi/atlas_generation/atlas_scripts)
+* Submit a Pull Request
+* Core developers upload to data platform
+ 
+## How are atlases stored?
+
+* On ["GIN" (German Informatics Node)](https://gin.g-node.org/brainglobe/atlases)
+  * acts as an archive of atlas data
+* improvements (Atlas API V2) in progress
+  * use `zarr` to "stream" atlases
+  * also avoid data duplication
+
+## Contributing atlases to BrainGlobe {.smaller}
+
+More info on [the BrainGlobe website](https://brainglobe.info/documentation/brainglobe-atlasapi/adding-a-new-atlas.html).
+Achievable (?) [hackday idea](https://github.com/orgs/neuroinformatics-unit/projects/19/views/1?pane=issue&itemId=122515055&issue=neuroinformatics-unit%7Cosw25-hackday%7C11):
+* Pick an [atlas of interest](https://github.com/brainglobe/brainglobe-atlasapi/issues?q=is%3Aissue%20state%3Aopen%20label%3Anew-atlas)
+* Intermediate Python knowledge
+* [template script](https://github.com/brainglobe/brainglobe-atlasapi/tree/main/brainglobe_atlasapi/atlas_generation/atlas_scripts/template_script.py) available
+* Bonus: improve related documentation
