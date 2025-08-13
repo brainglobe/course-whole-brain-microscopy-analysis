@@ -210,7 +210,7 @@ Brown APY, Cossell L,Strom M, Tyson AL, Vélez-Fort M, Margrie TW. Analysis of s
 
 ## Sample data
 
-* Copy and use the folder `open-software-week/brainglobe-course-data/MS_CX_left_cellfinder` to your machine
+* Use the folder `open-software-week/brainglobe-course-data/MS_CX_left_cellfinder`
 * It is the output of `brainmapper` on `MS_cx_left` data
 
 ::: aside
