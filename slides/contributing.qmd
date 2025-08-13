@@ -66,6 +66,7 @@ Other neuroscience tools depend on BrainGlobe
 ## Contributing atlases to BrainGlobe
 
 Before starting, you will need:
+
 * Information to credit the atlas (publication, website)
 * A template reference 3D stack (at least one)
 * An annotation 3D stack (at finest level of your region hierarchy)
@@ -89,6 +90,7 @@ Before starting, you will need:
 
 More info on [the BrainGlobe website](https://brainglobe.info/documentation/brainglobe-atlasapi/adding-a-new-atlas.html).
 Achievable (?) [hackday idea](https://github.com/orgs/neuroinformatics-unit/projects/19/views/1?pane=issue&itemId=122515055&issue=neuroinformatics-unit%7Cosw25-hackday%7C11):
+
 * Pick an [atlas of interest](https://github.com/brainglobe/brainglobe-atlasapi/issues?q=is%3Aissue%20state%3Aopen%20label%3Anew-atlas)
 * Intermediate Python knowledge
 * [template script](https://github.com/brainglobe/brainglobe-atlasapi/tree/main/brainglobe_atlasapi/atlas_generation/atlas_scripts/template_script.py) available
