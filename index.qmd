@@ -177,7 +177,7 @@ Tasks:
 - [`brainglobe-stitch`](https://github.com/brainglobe/brainglobe-stitch)
 - [`brainglobe-template-builder`](https://github.com/brainglobe/brainglobe-template-builder)
 
-## Underlying libraries {.smaller}
+## Underlying libraries
 - [`brainglobe-atlasapi`](https://github.com/brainglobe/brainglobe-atlasapi)
 - [`brainglobe-space`](https://github.com/brainglobe/brainglobe-space)
 - [`brainglobe-utils`](https://github.com/brainglobe/brainglobe-utils)
