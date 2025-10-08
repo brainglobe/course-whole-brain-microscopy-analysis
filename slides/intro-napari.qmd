@@ -75,29 +75,29 @@ various aspects of the Napari viewer:
 ::: {.column width=50%}
  - Console ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/console.svg
-){alt="A screenshot of Napari's console button" height='30px'}
+){alt="A screenshot of Napari's console button" height='30px'style="margin-bottom: 0px; vertical-align: baseline;"}
 
  - 2D/3D ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/2D.svg
-){alt="A screenshot of Napari's 2D button" height='25px'}  / ![](
+){alt="A screenshot of Napari's 2D button" height='30px' style="margin-bottom: 0px; vertical-align: baseline;"}  / ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/3D.svg
-){alt="A screenshot of Napari's 3D button" height='25px'}
+){alt="A screenshot of Napari's 3D button" height='30px' style="margin-bottom: 0px; vertical-align: baseline;"}
 
  - Roll dimensions ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/roll.svg
-){alt="A screenshot of Napari's roll dimensions button" height='25px'}
+){alt="A screenshot of Napari's roll dimensions button" height='30px' style="margin-bottom: 0px; vertical-align: baseline;"}
 
  - Transpose dimensions ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/transpose.svg
-){alt="A screenshot of Napari's transpose dimensions button" height='25px'}
+){alt="A screenshot of Napari's transpose dimensions button" height='30px' style="margin-bottom: 0px; vertical-align: baseline;"}
 
  - Grid ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/canvas-grid-view.svg
-){alt="A screenshot of Napari's grid button" height='25px'}
+){alt="A screenshot of Napari's grid button" height='30px' style="margin-bottom: 0px; vertical-align: baseline;"}
 
  - Home ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/home.svg
-){alt="A screenshot of Napari's home button" height='25px'}
+){alt="A screenshot of Napari's home button" height='30px' style="margin-bottom: 0px; vertical-align: baseline;"}
 :::
 
 ::: {.column width=50%}
