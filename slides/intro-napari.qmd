@@ -16,7 +16,7 @@ interface"}
 
 `File > Open Files(s)`, then navigate to `calcium imaging folder` and open `translation1_00001_ce.tif`
 
-![](img/cells-napari.png){alt="A screenshot of a some fluorescent cells"}
+![](img/cells-napari.png){width="60%"}
 
 ::: aside
 If `napari` asks, select `napari builtins` as the reader in the pop-up window

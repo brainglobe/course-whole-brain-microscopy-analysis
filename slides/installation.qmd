@@ -34,9 +34,7 @@ opens a new `napari` window, with brainglobe plugins available under `Plugins`.
 
 Run
 ```bash
-brainglobe install -a allen_mouse_50um
-brainglobe install -a allen_mouse_10um
-brainglobe install -a ccfv3augmented_mouse_25um
+brainglobe install -a allen_mouse_25um
 ```
 
 To check whether this worked:

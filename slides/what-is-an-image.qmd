@@ -197,6 +197,19 @@ would be the pixel in row 1 and column 3. Remember that these coordinates always
 start from 0 as you can see in the diagram:
 :::
 
+## Handedness of the coordinate system
+
+* napari v0.6.0 and later use a **right-handed 3D coordinate system** by default.
+* BrainGlobe (in particular `brainrender`) expects a **left-handed system**.
+
+To change to a left-handed system:
+
+1. Right-click the **Toggle 2D/3D view** button in the bottom-left corner.  
+2. Select the pre-0.6.0 default: **away, down, right**.  
+
+:::aside
+For more details on napari’s 3D axis directions and handedness, see the [napari documentation](https://napari.org/stable/guides/handedness.html).
+:::
 
 ## Key points
 

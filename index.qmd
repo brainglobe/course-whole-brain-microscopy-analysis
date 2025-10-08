@@ -39,38 +39,18 @@ format:
 ---
 # Welcome
 
-## Schedule (day 1) {.smaller}
-::: {.incremental}
-- Installing BrainGlobe and Napari (30 mins)
-- Introduction to Image analysis with Napari (60 mins) 
+## Schedule {.smaller}
 
+::: {.incremental}
+- Installing BrainGlobe and Napari (15 mins)
+- Introduction to Image analysis with Napari (45 mins) 
 - Introduction to BrainGlobe (30 mins)
+- **Lunch break (60 mins)**
 - Registering whole brain microscopy images with brainreg (30 mins)
 - Segmenting structures in whole brain microscopy images with brainglobe-segmentation (30 mins)
-
 - Detecting cells in large 3D images with cellfinder (90 mins)
-
 - Combining `brainreg` and `cellfinder` on the command line (`brainmapper`)(30 mins)
-- Unstructured time (debugging problems, networking, discussions) (60 mins)
-:::
-
-
-## Schedule (day 2) {.smaller}
-::: {.incremental}
-- Analysing `brainmapper` outputs in napari (30 mins)
-- Visualising atlases with `brainrender-napari` (30 mins) 
-- Visualising cells in atlas space (30 mins)
- 
-- Visualising cell density with `brainglobe-heatmap` (30 mins)
-- Scripting a visualisation with `brainrender` (30 mins)
-- Tour of other BrainGlobe tools (30 mins)
-
-- Where to get help (30 mins)
-- Contributing to BrainGlobe and the Scientific Python ecosystem (30 mins)
-- Contibuting an atlas to BrainGlobe (30 mins)
-
-- Unstructured time (debugging problems, networking, discussions, scripting) (60 mins)
-- Hackday ideas (30 mins)
+- Tour of other BrainGlobe tools & where to get help (30 mins)
 :::
 
 # Installation
@@ -93,29 +73,29 @@ Adapted from [https://github.com/HealthBioscienceIDEAS/microscopy-novice/](https
 # Tutorials
 
 ## Motivation
-By the end of the course (maybe on your own data):
+By the end of the course:
 
 ![](img/tracing.png)
 
 ## Motivation {background-video="img/cellfinder_small.mp4" background-video-loop="true"}
 
-## Tutorials (day 1) {.smaller}
+## Tutorials {.smaller}
 
 * registering whole-brain microscopy to an atlas
+* segmenting probes and bulk fluorescence
 * cell detection in whole-brain microscopy
   * retraining `cellfinder` to fine-tune cell detection
 * combining registration and cell detection
 
 ## Data {.smaller}
 
-* feel free to experiment with your own data
 * small sample data comes with `napari`
-* large sample data `MS_cx_left`
-  * on HD: share
+* large sample data `histology-training/brainglobe-course-data/MS_cx_left`
+  * on HD: share if needed
 
 ::: aside
 `MS_cx_left` data courtesy of 
-Brown APY, Cossell L,Strom M, Tyson AL, Vélez-Fort M, Margrie TW. Analysis of segmentationontology reveals the similarities and differences in connectivity onto L2/3 neurons in mouse V1. Scientific Reports. 2021; 11 (4983). <https://doi.org/10.1038/s41598-021-82353-7>
+Brown APY, Cossell L,Strom M, Tyson AL, Vélez-Fort M, Margrie TW. Analysis of segmentation ontology reveals the similarities and differences in connectivity onto L2/3 neurons in mouse V1. Scientific Reports. 2021; 11 (4983). <https://doi.org/10.1038/s41598-021-82353-7>
 :::
 
 ## Quick excursion into BrainGlobe orientation {.smaller}
@@ -163,60 +143,7 @@ Brown APY, Cossell L,Strom M, Tyson AL, Vélez-Fort M, Margrie TW. Analysis of s
   * `-v` The voxel spacing (microns) in the same order as the data orientation (`psl`): 5 2 2.
   * `--atlas`
 
-## Quick reminder of BrainGlobe orientation {.smaller}
-
-* three letters define position of pixel (0,0,0)
-* e.g. `psl` - pixel (0,0,0) is Posterior, Superior, Left
-* all BrainGlobe atlases are `asr`
-* to verify: open data in napari and scroll through data
-
-# Day 2
-
-## Schedule (day 1) {.smaller}
-::: {.incremental}
-- Installing BrainGlobe and Napari (30 mins)
-- Introduction to Image analysis with Napari (60 mins) 
-
-- Introduction to BrainGlobe (30 mins)
-- Registering whole brain microscopy images with brainreg (30 mins)
-- Segmenting structures in whole brain microscopy images with brainglobe-segmentation (30 mins)
-
-- Detecting cells in large 3D images with cellfinder (90 mins)
-
-- Combining `brainreg` and `cellfinder` on the command line (`brainmapper`)(30 mins)
-- Unstructured time (debugging problems, networking, discussions) (60 mins)
-:::
-
-
-## Schedule (day 2) {.smaller}
-::: {.incremental}
-- Analysing `brainmapper` outputs in napari (30 mins)
-- Visualising atlases with `brainrender-napari` (30 mins) 
-- Visualising cells in atlas space (30 mins)
- 
-- Visualising cell density with `brainglobe-heatmap` (30 mins)
-- Scripting a visualisation with `brainrender` (30 mins)
-- Tour of other BrainGlobe tools (30 mins)
-
-- Where to get help (30 mins)
-- Contributing to BrainGlobe and the Scientific Python ecosystem (30 mins)
-- Contibuting an atlas to BrainGlobe (30 mins)
-
-- Unstructured time (debugging problems, networking, discussions, scripting) (60 mins)
-- Hackday ideas (30 mins)
-:::
-
-# Tutorials (day 2) 
-
-## Sample data
-
-* Use the folder `open-software-week/brainglobe-course-data/MS_CX_left_cellfinder`
-* It is the output of `brainmapper` on `MS_cx_left` data
-
-::: aside
-`MS_cx_left` data courtesy of 
-Brown APY, Cossell L,Strom M, Tyson AL, Vélez-Fort M, Margrie TW. Analysis of segmentationontology reveals the similarities and differences in connectivity onto L2/3 neurons in mouse V1. Scientific Reports. 2021; 11 (4983). <https://doi.org/10.1038/s41598-021-82353-7>
-:::
+# Tour of other BrainGlobe tools
 
 ## Analysing cell positions in atlas space
 
@@ -229,6 +156,7 @@ Brown APY, Cossell L,Strom M, Tyson AL, Vélez-Fort M, Margrie TW. Analysis of s
 ## Making heatmaps with `brainglobe-heatmap` scripts
 
 Task:
+
 * Visualise the cell density/region of a coronal slice
 
 [Example brainglobe-heatmap scripts](https://github.com/brainglobe/brainglobe-heatmap/tree/main/examples)
@@ -236,18 +164,22 @@ Task:
 ## Making renders with `brainrender` scripts
 
 Tasks:
+
 * Visualise a region in the atlas
 * Visualise the cells from the large sample data
 * (Bonus) Make an animation
 
 [Example brainrender scripts](https://github.com/brainglobe/brainrender/tree/main/examples)
 
-## Tour of other BrainGlobe tools and wrap-up {.smaller}
-- [`brainglobe-atlasapi`](https://github.com/brainglobe/brainglobe-atlasapi)
+## Further user-facing tools
+
 - [`brainglobe-registration`](https://github.com/brainglobe/brainglobe-registration)
-- [`brainglobe-space`](https://github.com/brainglobe/brainglobe-space)
 - [`brainglobe-stitch`](https://github.com/brainglobe/brainglobe-stitch)
 - [`brainglobe-template-builder`](https://github.com/brainglobe/brainglobe-template-builder)
+
+## Underlying libraries
+- [`brainglobe-atlasapi`](https://github.com/brainglobe/brainglobe-atlasapi)
+- [`brainglobe-space`](https://github.com/brainglobe/brainglobe-space)
 - [`brainglobe-utils`](https://github.com/brainglobe/brainglobe-utils)
 - [`morphapi`](https://github.com/brainglobe/morphapi)
 
@@ -258,11 +190,3 @@ Tasks:
 * [GitHub](https://github.com/brainglobe/){preview-link="true"}
 
 You are welcome to contribute to BrainGlobe - get in touch anytime and we will support you!
-
-# BrainGlobe and the scientific Python ecosystem
-
-{{< include slides/contributing.qmd >}}
-
-## Thank you!
-
-Please fill out [the feedback form](https://docs.google.com/forms/d/e/1FAIpQLSedaPDrcPC5Z6Rr_naeN63soEISjxWJAOAKfR59jBtLeH6PWg/viewform?usp=dialog).
