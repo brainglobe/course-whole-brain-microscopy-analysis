@@ -45,9 +45,7 @@ format:
 - Installing BrainGlobe and Napari (15 mins)
 - Introduction to Image analysis with Napari (45 mins) 
 - Introduction to BrainGlobe (30 mins)
-
-Lunch break
-
+- **Lunch break (60 mins)**
 - Registering whole brain microscopy images with brainreg (30 mins)
 - Segmenting structures in whole brain microscopy images with brainglobe-segmentation (30 mins)
 - Detecting cells in large 3D images with cellfinder (90 mins)
