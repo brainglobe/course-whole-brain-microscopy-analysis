@@ -6,8 +6,8 @@
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="index_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-fe91322616dd2b9cea8bc6bfc6aa44e1.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.33">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-a14e345711173c227b21482e2eb4cc70.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <title>Whole brain microscopy analysis</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -94,7 +94,7 @@
     code span.vs { color: #da4453; } /* VerbatimString */
     code span.wa { color: #da4453; } /* Warning */
   </style>
-  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-cf2002d6a6c40f9cd8c3c5c16493148a.css">
+  <link rel="stylesheet" href="index_files/libs/revealjs/dist/theme/quarto-f97e6faf1e78514d3aa4720360fd84bb.css">
   <link href="index_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="index_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -207,33 +207,18 @@
 <h1>Welcome</h1>
 
 </section>
-<section id="schedule-day-1" class="slide level2 smaller">
-<h2>Schedule (day 1)</h2>
+<section id="schedule" class="slide level2 smaller">
+<h2>Schedule</h2>
 <ul>
-<li class="fragment"><p>Installing BrainGlobe and Napari (30 mins)</p></li>
-<li class="fragment"><p>Introduction to Image analysis with Napari (60 mins)</p></li>
-<li class="fragment"><p>Introduction to BrainGlobe (30 mins)</p></li>
-<li class="fragment"><p>Registering whole brain microscopy images with brainreg (30 mins)</p></li>
-<li class="fragment"><p>Segmenting structures in whole brain microscopy images with brainglobe-segmentation (30 mins)</p></li>
-<li class="fragment"><p>Detecting cells in large 3D images with cellfinder (90 mins)</p></li>
-<li class="fragment"><p>Combining <code>brainreg</code> and <code>cellfinder</code> on the command line (<code>brainmapper</code>)(30 mins)</p></li>
-<li class="fragment"><p>Unstructured time (debugging problems, networking, discussions) (60 mins)</p></li>
-</ul>
-</section>
-<section id="schedule-day-2" class="slide level2 smaller">
-<h2>Schedule (day 2)</h2>
-<ul>
-<li class="fragment"><p>Analysing <code>brainmapper</code> outputs in napari (30 mins)</p></li>
-<li class="fragment"><p>Visualising atlases with <code>brainrender-napari</code> (30 mins)</p></li>
-<li class="fragment"><p>Visualising cells in atlas space (30 mins)</p></li>
-<li class="fragment"><p>Visualising cell density with <code>brainglobe-heatmap</code> (30 mins)</p></li>
-<li class="fragment"><p>Scripting a visualisation with <code>brainrender</code> (30 mins)</p></li>
-<li class="fragment"><p>Tour of other BrainGlobe tools (30 mins)</p></li>
-<li class="fragment"><p>Where to get help (30 mins)</p></li>
-<li class="fragment"><p>Contributing to BrainGlobe and the Scientific Python ecosystem (30 mins)</p></li>
-<li class="fragment"><p>Contibuting an atlas to BrainGlobe (30 mins)</p></li>
-<li class="fragment"><p>Unstructured time (debugging problems, networking, discussions, scripting) (60 mins)</p></li>
-<li class="fragment"><p>Hackday ideas (30 mins)</p></li>
+<li class="fragment">Installing BrainGlobe and Napari (15 mins)</li>
+<li class="fragment">Introduction to Image analysis with Napari (45 mins)</li>
+<li class="fragment">Introduction to BrainGlobe (30 mins)</li>
+<li class="fragment"><strong>Lunch break (60 mins)</strong></li>
+<li class="fragment">Registering whole brain microscopy images with brainreg (30 mins)</li>
+<li class="fragment">Segmenting structures in whole brain microscopy images with brainglobe-segmentation (30 mins)</li>
+<li class="fragment">Detecting cells in large 3D images with cellfinder (90 mins)</li>
+<li class="fragment">Combining <code>brainreg</code> and <code>cellfinder</code> on the command line (<code>brainmapper</code>)(30 mins)</li>
+<li class="fragment">Tour of other BrainGlobe tools &amp; where to get help (30 mins)</li>
 </ul>
 </section></section>
 <section>
@@ -244,18 +229,18 @@
 <section id="install-napari-and-brainglobe" class="slide level2">
 <h2>Install napari and BrainGlobe</h2>
 <h3 id="everyone">Everyone</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="ex">conda</span> create <span class="at">-n</span> brainglobe-env python=3.12</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href=""></a><span class="ex">conda</span> create <span class="at">-n</span> brainglobe-env python=3.12</span>
 <span id="cb1-2"><a href=""></a><span class="ex">conda</span> activate brainglobe-env</span>
-<span id="cb1-3"><a href=""></a><span class="ex">pip</span> install brainglobe</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href=""></a><span class="ex">pip</span> install brainglobe</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <h4 id="silicon-mac-users-additionally">Silicon mac users (additionally)</h4>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href=""></a><span class="ex">conda</span> install niftyreg</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href=""></a><span class="ex">conda</span> install niftyreg</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="double-check-installation" class="slide level2 smaller">
 <h2>Double-check installation</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
 <p>Double-check that running</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href=""></a><span class="ex">napari</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href=""></a><span class="ex">napari</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>opens a new <code>napari</code> window, with brainglobe plugins available under <code>Plugins</code>.</p>
 </div><div class="column" style="width:50%;">
 <p><img data-src="img/napari-plugins.png"></p>
@@ -264,11 +249,9 @@
 <section id="install-brainglobe-atlases" class="slide level2">
 <h2>Install BrainGlobe atlases</h2>
 <p>Run</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href=""></a><span class="ex">brainglobe</span> install <span class="at">-a</span> allen_mouse_50um</span>
-<span id="cb4-2"><a href=""></a><span class="ex">brainglobe</span> install <span class="at">-a</span> allen_mouse_10um</span>
-<span id="cb4-3"><a href=""></a><span class="ex">brainglobe</span> install <span class="at">-a</span> ccfv3augmented_mouse_25um</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href=""></a><span class="ex">brainglobe</span> install <span class="at">-a</span> allen_mouse_25um</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>To check whether this worked:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href=""></a><span class="ex">brainglobe</span> list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href=""></a><span class="ex">brainglobe</span> list</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section></section>
 <section>
 <section id="image-analysis-with-napari" class="title-slide slide level1 center">
@@ -284,13 +267,13 @@
 </section>
 <section id="opening-napari" class="slide level2">
 <h2>Opening Napari</h2>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href=""></a><span class="ex">napari</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href=""></a><span class="ex">napari</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 <img data-src="img/blank-napari-ui.png" alt="A screenshot of the default Napari user  interface" class="r-stretch"></section>
 <section id="opening-images" class="slide level2">
 <h2>Opening images</h2>
 <p><code>File &gt; Open Files(s)</code>, then navigate to <code>calcium imaging folder</code> and open <code>translation1_00001_ce.tif</code></p>
-<p><img data-src="img/cells-napari.png" alt="A screenshot of a some fluorescent cells"></p>
+<p><img data-src="img/cells-napari.png" style="width:60.0%"></p>
 
 <aside><div>
 <p>If <code>napari</code> asks, select <code>napari builtins</code> as the reader in the pop-up window</p>
@@ -454,12 +437,12 @@ Zoom - Scroll in/out</code></pre>
 <div class="columns">
 <div class="column" style="width:45%;">
 <p>Open Napari’s built-in console <img data-src="https://raw.githubusercontent.com/napari/napari/main/napari/resources/icons/console.svg" alt="A screenshot of Napari's console button" height="30"> and run:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href=""></a><span class="co"># Get the image data for the first layer in Napari</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href=""></a><span class="co"># Get the image data for the first layer in Napari</span></span>
 <span id="cb8-2"><a href=""></a>image <span class="op">=</span> viewer.layers[<span class="dv">0</span>].data</span>
 <span id="cb8-3"><a href=""></a></span>
 <span id="cb8-4"><a href=""></a><span class="co"># Print the image values and type</span></span>
 <span id="cb8-5"><a href=""></a><span class="bu">print</span>(image)</span>
-<span id="cb8-6"><a href=""></a><span class="bu">print</span>(<span class="bu">type</span>(image))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-6"><a href=""></a><span class="bu">print</span>(<span class="bu">type</span>(image))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:55%;">
 <p><img data-src="img/napari-console.png" alt="A screenshot of Napari's console"></p>
 </div></div>
@@ -485,7 +468,7 @@ Zoom - Scroll in/out</code></pre>
 <div class="columns">
 <div class="column" style="width:45%;">
 <p>We can find out the dimensions by running the following in Napari’s console:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href=""></a>image.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href=""></a>image.shape</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column" style="width:55%;">
 <p><img data-src="img/napari-console.png" alt="A screenshot of Napari's console"></p>
 </div></div>
@@ -509,7 +492,7 @@ Zoom - Scroll in/out</code></pre>
 <div class="columns">
 <div class="column" style="width:45%;">
 <p>The other key feature of an image array is its ‘data type’ - this controls which values can be stored inside of it.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href=""></a>image.dtype.name</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href=""></a>image.dtype.name</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>The data type consists of type and bit-depth.</p>
 </div><div class="column" style="width:55%;">
 <p><img data-src="img/napari-console.png" alt="A screenshot of Napari's console"></p>
@@ -554,8 +537,8 @@ Zoom - Scroll in/out</code></pre>
 <section id="bit-depth" class="slide level2">
 <h2>Bit depth</h2>
 <p>The bit depth determines the range of values that can be stored e.g.&nbsp;only values between 0 and <span class="math inline">\(2^{16}-1\)</span>.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href=""></a><span class="bu">print</span>(image.<span class="bu">min</span>())</span>
-<span id="cb11-2"><a href=""></a><span class="bu">print</span>(image.<span class="bu">max</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href=""></a><span class="bu">print</span>(image.<span class="bu">min</span>())</span>
+<span id="cb11-2"><a href=""></a><span class="bu">print</span>(image.<span class="bu">max</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="common-data-types" class="slide level2 smaller">
 <h2>Common data types</h2>
@@ -621,6 +604,22 @@ Zoom - Scroll in/out</code></pre>
           display:block!important;
       }</style></aside>
 </section>
+<section id="handedness-of-the-coordinate-system" class="slide level2 scrollable">
+<h2>Handedness of the coordinate system</h2>
+<ul>
+<li>napari v0.6.0 and later use a <strong>right-handed 3D coordinate system</strong> by default.</li>
+<li>BrainGlobe (in particular <code>brainrender</code>) expects a <strong>left-handed system</strong>.</li>
+</ul>
+<p>To change to a left-handed system:</p>
+<ol type="1">
+<li>Right-click the <strong>Toggle 2D/3D view</strong> button in the bottom-left corner.<br>
+</li>
+<li>Select the pre-0.6.0 default: <strong>away, down, right</strong>.</li>
+</ol>
+
+<aside><div>
+<p>For more details on napari’s 3D axis directions and handedness, see the <a href="https://napari.org/stable/guides/handedness.html">napari documentation</a>.</p>
+</div></aside></section>
 <section id="key-points-1" class="slide level2">
 <h2>Key points</h2>
 <ul>
@@ -638,32 +637,32 @@ Zoom - Scroll in/out</code></pre>
 <img data-src="img/cells-napari.png" alt="A screenshot of a some fluorescent cells" class="r-stretch"></section>
 <section id="reduce-noise-with-a-median-filter" class="slide level2">
 <h2>Reduce noise with a median filter</h2>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href=""></a><span class="im">from</span> scipy.signal <span class="im">import</span> medfilt2d</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href=""></a><span class="im">from</span> scipy.signal <span class="im">import</span> medfilt2d</span>
 <span id="cb12-2"><a href=""></a>image <span class="op">=</span> viewer.layers[<span class="dv">0</span>].data</span>
 <span id="cb12-3"><a href=""></a>filtered <span class="op">=</span> medfilt2d(image)</span>
-<span id="cb12-4"><a href=""></a>viewer.add_image(filtered)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-4"><a href=""></a>viewer.add_image(filtered)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 <img data-src="img/filtered.png" alt="A median-filtered version of the example image" class="r-stretch"></section>
 <section id="isolate-neurons-with-a-threshold" class="slide level2 smaller">
 <h2>Isolate neurons with a threshold</h2>
 <p>Example of “semantic” segmentation</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href=""></a>thresholded <span class="op">=</span> filtered <span class="op">&gt;</span> <span class="dv">8000</span> <span class="co"># True or False array</span></span>
-<span id="cb13-2"><a href=""></a>viewer.add_image(thresholded)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href=""></a>thresholded <span class="op">=</span> filtered <span class="op">&gt;</span> <span class="dv">8000</span> <span class="co"># True or False array</span></span>
+<span id="cb13-2"><a href=""></a>viewer.add_image(thresholded)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 <img data-src="img/thresholded.png" alt="A thresholded version of the example image" class="r-stretch"></section>
 <section id="label-each-neuron-with-a-number" class="slide level2 smaller">
 <h2>Label each neuron with a number</h2>
 <p>Example of “instance” segmentation</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href=""></a><span class="im">from</span> skimage.measure <span class="im">import</span> regionprops, label</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href=""></a><span class="im">from</span> skimage.measure <span class="im">import</span> regionprops, label</span>
 <span id="cb14-2"><a href=""></a>labelled <span class="op">=</span> label(thresholded)</span>
-<span id="cb14-3"><a href=""></a>viewer.add_labels(labelled)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-3"><a href=""></a>viewer.add_labels(labelled)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 <img data-src="img/labelled.png" alt="A labelled version of the example image" class="r-stretch"></section>
 <section id="pixels-in-each-neuron" class="slide level2 smaller">
 <h2>Pixels in each neuron</h2>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href=""></a>properties <span class="op">=</span> regionprops(labelled)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href=""></a>properties <span class="op">=</span> regionprops(labelled)</span>
 <span id="cb15-2"><a href=""></a>pixels_in_each_region <span class="op">=</span> [prop.area <span class="cf">for</span> prop <span class="kw">in</span> properties]</span>
-<span id="cb15-3"><a href=""></a><span class="bu">print</span>(pixels_in_each_region)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-3"><a href=""></a><span class="bu">print</span>(pixels_in_each_region)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 <img data-src="img/regionprops.png" alt="A list of pixel counts for each region of the example image" class="r-stretch"></section>
 <section id="key-points-2" class="slide level2">
@@ -830,7 +829,7 @@ Zoom - Scroll in/out</code></pre>
 </section>
 <section id="brainglobe-atlas-api-2" class="slide level2 smaller">
 <h2>BrainGlobe Atlas API</h2>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href=""></a><span class="im">from</span> brainglobe_atlasapi <span class="im">import</span> BrainGlobeAtlas</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href=""></a><span class="im">from</span> brainglobe_atlasapi <span class="im">import</span> BrainGlobeAtlas</span>
 <span id="cb16-2"><a href=""></a>atlas <span class="op">=</span> BrainGlobeAtlas(<span class="st">"allen_mouse_25um"</span>)</span>
 <span id="cb16-3"><a href=""></a></span>
 <span id="cb16-4"><a href=""></a>reference_image <span class="op">=</span> atlas.reference</span>
@@ -851,7 +850,7 @@ Zoom - Scroll in/out</code></pre>
 <span id="cb16-19"><a href=""></a><span class="co">#  'mesh_filename': PosixPath('/home/user/.brainglobe/allen_mouse_25um_v0.3/meshes/385.obj'),</span></span>
 <span id="cb16-20"><a href=""></a><span class="co">#  'name': 'Primary visual area',</span></span>
 <span id="cb16-21"><a href=""></a><span class="co">#  'rgb_triplet': [8, 133, 140],</span></span>
-<span id="cb16-22"><a href=""></a><span class="co">#  'structure_id_path': [997, 8, 567, 688, 695, 315, 669, 385]}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-22"><a href=""></a><span class="co">#  'structure_id_path': [997, 8, 567, 688, 695, 315, 669, 385]}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="footer">
 <p><a href="https://doi.org/10.21105/joss.02668">Claudi, F. et al.&nbsp;(2020) “BrainGlobe Atlas API: a common interface for neuroanatomical atlases” JOSS, v5(54), 2668</a></p>
 </div>
@@ -1059,16 +1058,17 @@ Zoom - Scroll in/out</code></pre>
 </section>
 <section id="motivation" class="slide level2">
 <h2>Motivation</h2>
-<p>By the end of the course (maybe on your own data):</p>
+<p>By the end of the course:</p>
 
 <img data-src="img/tracing.png" class="r-stretch"></section>
 <section id="motivation-1" class="slide level2" data-background-video="img/cellfinder_small.mp4" data-background-video-loop="true">
 <h2>Motivation</h2>
 </section>
-<section id="tutorials-day-1" class="slide level2 smaller">
-<h2>Tutorials (day 1)</h2>
+<section id="tutorials-1" class="slide level2 smaller">
+<h2>Tutorials</h2>
 <ul>
 <li>registering whole-brain microscopy to an atlas</li>
+<li>segmenting probes and bulk fluorescence</li>
 <li>cell detection in whole-brain microscopy
 <ul>
 <li>retraining <code>cellfinder</code> to fine-tune cell detection</li>
@@ -1079,16 +1079,15 @@ Zoom - Scroll in/out</code></pre>
 <section id="data" class="slide level2 smaller">
 <h2>Data</h2>
 <ul>
-<li>feel free to experiment with your own data</li>
 <li>small sample data comes with <code>napari</code></li>
-<li>large sample data <code>MS_cx_left</code>
+<li>large sample data <code>histology-training/brainglobe-course-data/MS_cx_left</code>
 <ul>
-<li>on HD: share</li>
+<li>on HD: share if needed</li>
 </ul></li>
 </ul>
 
 <aside><div>
-<p><code>MS_cx_left</code> data courtesy of Brown APY, Cossell L,Strom M, Tyson AL, Vélez-Fort M, Margrie TW. Analysis of segmentationontology reveals the similarities and differences in connectivity onto L2/3 neurons in mouse V1. Scientific Reports. 2021; 11 (4983). <a href="https://doi.org/10.1038/s41598-021-82353-7" class="uri">https://doi.org/10.1038/s41598-021-82353-7</a></p>
+<p><code>MS_cx_left</code> data courtesy of Brown APY, Cossell L,Strom M, Tyson AL, Vélez-Fort M, Margrie TW. Analysis of segmentation ontology reveals the similarities and differences in connectivity onto L2/3 neurons in mouse V1. Scientific Reports. 2021; 11 (4983). <a href="https://doi.org/10.1038/s41598-021-82353-7" class="uri">https://doi.org/10.1038/s41598-021-82353-7</a></p>
 </div></aside></section>
 <section id="quick-excursion-into-brainglobe-orientation" class="slide level2 smaller">
 <h2>Quick excursion into BrainGlobe orientation</h2>
@@ -1140,65 +1139,12 @@ Zoom - Scroll in/out</code></pre>
 <li><code>--atlas</code></li>
 </ul></li>
 </ul>
-</section>
-<section id="quick-reminder-of-brainglobe-orientation" class="slide level2 smaller">
-<h2>Quick reminder of BrainGlobe orientation</h2>
-<ul>
-<li>three letters define position of pixel (0,0,0)</li>
-<li>e.g.&nbsp;<code>psl</code> - pixel (0,0,0) is Posterior, Superior, Left</li>
-<li>all BrainGlobe atlases are <code>asr</code></li>
-<li>to verify: open data in napari and scroll through data</li>
-</ul>
 </section></section>
 <section>
-<section id="day-2" class="title-slide slide level1 center">
-<h1>Day 2</h1>
+<section id="tour-of-other-brainglobe-tools" class="title-slide slide level1 center">
+<h1>Tour of other BrainGlobe tools</h1>
 
 </section>
-<section id="schedule-day-1-1" class="slide level2 smaller">
-<h2>Schedule (day 1)</h2>
-<ul>
-<li class="fragment"><p>Installing BrainGlobe and Napari (30 mins)</p></li>
-<li class="fragment"><p>Introduction to Image analysis with Napari (60 mins)</p></li>
-<li class="fragment"><p>Introduction to BrainGlobe (30 mins)</p></li>
-<li class="fragment"><p>Registering whole brain microscopy images with brainreg (30 mins)</p></li>
-<li class="fragment"><p>Segmenting structures in whole brain microscopy images with brainglobe-segmentation (30 mins)</p></li>
-<li class="fragment"><p>Detecting cells in large 3D images with cellfinder (90 mins)</p></li>
-<li class="fragment"><p>Combining <code>brainreg</code> and <code>cellfinder</code> on the command line (<code>brainmapper</code>)(30 mins)</p></li>
-<li class="fragment"><p>Unstructured time (debugging problems, networking, discussions) (60 mins)</p></li>
-</ul>
-</section>
-<section id="schedule-day-2-1" class="slide level2 smaller">
-<h2>Schedule (day 2)</h2>
-<ul>
-<li class="fragment"><p>Analysing <code>brainmapper</code> outputs in napari (30 mins)</p></li>
-<li class="fragment"><p>Visualising atlases with <code>brainrender-napari</code> (30 mins)</p></li>
-<li class="fragment"><p>Visualising cells in atlas space (30 mins)</p></li>
-<li class="fragment"><p>Visualising cell density with <code>brainglobe-heatmap</code> (30 mins)</p></li>
-<li class="fragment"><p>Scripting a visualisation with <code>brainrender</code> (30 mins)</p></li>
-<li class="fragment"><p>Tour of other BrainGlobe tools (30 mins)</p></li>
-<li class="fragment"><p>Where to get help (30 mins)</p></li>
-<li class="fragment"><p>Contributing to BrainGlobe and the Scientific Python ecosystem (30 mins)</p></li>
-<li class="fragment"><p>Contibuting an atlas to BrainGlobe (30 mins)</p></li>
-<li class="fragment"><p>Unstructured time (debugging problems, networking, discussions, scripting) (60 mins)</p></li>
-<li class="fragment"><p>Hackday ideas (30 mins)</p></li>
-</ul>
-</section></section>
-<section>
-<section id="tutorials-day-2" class="title-slide slide level1 center">
-<h1>Tutorials (day 2)</h1>
-
-</section>
-<section id="sample-data" class="slide level2">
-<h2>Sample data</h2>
-<ul>
-<li>Use the folder <code>open-software-week/brainglobe-course-data/MS_CX_left_cellfinder</code></li>
-<li>It is the output of <code>brainmapper</code> on <code>MS_cx_left</code> data</li>
-</ul>
-
-<aside><div>
-<p><code>MS_cx_left</code> data courtesy of Brown APY, Cossell L,Strom M, Tyson AL, Vélez-Fort M, Margrie TW. Analysis of segmentationontology reveals the similarities and differences in connectivity onto L2/3 neurons in mouse V1. Scientific Reports. 2021; 11 (4983). <a href="https://doi.org/10.1038/s41598-021-82353-7" class="uri">https://doi.org/10.1038/s41598-021-82353-7</a></p>
-</div></aside></section>
 <section id="analysing-cell-positions-in-atlas-space" class="slide level2">
 <h2>Analysing cell positions in atlas space</h2>
 <p><a href="https://brainglobe.info/tutorials/transform-cells-atlas.html">Tutorial</a></p>
@@ -1209,22 +1155,35 @@ Zoom - Scroll in/out</code></pre>
 </section>
 <section id="making-heatmaps-with-brainglobe-heatmap-scripts" class="slide level2">
 <h2>Making heatmaps with <code>brainglobe-heatmap</code> scripts</h2>
-<p>Task: * Visualise the cell density/region of a coronal slice</p>
+<p>Task:</p>
+<ul>
+<li>Visualise the cell density/region of a coronal slice</li>
+</ul>
 <p><a href="https://github.com/brainglobe/brainglobe-heatmap/tree/main/examples">Example brainglobe-heatmap scripts</a></p>
 </section>
 <section id="making-renders-with-brainrender-scripts" class="slide level2">
 <h2>Making renders with <code>brainrender</code> scripts</h2>
-<p>Tasks: * Visualise a region in the atlas * Visualise the cells from the large sample data * (Bonus) Make an animation</p>
+<p>Tasks:</p>
+<ul>
+<li>Visualise a region in the atlas</li>
+<li>Visualise the cells from the large sample data</li>
+<li>(Bonus) Make an animation</li>
+</ul>
 <p><a href="https://github.com/brainglobe/brainrender/tree/main/examples">Example brainrender scripts</a></p>
 </section>
-<section id="tour-of-other-brainglobe-tools-and-wrap-up" class="slide level2 smaller">
-<h2>Tour of other BrainGlobe tools and wrap-up</h2>
+<section id="further-user-facing-tools" class="slide level2">
+<h2>Further user-facing tools</h2>
 <ul>
-<li><a href="https://github.com/brainglobe/brainglobe-atlasapi"><code>brainglobe-atlasapi</code></a></li>
 <li><a href="https://github.com/brainglobe/brainglobe-registration"><code>brainglobe-registration</code></a></li>
-<li><a href="https://github.com/brainglobe/brainglobe-space"><code>brainglobe-space</code></a></li>
 <li><a href="https://github.com/brainglobe/brainglobe-stitch"><code>brainglobe-stitch</code></a></li>
 <li><a href="https://github.com/brainglobe/brainglobe-template-builder"><code>brainglobe-template-builder</code></a></li>
+</ul>
+</section>
+<section id="underlying-libraries" class="slide level2">
+<h2>Underlying libraries</h2>
+<ul>
+<li><a href="https://github.com/brainglobe/brainglobe-atlasapi"><code>brainglobe-atlasapi</code></a></li>
+<li><a href="https://github.com/brainglobe/brainglobe-space"><code>brainglobe-space</code></a></li>
 <li><a href="https://github.com/brainglobe/brainglobe-utils"><code>brainglobe-utils</code></a></li>
 <li><a href="https://github.com/brainglobe/morphapi"><code>morphapi</code></a></li>
 </ul>
@@ -1238,117 +1197,6 @@ Zoom - Scroll in/out</code></pre>
 <li><a href="https://github.com/brainglobe/" data-preview-link="true">GitHub</a></li>
 </ul>
 <p>You are welcome to contribute to BrainGlobe - get in touch anytime and we will support you!</p>
-</section></section>
-<section>
-<section id="brainglobe-and-the-scientific-python-ecosystem" class="title-slide slide level1 center">
-<h1>BrainGlobe and the scientific Python ecosystem</h1>
-
-</section>
-<section id="brainglobe-and-the-scientific-python-ecosystem-1" class="slide level2">
-<h2>BrainGlobe and the scientific Python ecosystem</h2>
-<div class="columns">
-<div class="column" style="width:55%;">
-<p>BrainGlobe makes the scientific Python ecosystem accessible to neuroscientists.</p>
-</div><div class="column" style="width:45%;">
-<p><img data-src="img/ecosystem.png"></p>
-</div></div>
-</section>
-<section id="brainglobe-and-the-scientific-python-ecosystem-2" class="slide level2">
-<h2>BrainGlobe and the scientific Python ecosystem</h2>
-<div class="columns">
-<div class="column" style="width:55%;">
-<p>We depend on the scientific Python ecosystem.</p>
-</div><div class="column" style="width:45%;">
-<p><img data-src="img/ecosystem.png"></p>
-</div></div>
-</section>
-<section id="the-open-source-ecology" class="slide level2">
-<h2>The open-source ecology</h2>
-<p><a href="https://github.com/brainglobe/brainglobe-atlasapi/network/dependents">E.g. <code>brainglobe-atlasapi</code></a></p>
-</section>
-<section id="a-selection-of-tools-built-by-the-community" class="slide level2">
-<h2><a href="https://brainglobe.info/community/external-tools.html">A selection of tools built by the community</a></h2>
-<div class="columns">
-<div class="column" style="width:55%;">
-<p>Other neuroscience tools depend on BrainGlobe</p>
-</div><div class="column" style="width:45%;">
-<p><img data-src="img/community-examples.png"></p>
-</div></div>
-</section>
-<section id="you-are-part-of-the-ecosystem" class="slide level2 smaller">
-<h2>You are part of the ecosystem</h2>
-<div class="columns">
-<div class="column">
-<ul>
-<li>we welcome contributions
-<ul>
-<li>raise issues</li>
-<li>write tutorials</li>
-<li>developer guide</li>
-<li>we can mentor</li>
-</ul></li>
-</ul>
-</div><div class="column">
-<p><img data-src="img/tracing.png"></p>
-</div></div>
-</section>
-<section id="some-wider-starting-points" class="slide level2">
-<h2>Some wider starting points</h2>
-<div class="columns">
-<div class="column">
-<ul>
-<li><a href="https://www.pyopensci.org/lessons/contribute-open-source/your-first-contribution.html">guide to first open-source contributions</a></li>
-<li><a href="https://goodfirstissue.dev/">good first issues in open-source</a></li>
-</ul>
-</div><div class="column">
-<p><img data-src="img/tracing.png"></p>
-</div></div>
-</section>
-<section id="contributing-atlases-to-brainglobe" class="slide level2">
-<h2>Contributing atlases to BrainGlobe</h2>
-<p>Before starting, you will need:</p>
-<ul>
-<li>Information to credit the atlas (publication, website)</li>
-<li>A template reference 3D stack (at least one)</li>
-<li>An annotation 3D stack (at finest level of your region hierarchy)</li>
-<li>A description of all the structures of the brain and their hierarchy.</li>
-</ul>
-</section>
-<section id="how-do-i-contribute-an-atlas" class="slide level2">
-<h2>How do I contribute an atlas</h2>
-<ul>
-<li>Write a <a href="https://github.com/brainglobe/brainglobe-atlasapi/tree/main/brainglobe_atlasapi/atlas_generation/atlas_scripts">packaging script</a></li>
-<li>Submit a Pull Request</li>
-<li>Core developers upload to data platform</li>
-</ul>
-</section>
-<section id="how-are-atlases-stored" class="slide level2">
-<h2>How are atlases stored?</h2>
-<ul>
-<li>On <a href="https://gin.g-node.org/brainglobe/atlases">“GIN” (German Informatics Node)</a>
-<ul>
-<li>acts as an archive of atlas data</li>
-</ul></li>
-<li>improvements (Atlas API V2) in progress
-<ul>
-<li>use <code>zarr</code> to “stream” atlases</li>
-<li>also avoid data duplication</li>
-</ul></li>
-</ul>
-</section>
-<section id="contributing-atlases-to-brainglobe-1" class="slide level2 smaller">
-<h2>Contributing atlases to BrainGlobe</h2>
-<p>More info on <a href="https://brainglobe.info/documentation/brainglobe-atlasapi/adding-a-new-atlas.html">the BrainGlobe website</a>. Achievable (?) <a href="https://github.com/orgs/neuroinformatics-unit/projects/19/views/1?pane=issue&amp;itemId=122515055&amp;issue=neuroinformatics-unit%7Cosw25-hackday%7C11">hackday idea</a>:</p>
-<ul>
-<li>Pick an <a href="https://github.com/brainglobe/brainglobe-atlasapi/issues?q=is%3Aissue%20state%3Aopen%20label%3Anew-atlas">atlas of interest</a></li>
-<li>Intermediate Python knowledge</li>
-<li><a href="https://github.com/brainglobe/brainglobe-atlasapi/tree/main/brainglobe_atlasapi/atlas_generation/atlas_scripts/template_script.py">template script</a> available</li>
-<li>Bonus: improve related documentation</li>
-</ul>
-</section>
-<section id="thank-you" class="slide level2">
-<h2>Thank you!</h2>
-<p>Please fill out <a href="https://docs.google.com/forms/d/e/1FAIpQLSedaPDrcPC5Z6Rr_naeN63soEISjxWJAOAKfR59jBtLeH6PWg/viewform?usp=dialog">the feedback form</a>.</p>
 
 </section></section>
     </div>
@@ -1543,7 +1391,7 @@ Zoom - Scroll in/out</code></pre>
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1617,13 +1465,14 @@ Zoom - Scroll in/out</code></pre>
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy
