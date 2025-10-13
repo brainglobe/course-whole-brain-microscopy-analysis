@@ -139,7 +139,7 @@ Brown APY, Cossell L,Strom M, Tyson AL, Vélez-Fort M, Margrie TW. Analysis of s
   * `-s` The primary signal channel
   * `-b` The secondary autofluorescence channel
   * `-o` The output directory 
-  * `--orientation` e.g. `psl 
+  * `--orientation` e.g. `psl`
   * `-v` The voxel spacing (microns) in the same order as the data orientation (`psl`): 5 2 2.
   * `--atlas`
 
