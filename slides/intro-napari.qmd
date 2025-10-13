@@ -169,21 +169,21 @@ Create and remove.
 
  - Points ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/new_points.svg
-){alt="A screenshot of Napari's point layer button" height='30px'}
+){alt="A screenshot of Napari's point layer button" height='30px' style="margin-bottom: 0px; vertical-align: baseline;"}
 
  - Shapes ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/new_shapes.svg
-){alt="A screenshot of Napari's shape layer button" height='30px'} 
+){alt="A screenshot of Napari's shape layer button" height='30px' style="margin-bottom: 0px; vertical-align: baseline;"}
 
  - Labels ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/new_labels.svg
-){alt="A screenshot of Napari's labels layer button" height='30px'}
+){alt="A screenshot of Napari's labels layer button" height='30px' style="margin-bottom: 0px; vertical-align: baseline;"}
 
  - Remove layer ![](
 https://raw.githubusercontent.com/napari/napari/main/src/napari/resources/icons/delete.svg
-){alt="A screenshot of Napari's delete layer button" height='30px'}  
-:::
+){alt="A screenshot of Napari's delete layer button" height='30px' style="margin-bottom: 0px; vertical-align: baseline;"}
 
+:::
 
 ::: {.column width=55%}
 ![](img/cells-napari.png){alt="A screenshot of a some fluorescent cells"}
