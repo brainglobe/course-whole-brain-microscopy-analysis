@@ -1,5 +1,9 @@
+project:
+  output-dir: build
+
 execute: 
   enabled: true
+
 format:
     revealjs:
         theme: [bg-light.scss]
