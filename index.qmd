@@ -3,39 +3,6 @@ title: Whole brain microscopy analysis
 subtitle: With BrainGlobe and napari
 execute: 
   enabled: true
-format:
-    revealjs:
-        theme: [default, bg-light.scss]
-        logo: img/BG_logo.png
-        slide-number: c
-        menu:
-            numbers: true
-        chalkboard: true
-        scrollable: true
-        preview-links: false
-        view-distance: 10
-        mobile-view-distance: 10
-        auto-animate: true
-        auto-play-media: true
-        code-overflow: wrap
-        highlight-style: atom-one
-        mermaid: 
-          theme: neutral
-          fontFamily: arial
-          curve: linear
-    html:
-        theme: [default, bg-light.scss]
-        logo: img/BG_logo.png
-        toc: true
-        code-overflow: scroll
-        highlight-style: atom-one
-        mermaid: 
-          theme: neutral
-          fontFamily: arial
-          curve: linear
-          margin-left: 0
-        embed-resources: true
-        page-layout: full
 ---
 # Welcome
 
