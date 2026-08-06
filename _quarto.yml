@@ -1,7 +1,14 @@
 project:
   output-dir: build
+  render:
+    - index.qmd
+  # Executed code cells read relative to the project root.
+  pre-render: ln -sfn irv-helga/resources resources
+  # Quarto only copies assets it finds under this project, so top up build/img with
+  # the submodule's. -n because the ~10 shared filenames are byte-identical anyway.
+  post-render: cp -rn irv-helga/img/. build/img/
 
-execute: 
+execute:
   enabled: true
 
 format:
