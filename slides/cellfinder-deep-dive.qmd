@@ -1,0 +1,250 @@
+
+# Cellfinder
+
+## Cellfinder
+
+Cellfinder is the BrainGlobe tool for detecting cell coordinates
+
+## Plan
+
+Explore cellfinder in more depth, and more breadth
+
+## Whole brain microscopy
+
+Microscope image
+
+## Cell finder input data
+
+two channels - lightsheet or stpt
+
+## Applications
+
+Viral tracing,
+Cfos (experimental)
+Maybe others ?
+
+Want to find cell centres.
+
+## What problems is it designed to overcome?
+
+* Classical image processing lacks sweet spot in noisy 3d microscopy. E.g thresholding always includes noise or excludes cells
+* ML based methods are slow on such large data
+
+## Cellfinder strategy
+
+Best of both worlds
+
+* Select too many possible cells: "candidates"
+* Use machine-learning to classify candidates as cell/not cell
+    * needs curation and re-training
+
+## Cellfinder high-level workflow
+
+```{mermaid}
+%%{init: {'theme': 'default', 'flowchart': {'curve': 'basis'}}}%%
+flowchart LR
+    A[1. Detect<br/>Candidates] --> B[2. Classify<br/>Candidates]
+    B --> C[3. Curate<br/>Candidates]
+    C --> D[4. Retrain<br/>Model]
+    D --> B
+    B -.->|Further Analysis & Visualisation| E[ ]
+    style E fill:transparent,stroke:transparent
+    D ~~~ E
+```
+
+cell-detection = cell candidate detection + candidate classification
+
+## Practical notes for users
+
+Similar to other BrainGlobe tools, `cellfinder` has
+
+* `napari` interface
+* Python API
+
+and additionally,
+
+* a command line interface for Detection+Classification
+
+## Cellfinder high-level workflow
+
+```{mermaid}
+%%{init: {'theme': 'default', 'flowchart': {'curve': 'basis'}}}%%
+flowchart LR
+    A[1. Detect<br/>Candidates] --> B[2. Classify<br/>Candidates]
+    B --> C[3. Curate<br/>Candidates]
+    C --> D[4. Retrain<br/>Model]
+    D --> B
+    B -.->|Further Analysis & Visualisation| E[ ]
+    style E fill:transparent,stroke:transparent
+    D ~~~ E
+```
+
+## Cellfinder candidate detection
+
+::: {.columns}
+::: {.column width="55%"}
+A series of image filters on the signal channel only
+
+:::{.incremental}
+1. 2D filter 
+2. 3D filter
+3. Structure splitting
+:::
+
+:::
+::: {.column width="45%"}
+![](img/detection.png)
+:::
+:::
+
+## Cellfinder candidate detection (2d filter)
+
+::: {.columns}
+::: {.column width="55%"}
+
+:::{.incremental}
+1. Clip to reserve 2 values
+2. Keep tiles with average intensity > avg+2*std(corner tiles) ("TileWalker")
+3. Enhance peaks
+    a) median filter
+    b) gaussian filter
+    c) laplacian filter
+4. Threshold at plane avg+nds*std
+:::
+
+:::
+::: {.column width="45%"}
+![](img/detection.png)
+:::
+:::
+
+## Cellfinder candidate detection (2d filter)
+
+TODO: table with parameters and explanations
+
+## Cellfinder candidate detection (3d filter+structure splitting)
+
+::: {.columns}
+::: {.column width="55%"}
+
+:::{.incremental}
+1. Looks at sphere (ellipsoid) around each pixel
+2. If sufficient pixels in the ellipsoid are bright, mark as candidate
+3. Split structure if needed
+4. Return centres of structures
+:::
+
+:::
+::: {.column width="45%"}
+![](img/detection.png)
+:::
+:::
+
+## Cellfinder candidate detection (structure splitting)
+
+TODO: table with parameters and explanations
+
+
+## Performance-related parameters
+
+* defaults chosen sensibly, for typical applications
+
+
+## Cellfinder classification
+
+resnet 
+trained on X cells imaged with
+Will get you 80% if the way
+
+## Cellfinder classification
+
+Uses both channels. Assumption:
+* noise is bright in both channels
+* signal is bright only in one channel
+
+## Cellfinder detection tutorial
+
+https://brainglobe.info/tutorials/cellfinder-detection.html
+
+## Detection parameter fine-tuning tutorial?
+
+## Cellfinder high-level workflow
+
+```{mermaid}
+%%{init: {'theme': 'default', 'flowchart': {'curve': 'basis'}}}%%
+flowchart LR
+    A[1. Detect<br/>Candidates] --> B[2. Classify<br/>Candidates]
+    B --> C[3. Curate<br/>Candidates]
+    C --> D[4. Retrain<br/>Model]
+    D --> B
+    B -.->|Further Analysis & Visualisation| E[ ]
+    style E fill:transparent,stroke:transparent
+    D ~~~ E
+```
+
+## Curation and retraining
+
+Suggested strategy
+* spend hours, not days curating
+* iterate fast: curate, retrain, classify and repeat
+* curated balanced data (equal number of cells/not cells)
+
+Reminder: only candidate cells will be classified
+
+## Retraining parameters
+
+TODO: table with explanations
+
+## Curate+retraining tutorial
+
+https://brainglobe.info/tutorials/cellfinder-retraining.html
+
+## Interoperability with OME zarr
+
+*
+
+## Interoperability with other tools
+
+* 
+
+## Implementation notes
+
+* implemented within the `pytorch` framework
+* uses custom multithreading and multiprocessing
+    * works particularly on nvidia GPUs
+* highly optimised data loading
+
+Matt Einhorn, Cleland Lab, Cornell
+
+## Performance experiments
+
+TODO: add plot from FENS
+
+## What's next for cellfinder
+
+performance improvements allows new applications
+
+* viral tracing in rats (bigger images)
+* CFoS applications (more cell candidates)
+    * also, support for cell metadata beyond centre (e.g. average intensity / cell)
+
+## What's next for cellfinder
+
+implementations for 
+    * single channel
+    * 2D sections
+
+TODO: picture of Soumya. Friday. GSoC logo
+
+## What's next for cellfinder
+
+longer term
+
+* classification of different types of cells
+
+## Key take-aways
+
+* `cellfinder` can be used to efficiently find cells in large whole-brain microscopy images
+* it uses classical image filtering to find candidates and then classifies them
+    * candidates can include many false positives, but _must_ include _all_ true positives
+    * usually classification model needs curation and retraining

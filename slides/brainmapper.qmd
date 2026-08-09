@@ -1,0 +1,40 @@
+# brainmapper
+
+
+## Combining registration and cell detection
+
+Often we want to combine atlas registration and cell detection, to answer questions like: how many cells are in each brain region? Anatomical context
+
+## Pulling things together: `brainmapper` CLI
+
+:::: {.columns}
+::: {.column}
+* `brainmapper` is the name of [our command line tool](https://brainglobe.info/tutorials/brainmapper/index.html) to combine cell detection and atlas registration. 
+:::
+::: {.column}
+![](img/brainmapper-cli.png)
+:::
+::::
+
+## `brainmapper` CLI
+
+* Required arguments
+  * `-s` The primary signal channel
+  * `-b` The secondary autofluorescence channel
+  * `-o` The output directory 
+  * `--orientation` e.g. `psl`
+  * `-v` The voxel spacing (microns) in the same order as the data orientation (`psl`): 5 2 2.
+  * `--atlas`
+
+## `brainmapper` CLI
+
+* allows batching on HPC
+* flexible: can switch each of registration, detection, classification on and off independently
+
+## Slurm tricks
+
+* move data close to compute
+
+https://brainglobe.info/tutorials/transform-cells-atlas.html
+
+https://brainglobe.info/tutorials/brainmapper/index.html
