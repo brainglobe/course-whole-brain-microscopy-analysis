@@ -7,3 +7,4 @@ build/
 **/*.quarto_ipynb
 resources
 __pycache__/
+.idea/
