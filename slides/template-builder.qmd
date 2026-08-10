@@ -1,0 +1,39 @@
+## Context
+
+Neuroscience benefits from more diverse model species
+We need an atlas to fully realise this potential
+BrainGlobe lends itself well to include more species
+
+## template building
+
+Group-wise symmetric diffeomorphic normalistaion
+Basically a bunch of image registrations + some averaging
+Implemented in ants
+## brainglobe template builder
+
+## atlas forge
+
+## the Eurasian blackcap
+
+## whats next for template building
+
+* Gpu acceleration
+* Provision as a service
+## atlases in progress
+
+Molerat
+Zebrafinch
+Crab
+Bat
+Poison frog
+Mouse strains
+Swordtail fish
+Budgerigar?
+Mouse bone?
+Ray?
+
+## Collaboration days
+
+Anyone interested
+* Trying out annotation tools
+* Make a template with your data
