@@ -1,18 +1,17 @@
 
 # 3D Cell Detection
 
-## Cellfinder
+## `cellfinder`
 
-Cellfinder is the BrainGlobe tool for detecting cell coordinates
+`cellfinder` is the BrainGlobe tool for detecting cells
+
+It finds centre coordinates of fluorescently labelled cells (bright spots of given size)
 
 ## Applications
 
-Goal: find centre coordinates of bright spots (fluorescently labelled cells)
-
-* Viral tracing
-* cFos (experimental support)
+* **Viral tracing in mice**
+* cFos-staining experiments (experimental support)
 * Maybe others?
-
 
 ## Serial two-photon tomography {background-color="black"}
 
@@ -134,16 +133,18 @@ High threshold (10'000)
 
 ## Why is 3D cell detection hard? {.smaller}
 
-![](img/whole.png){.nostretch fig-align="center" width=62%}
-
 Pure machine-learning based methods are slow on such large data (~100GB per channel)
+
+![](img/whole.png){.nostretch fig-align="center" width=50%}
+
 
 ## `cellfinder` strategy
 
 Best of both worlds
 
 * Select too many possible cells: "candidates"
-* Use machine-learning to classify candidates as cell/not cell
+* Use machine-learning to classify candidates 
+    * binary classification: cell/not cell
     * needs curation and re-training
 
 ## Cell candidate detction
@@ -202,21 +203,7 @@ flowchart LR
     D ~~~ E
 ```
 
-cell-detection = cell candidate detection + candidate classification
-
-## Cellfinder high-level workflow
-
-```{mermaid}
-%%{init: {'theme': 'default', 'flowchart': {'curve': 'basis'}}}%%
-flowchart LR
-    A[1. Detect<br/>Candidates] --> B[2. Classify<br/>Candidates]
-    B --> C[3. Curate<br/>Candidates]
-    C --> D[4. Retrain<br/>Model]
-    D --> B
-    B -.->|Further Analysis & Visualisation| E[ ]
-    style E fill:transparent,stroke:transparent
-    D ~~~ E
-```
+cell detection = candidate detection + candidate classification
 
 ## `cellfinder` candidate detection
 
@@ -225,8 +212,8 @@ flowchart LR
 A series of image filters on the signal channel only
 
 :::{.incremental}
-1. 2D filters
-2. 3D filters
+1. 2D filter
+2. 3D filter
 3. Structure splitting
 :::
 
@@ -242,17 +229,17 @@ A series of image filters on the signal channel only
 ::: {.column width="50%"}
 [1. Clip to reserve 2 values]{.fragment fragment-index="1"}
 
-[2. Keep tiles with average intensity > avg+2*std(corner tiles)]{.fragment fragment-index="2"}
+[2. Keep bright enought tiles]{.fragment fragment-index="2"}
 
 [3. Enhance peaks]{.fragment fragment-index="3"}
 
-    [a) median filter]{.fragment fragment-index="3"}
+[a) median filter]{.fragment fragment-index="3"}
 
-    [b) gaussian filter]{.fragment fragment-index="3"}
+[b) gaussian filter]{.fragment fragment-index="3"}
 
-    [c) laplacian filter]{.fragment fragment-index="3"}
+[c) laplacian filter]{.fragment fragment-index="3"}
 
-[4. Threshold at plane avg+nds*std]{.fragment fragment-index="4"}
+[4. Threshold]{.fragment fragment-index="4"}
 :::
 
 ::: {.column width="50%"}
@@ -268,23 +255,23 @@ A series of image filters on the signal channel only
 :::
 :::
 
-## 2D filtering {.smaller}
+## 2D filter {.smaller}
 
 ::: {.columns}
 ::: {.column width="50%"}
 [1. Clip to reserve 2 values]{.fragment fragment-index="1"}
 
-[2. Keep tiles with average intensity > avg+2*std(corner tiles)]{.fragment fragment-index="2"}
+[2. Keep bright enought tiles]{.fragment fragment-index="2"}
 
 [3. Enhance peaks]{.fragment fragment-index="3"}
 
-    [a) median filter]{.fragment fragment-index="3"}
+[a) median filter]{.fragment fragment-index="3"}
 
-    [b) gaussian filter]{.fragment fragment-index="3"}
+[b) gaussian filter]{.fragment fragment-index="3"}
 
-    [c) laplacian filter]{.fragment fragment-index="3"}
+[c) laplacian filter]{.fragment fragment-index="3"}
 
-[4. Threshold at plane avg+nds*std]{.fragment fragment-index="4"}
+[4. Threshold]{.fragment fragment-index="4"}
 :::
 
 ::: {.column width="50%"}
@@ -309,20 +296,23 @@ TODO: table with parameters and explanations
 ::: {.columns}
 ::: {.column width="50%"}
 [1. Looks at sphere (ellipsoid) around each pixel]{.fragment fragment-index="1"}
-    [a) If sufficient pixels in the ellipsoid are bright, mark as candidate]{.fragment fragment-index="1"}
 
-[2. If needed structure is big, split it.]{.fragment fragment-index="2"}
+[a) If sufficient pixels in the ellipsoid are bright, mark as part of candidate]{.fragment fragment-index="2"}
 
-[3. Compute and return centres of structures]{.fragment fragment-index="3"}
+[2. If needed structure is big, split it into several.]{.fragment fragment-index="3"}
+
+[3. Compute and return centres of structures]{.fragment fragment-index="4"}
 :::
 
 ::: {.column width="50%"}
 ::: {.r-stack}
-![](img/filtered_3d_closeup.png){.fragment fragment-index="1"}
+![](img/filtered_2d_closeup.png){.fragment fragment-index="1"}
 
-![](img/struct_type_closeup.png){.fragment fragment-index="2"}
+![](img/filtered_3d_closeup.png){.fragment fragment-index="2"}
 
-![](img/struct_type_split_closeup.png){.fragment fragment-index="3"}
+![](img/struct_type_closeup.png){.fragment fragment-index="3"}
+
+![](img/struct_type_split_closeup.png){.fragment fragment-index="4"}
 :::
 :::
 :::
@@ -330,26 +320,6 @@ TODO: table with parameters and explanations
 ## 3d filter + structure splitting {.smaller}
 
 TODO: table with parameters and explanations
-
-## Classification
-
-Uses both channels. Assumption:
-
-* noise is bright in both channels
-* signal is bright only in one channel
-
-::: {.columns}
-::: {.column width="50%"}
-![](img/input_closeup.png)
-signal
-:::
-
-::: {.column width="50%"}
-![](img/background_closeup.png)
-background
-:::
-:::
-
 
 ## Classification {.smaller}
 
@@ -359,6 +329,28 @@ Uses both channels. Assumption:
 * signal is bright only in one channel
 
 ::: {.columns}
+
+::: {.column width="50%"}
+![](img/input_closeup.png)
+signal
+:::
+
+::: {.column width="50%"}
+![](img/background_closeup.png)
+background
+:::
+
+:::
+
+## Classification {.smaller}
+
+Uses both channels. Assumption:
+
+* noise is bright in both channels
+* signal is bright only in one channel
+
+::: {.columns}
+
 ::: {.column width="50%"}
 ![](img/input.png)
 signal
@@ -368,6 +360,7 @@ signal
 ![](img/background.png)
 background
 :::
+
 :::
 
 ## Classification
@@ -446,7 +439,7 @@ TODO: table with explanations
 
 ## Curation and retraining
 
-[### tutorial](https://brainglobe.info/tutorials/cellfinder-retraining.html)
+### [Tutorial](https://brainglobe.info/tutorials/cellfinder-retraining.html)
 
 
 ## Practical notes for users
