@@ -1,36 +1,144 @@
 
-# Cellfinder
+# 3D Cell Detection
 
 ## Cellfinder
 
 Cellfinder is the BrainGlobe tool for detecting cell coordinates
 
-## Plan
-
-Explore cellfinder in more depth, and more breadth
-
-## Whole brain microscopy
-
-Microscope image
-
-## Cell finder input data
-
-two channels - lightsheet or stpt
-
 ## Applications
 
-Viral tracing,
-Cfos (experimental)
-Maybe others ?
+Goal: find centre coordinates of bright spots (fluorescently labelled cells)
 
-Want to find cell centres.
+* Viral tracing
+* cFos (experimental support)
+* Maybe others?
 
-## What problems is it designed to overcome?
 
-* Classical image processing lacks sweet spot in noisy 3d microscopy. E.g thresholding always includes noise or excludes cells
-* ML based methods are slow on such large data
+## Serial two-photon tomography {background-color="black"}
 
-## Cellfinder strategy
+![](img/TV-demo-reencoded.mp4){.fragment .absolute .nostretch top="15%" left="35%" width=65% loop="true" controls="true" muted="true"}
+
+![](img/microscopy_stpt.png){.absolute .nostretch top="24%" left="0%" width="30%"}
+
+::: footer
+[Osten, P. , Margrie, T. W. (2013) “Mapping brain circuitry with a light microscope” Nature Methods 10, 515–523](https://doi.org/10.1038/nmeth.2477)
+:::
+
+## Light sheet fluorescence microscopy {background-color="black"}
+![](img/clearing_example.png){.absolute .nostretch top="23%" left="1.5%" width="25%"}
+
+::: {.fragment .fade-out fragment-index=1 style="background: #000000ff; width: 13%; height: 24%; margin: 0px; position: absolute; top: 23%; left: 14%"}
+:::
+::: {.fragment .fade-out fragment-index=1 style="background: #000000ff; width: 13%; height: 5%; margin: 0px; position: absolute; top: 23%; left: 1.5%"}
+:::
+
+![](img/microscopy_lsfm.png){.fragment .absolute .nostretch top="48%" left="0%" width="28%" style="margin-bottom: 0px; margin-top: 0px;"}
+
+![](img/EZ_clear_small.mp4){.fragment .absolute .nostretch top="24%" right="0%" width="68%" loop="true" controls="true" autoplay="true" muted="true"}
+
+::: footer
+[Osten, P. , Margrie, T. W. (2013) “Mapping brain circuitry with a light microscope” Nature Methods 10, 515–523](https://doi.org/10.1038/nmeth.2477)
+:::
+
+
+## {background-color="black"}
+![](img/Han_2018_ext_1.jpeg){.absolute .nostretch left="20%" top="27%" width="25%"}
+![](img/Han_2018_ext_1_bottom.jpeg){.absolute .nostretch right="20%" top="27%" width="25%"}
+
+::: {style="background: #000000ff; width: 7%; height: 3%; margin: 0px; position: absolute; top: 72%; left: 31%"}
+:::
+::: {style="background: #000000ff; width: 7%; height: 3%; margin: 0px; position: absolute; top: 72%; left: 65.5%"}
+:::
+
+::: {.footer}
+[Han, Y. et al. (2018) "The logic of single-cell projections from visual cortex" Nature 556, 51–56](https://doi.org/10.1038/nature26159)
+:::
+
+## {background-color="black"}
+![](img/cFos_imaging_2.mp4){.absolute .nostretch right="5%" top="16%" width="90%" loop="true" controls="true" muted="true"}
+
+::: {.footer}
+["Understanding c-Fos and its applications in CNS research" in Gubra, Jul 31, 2024](https://www.gubra.dk/blog/understanding-c-fos-and-its-applications-in-cns-research/).
+:::
+
+## `cellfinder` input data
+![](img/whole.png){.nostretch fig-align="center" width=62%}
+
+## `cellfinder` input data
+![](img/crop.png){.nostretch fig-align="center" width=62%}
+
+## `cellfinder` input data
+
+Whole brain microscopy, two channels
+
+::: {.columns}
+::: {.column width="50%"}
+![](img/input.png)
+signal
+:::
+
+::: {.column width="50%"}
+![](img/background.png)
+background
+:::
+:::
+
+## `cellfinder` input data
+
+Whole brain microscopy, two channels
+
+::: {.columns}
+::: {.column width="50%"}
+![](img/input_closeup.png)
+signal
+:::
+
+::: {.column width="50%"}
+![](img/background_closeup.png)
+background
+:::
+:::
+
+
+## Why is 3D cell detection hard? {.smaller}
+
+Classical image processing lacks sweet spot in noisy 3d microscopy.
+
+::: {.columns}
+::: {.column width="50%"}
+![](img/threshold_low.png)
+Low threshold (2'000)
+:::
+
+::: {.column width="50%"}
+![](img/threshold_high.png)
+High threshold (10'000)
+:::
+:::
+
+## Why is 3D cell detection hard? {.smaller}
+
+Classical image processing lacks sweet spot in noisy 3d microscopy.
+
+::: {.columns}
+::: {.column width="50%"}
+![](img/threshold_low_closeup.png)
+Low threshold (2'000)
+:::
+
+::: {.column width="50%"}
+![](img/threshold_high_closeup.png)
+High threshold (10'000)
+:::
+:::
+
+## Why is 3D cell detection hard? {.smaller}
+
+![](img/whole.png){.nostretch fig-align="center" width=62%}
+
+Pure machine-learning based methods are slow on such large data (~100GB per channel)
+
+## `cellfinder` strategy
 
 Best of both worlds
 
@@ -38,7 +146,49 @@ Best of both worlds
 * Use machine-learning to classify candidates as cell/not cell
     * needs curation and re-training
 
-## Cellfinder high-level workflow
+## Cell candidate detction
+
+![](img/raw.png){.nostretch fig-align="center" width="70%"}
+
+![](img/noun-find-7985496-EE9040.svg){.absolute .nostretch top="4%" width="10%" right="0%"}
+
+::: {.absolute right="0%" bottom="0%" style="text-align: right; font-size: 0.4em;"}
+Christian Niedwork<br/> Charly Rousseau<br/> Adam Tyson
+:::
+
+::: footer
+[Tyson, A. L. et al. (2021) “A deep learning algorithm for 3D cell detection in whole mouse brain image datasets" PLoS Comp Biol 17(5): e1009074.](https://doi.org/10.1371/journal.pcbi.1009074)
+:::
+
+## Cell candidate detction
+
+![](img/detect.png){.nostretch fig-align="center" width="70%"}
+
+![](img/noun-find-7985496-EE9040.svg){.absolute .nostretch top="4%" width="10%" right="0%"}
+
+::: {.absolute right="0%" bottom="0%" style="text-align: right; font-size: 0.4em;"}
+Christian Niedwork<br/> Charly Rousseau<br/> Adam Tyson
+:::
+
+::: footer
+[Tyson, A. L. et al. (2021) “A deep learning algorithm for 3D cell detection in whole mouse brain image datasets" PLoS Comp Biol 17(5): e1009074.](https://doi.org/10.1371/journal.pcbi.1009074)
+:::
+
+## Cell candidate classification
+
+![](img/classify.png){.nostretch fig-align="center" width="70%"}
+
+![](img/noun-find-7985496-EE9040.svg){.absolute .nostretch top="4%" width="10%" right="0%"}
+
+::: {.absolute right="0%" bottom="0%" style="text-align: right; font-size: 0.4em;"}
+Christian Niedwork<br/> Charly Rousseau<br/> Adam Tyson
+:::
+
+::: footer
+[Tyson, A. L. et al. (2021) “A deep learning algorithm for 3D cell detection in whole mouse brain image datasets" PLoS Comp Biol 17(5): e1009074.](https://doi.org/10.1371/journal.pcbi.1009074)
+:::
+
+## Cellfinder high-level user workflow
 
 ```{mermaid}
 %%{init: {'theme': 'default', 'flowchart': {'curve': 'basis'}}}%%
@@ -54,17 +204,6 @@ flowchart LR
 
 cell-detection = cell candidate detection + candidate classification
 
-## Practical notes for users
-
-Similar to other BrainGlobe tools, `cellfinder` has
-
-* `napari` interface
-* Python API
-
-and additionally,
-
-* a command line interface for Detection+Classification
-
 ## Cellfinder high-level workflow
 
 ```{mermaid}
@@ -79,94 +218,203 @@ flowchart LR
     D ~~~ E
 ```
 
-## Cellfinder candidate detection
+## `cellfinder` candidate detection
 
 ::: {.columns}
 ::: {.column width="55%"}
 A series of image filters on the signal channel only
 
 :::{.incremental}
-1. 2D filter 
-2. 3D filter
+1. 2D filters
+2. 3D filters
 3. Structure splitting
 :::
 
 :::
 ::: {.column width="45%"}
-![](img/detection.png)
+![](img/input_closeup.png)
 :::
 :::
 
-## Cellfinder candidate detection (2d filter)
+## 2D filter {.smaller}
 
 ::: {.columns}
-::: {.column width="55%"}
+::: {.column width="50%"}
+[1. Clip to reserve 2 values]{.fragment fragment-index="1"}
 
-:::{.incremental}
-1. Clip to reserve 2 values
-2. Keep tiles with average intensity > avg+2*std(corner tiles) ("TileWalker")
-3. Enhance peaks
-    a) median filter
-    b) gaussian filter
-    c) laplacian filter
-4. Threshold at plane avg+nds*std
-:::
+[2. Keep tiles with average intensity > avg+2*std(corner tiles)]{.fragment fragment-index="2"}
 
-:::
-::: {.column width="45%"}
-![](img/detection.png)
-:::
+[3. Enhance peaks]{.fragment fragment-index="3"}
+
+    [a) median filter]{.fragment fragment-index="3"}
+
+    [b) gaussian filter]{.fragment fragment-index="3"}
+
+    [c) laplacian filter]{.fragment fragment-index="3"}
+
+[4. Threshold at plane avg+nds*std]{.fragment fragment-index="4"}
 :::
 
-## Cellfinder candidate detection (2d filter)
+::: {.column width="50%"}
+::: {.r-stack}
+![](img/clipped.png){.fragment fragment-index="1"}
+
+![](img/clipped.png){.fragment fragment-index="2"}
+
+![](img/enhanced.png){.fragment fragment-index="3"}
+
+![](img/filtered_2d.png){.fragment fragment-index="4"}
+:::
+:::
+:::
+
+## 2D filtering {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+[1. Clip to reserve 2 values]{.fragment fragment-index="1"}
+
+[2. Keep tiles with average intensity > avg+2*std(corner tiles)]{.fragment fragment-index="2"}
+
+[3. Enhance peaks]{.fragment fragment-index="3"}
+
+    [a) median filter]{.fragment fragment-index="3"}
+
+    [b) gaussian filter]{.fragment fragment-index="3"}
+
+    [c) laplacian filter]{.fragment fragment-index="3"}
+
+[4. Threshold at plane avg+nds*std]{.fragment fragment-index="4"}
+:::
+
+::: {.column width="50%"}
+::: {.r-stack}
+![](img/clipped_closeup.png){.fragment fragment-index="1"}
+
+![](img/clipped_closeup.png){.fragment fragment-index="2"}
+
+![](img/enhanced_closeup.png){.fragment fragment-index="3"}
+
+![](img/filtered_2d_closeup.png){.fragment fragment-index="4"}
+:::
+:::
+:::
+
+## 2D filtering {.smaller}
 
 TODO: table with parameters and explanations
 
-## Cellfinder candidate detection (3d filter+structure splitting)
+## 3d filter + structure splitting {.smaller}
 
 ::: {.columns}
-::: {.column width="55%"}
+::: {.column width="50%"}
+[1. Looks at sphere (ellipsoid) around each pixel]{.fragment fragment-index="1"}
+    [a) If sufficient pixels in the ellipsoid are bright, mark as candidate]{.fragment fragment-index="1"}
 
-:::{.incremental}
-1. Looks at sphere (ellipsoid) around each pixel
-2. If sufficient pixels in the ellipsoid are bright, mark as candidate
-3. Split structure if needed
-4. Return centres of structures
-:::
+[2. If needed structure is big, split it.]{.fragment fragment-index="2"}
 
-:::
-::: {.column width="45%"}
-![](img/detection.png)
-:::
+[3. Compute and return centres of structures]{.fragment fragment-index="3"}
 :::
 
-## Cellfinder candidate detection (structure splitting)
+::: {.column width="50%"}
+::: {.r-stack}
+![](img/filtered_3d_closeup.png){.fragment fragment-index="1"}
+
+![](img/struct_type_closeup.png){.fragment fragment-index="2"}
+
+![](img/struct_type_split_closeup.png){.fragment fragment-index="3"}
+:::
+:::
+:::
+
+## 3d filter + structure splitting {.smaller}
 
 TODO: table with parameters and explanations
 
-
-## Performance-related parameters
-
-* defaults chosen sensibly, for typical applications
-
-
-## Cellfinder classification
-
-resnet 
-trained on X cells imaged with
-Will get you 80% if the way
-
-## Cellfinder classification
+## Classification
 
 Uses both channels. Assumption:
+
 * noise is bright in both channels
 * signal is bright only in one channel
 
-## Cellfinder detection tutorial
+::: {.columns}
+::: {.column width="50%"}
+![](img/input_closeup.png)
+signal
+:::
 
-https://brainglobe.info/tutorials/cellfinder-detection.html
+::: {.column width="50%"}
+![](img/background_closeup.png)
+background
+:::
+:::
 
-## Detection parameter fine-tuning tutorial?
+
+## Classification {.smaller}
+
+Uses both channels. Assumption:
+
+* noise is bright in both channels
+* signal is bright only in one channel
+
+::: {.columns}
+::: {.column width="50%"}
+![](img/input.png)
+signal
+:::
+
+::: {.column width="50%"}
+![](img/background.png)
+background
+:::
+:::
+
+## Classification
+
+Default model, use as starting point for retraining.
+
+::: {.columns}
+
+::: {.incremental}
+::: {.column width="50%"}
+* ResNet, trained on...
+* ~100'000 manual annotations
+  * 50,653 cells
+  * 56,902 non-cells
+  * from 5 brains
+:::
+:::
+
+::: {.column width="50%"}
+![](img/cellfinder-classification.png)
+:::
+:::
+
+::: footer
+[Tyson, A. L. et al. (2021) “A deep learning algorithm for 3D cell detection in whole mouse brain image datasets" PLoS Comp Biol 17(5): e1009074.](https://doi.org/10.1371/journal.pcbi.1009074)
+:::
+
+## Cell detection tutorial
+
+### [cell detection tutorial](https://brainglobe.info/tutorials/cellfinder-detection.html)
+
+## Fine-tuning detection {.smaller}
+
+Stretch exercise: Fine-tune detection parameters on your data with this experimental `napari` plugin addition, in a new environment
+
+```{.bash}
+conda create -n cellfinder-experimental python=3.13
+conda activate cellfinder-experimental
+uv pip install git+https://github.com/matham/cellfinder@mergedv2
+uv pip install napari[all]
+```
+
+## Fine-tuning detection {.smaller}
+
+Stretch exercise: Fine-tune detection parameters on your data with this experimental `napari` plugin addition, in a new environment.
+
+![](img/cellfinder-experimental.png)
 
 ## Cellfinder high-level workflow
 
@@ -185,6 +433,7 @@ flowchart LR
 ## Curation and retraining
 
 Suggested strategy
+
 * spend hours, not days curating
 * iterate fast: curate, retrain, classify and repeat
 * curated balanced data (equal number of cells/not cells)
@@ -195,30 +444,68 @@ Reminder: only candidate cells will be classified
 
 TODO: table with explanations
 
-## Curate+retraining tutorial
+## Curation and retraining
 
-https://brainglobe.info/tutorials/cellfinder-retraining.html
+[### tutorial](https://brainglobe.info/tutorials/cellfinder-retraining.html)
+
+
+## Practical notes for users
+
+Similar to other BrainGlobe tools, `cellfinder` has
+
+* `napari` interface (as seen today)
+* Python API
+
+and additionally,
+
+* part of a command line interface for detection and classification ("brainmapper")
 
 ## Interoperability with OME zarr
 
-*
+The Python API enables interoperability with the wider Python ecosystem.
+
+```{.python}
+from cellfinder.core import main as cellfinder_run 
+
+# open your OME Zarr image here
+
+cellfinder_run(...)
+
+```
 
 ## Interoperability with other tools
 
-* 
+The Python API enables interoperability with the wider Python ecosystem.
+
+```{.python}
+from cellfinder.core.detect import main as cellfinder_detect
+
+candidates = cellfinder_detect(...)
+
+classify_candidates_custom(candidates, ...)
+
+```
+
+## Example: Biapy + BrainGlobe
+
+<iframe src="https://biapy.readthedocs.io/en/latest/tutorials/detection/brain_cell_detection.html" width="100%" height="800px" style="border:1px solid #ccc;"></iframe>
 
 ## Implementation notes
 
 * implemented within the `pytorch` framework
 * uses custom multithreading and multiprocessing
-    * works particularly on nvidia GPUs
+    * works particularly well on nvidia GPUs
 * highly optimised data loading
 
 Matt Einhorn, Cleland Lab, Cornell
 
+## Performance-related parameters
+
+* defaults chosen sensibly, for typical applications
+
 ## Performance experiments
 
-TODO: add plot from FENS
+![](img/cellfinder-benchmarks.png)
 
 ## What's next for cellfinder
 
@@ -231,8 +518,9 @@ performance improvements allows new applications
 ## What's next for cellfinder
 
 implementations for 
-    * single channel
-    * 2D sections
+
+* single channel
+* 2D sections
 
 TODO: picture of Soumya. Friday. GSoC logo
 
