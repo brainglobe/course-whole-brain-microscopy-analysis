@@ -1,10 +1,21 @@
-execute: 
+project:
+  output-dir: build
+  render:
+    - index.qmd
+  # Executed code cells read relative to the project root.
+  pre-render: ln -sfn irv-helga/resources resources
+  # Quarto only copies assets it finds under this project, so top up build/img with
+  # the submodule's. -n because the ~10 shared filenames are byte-identical anyway.
+  post-render: cp -rn irv-helga/img/. build/img/
+
+execute:
   enabled: true
+
 format:
     revealjs:
         theme: [bg-light.scss]
         logo: img/BG_logo.png
-        footer: "[https://brainglobe.info/slides-IrvHelgaCooperPrize-2025](https://brainglobe.info/slides-IrvHelgaCooperPrize-2025) | 2025-11-10"
+        footer: "[https://brainglobe.info/course-whole-brain-microscopy-analysis](https://brainglobe.info/course-whole-brain-microscopy-analysis) | 2025-11-10"
         slide-number: c
         menu:
           numbers: true
