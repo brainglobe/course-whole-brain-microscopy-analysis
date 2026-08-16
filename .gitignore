@@ -5,3 +5,9 @@ build/
 
 /.quarto/
 **/*.quarto_ipynb
+
+img/raw_data.tif
+img/registered_data.tif
+
+.idea/
+__pycache__/
