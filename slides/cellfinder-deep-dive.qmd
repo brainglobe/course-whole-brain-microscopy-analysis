@@ -227,39 +227,7 @@ A series of image filters on the signal channel only
 
 ::: {.columns}
 ::: {.column width="50%"}
-[1. Clip to reserve 2 values]{.fragment fragment-index="1"}
-
-[2. Keep bright enought tiles]{.fragment fragment-index="2"}
-
-[3. Enhance peaks]{.fragment fragment-index="3"}
-
-[a) median filter]{.fragment fragment-index="3"}
-
-[b) gaussian filter]{.fragment fragment-index="3"}
-
-[c) laplacian filter]{.fragment fragment-index="3"}
-
-[4. Threshold]{.fragment fragment-index="4"}
-:::
-
-::: {.column width="50%"}
-::: {.r-stack}
-![](img/clipped.png){.fragment fragment-index="1"}
-
-![](img/clipped.png){.fragment fragment-index="2"}
-
-![](img/enhanced.png){.fragment fragment-index="3"}
-
-![](img/filtered_2d.png){.fragment fragment-index="4"}
-:::
-:::
-:::
-
-## 2D filter {.smaller}
-
-::: {.columns}
-::: {.column width="50%"}
-[1. Clip to reserve 2 values]{.fragment fragment-index="1"}
+[1. (Clip to reserve 2 values)]{.fragment fragment-index="1"}
 
 [2. Keep bright enought tiles]{.fragment fragment-index="2"}
 
@@ -287,9 +255,16 @@ A series of image filters on the signal channel only
 :::
 :::
 
-## 2D filtering {.smaller}
+## 2D Filtering parameters {.smaller}
 
-TODO: table with parameters and explanations
+::: {.table-tiny}
+| Parameter | Default | Description |
+|---|---|---|
+| `log_sigma_size` | 0.2 | Gaussian filter width (as a fraction of soma diameter) used during 2d in-plane Laplacian of Gaussian filtering. |
+| `soma_diameter` | 16 | The expected in-plane (xy) soma diameter (microns). |
+| `n_sds_above_mean_thresh` | 10 | Per-plane intensity threshold (the number of standard deviations above the mean) of the filtered 2d planes used to mark pixels as foreground or background. |
+:::
+
 
 ## 3d filter + structure splitting {.smaller}
 
@@ -317,48 +292,41 @@ TODO: table with parameters and explanations
 :::
 :::
 
-## 3d filter + structure splitting {.smaller}
+## 3D Filtering parameters {.smaller}
 
-TODO: table with parameters and explanations
+::: {.table-tiny}
+| Parameter | Default | Description |
+|---|---|---|
+| `ball_xy_size` | 6 | 3d filter's in-plane (xy) filter ball size (microns). |
+| `ball_z_size` | 15 | 3d filter's axial (z) filter ball size (microns). |
+| `ball_overlap_fraction` | 0.6 | 3d filter's fraction of the ball filter needed to be filled by foreground voxels, centered on a voxel, to retain the voxel. |
+:::
+
+## Splitting parameters {.smaller}
+
+::: {.table-tiny}
+| Parameter | Default | Description |
+|---|---|---|
+| `split_ball_xy_size` | 6 | Similar to `ball_xy_size`, except the value to use for the 3d filter during cluster splitting. |
+| `split_ball_z_size` | 15 | Similar to `ball_z_size`, except the value to use for the 3d filter during cluster splitting. |
+| `split_ball_overlap_fraction` | 0.8 | Similar to `ball_overlap_fraction`, except the value to use for the 3d filter during cluster splitting. |
+| `n_splitting_iter` | 10 | The number of iterations to run the 3d filtering on a cluster. Each iteration reduces the cluster size by the voxels not retained in the previous iteration. |
+| `soma_spread_factor` | 1.4 | Cell spread factor for determining the largest cell volume before splitting up cell clusters. Structures with spherical volume of diameter `soma_spread_factor * soma_diameter` or less will not be split. |
+| `max_cluster_size` | 100_000 | Largest detected cell cluster (in cubic um) where splitting should be attempted. Clusters above this size will be labeled as artifacts. |
+:::
 
 ## Classification {.smaller}
 
-Uses both channels. Assumption:
-
-* noise is bright in both channels
-* signal is bright only in one channel
+Assumption: noise is bright in both channels, signal is bright only in one channel.
 
 ::: {.columns}
 
-::: {.column width="50%"}
-![](img/input_closeup.png)
-signal
+::: {.column width="45%"}
+![signal](img/input_closeup.png)
 :::
 
-::: {.column width="50%"}
-![](img/background_closeup.png)
-background
-:::
-
-:::
-
-## Classification {.smaller}
-
-Uses both channels. Assumption:
-
-* noise is bright in both channels
-* signal is bright only in one channel
-
-::: {.columns}
-
-::: {.column width="50%"}
-![](img/input.png)
-signal
-:::
-
-::: {.column width="50%"}
-![](img/background.png)
-background
+::: {.column width="45%"}
+![background](img/background_closeup.png)
 :::
 
 :::
@@ -494,7 +462,24 @@ Matt Einhorn, Cleland Lab, Cornell
 
 ## Performance-related parameters
 
-* defaults chosen sensibly, for typical applications
+batch_size: int
+    The number of planes of the original data volume to process at
+    once. The GPU/CPU memory must be able to contain this many planes
+    for all the filters. For performance-critical applications, tune to
+    maximize memory usage without running out. Check your GPU/CPU memory
+    to verify it's not full.
+torch_device : str, optional
+    The device on which to run the computation. If not specified (None),
+    "cuda" will be used if a GPU is available, otherwise "cpu".
+    You can also manually specify "cuda" or "cpu".
+pin_memory: bool
+    Pins data to be sent to the GPU to the CPU memory. This allows faster
+    GPU data speeds, but can only be used if the data used by the GPU can
+    stay in the CPU RAM while the GPU uses it. I.e. there's enough RAM.
+    Otherwise, if there's a risk of the RAM being paged, it shouldn't be
+    used. Defaults to False.
+n_free_cpus : int
+    How many CPU cores to leave free.
 
 ## Performance experiments
 

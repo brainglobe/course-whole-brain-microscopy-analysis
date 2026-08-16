@@ -19,3 +19,19 @@ $presentation-title-slide-text-align: left !default;
 .gray_link_div a:hover {
   color: #505050;      /* Set your desired link color */
 }
+
+.table-tiny table {
+  font-size: 0.6em;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.table-tiny colgroup col:nth-child(1) { width: 15% !important; }
+.table-tiny colgroup col:nth-child(2) { width: 15% !important; }
+.table-tiny colgroup col:nth-child(3) { width: 50% !important; }
+
+
+.table-tiny table th:nth-child(2),
+.table-tiny table td:nth-child(2) {
+  text-align: right !important;
+}
