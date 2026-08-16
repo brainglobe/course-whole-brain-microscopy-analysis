@@ -1,35 +1,49 @@
-## Outline {.smaller}
+## Outline
+
+::: {.incremental}
 - What is image registration
 - Types of registration
-- Registration in practice
-- How to choose the right approach for your data
+- Transformation types
+- Similarity metrics
+- Optimisation
+- `brainreg`
+:::
 
+## Correcting motion {.smaller}
 
-# Why Registration? {.smaller}
+![](img/motion_raw.gif){.fragment fragment-index=1 .absolute .nostretch top="18%" left="9%" width="36%"}
+![](img/motion_registered.gif){.fragment fragment-index=2 .absolute .nostretch top="18%" right="9%" width="36%"}
 
-## SHOW REGISTRATION EXAMPLE IMAGE
+::: {.fragment .absolute fragment-index=1 top="75%" left="9%" style="width:36%; text-align:center; color:#C2610F;"}
+As acquired
+:::
 
-Show a motivating example of image registration.
+::: {.fragment .absolute fragment-index=2 top="75%" right="9%" style="width:36%; text-align:center; color:#C2610F;"}
+After motion correction
+:::
 
-Two or three sets of images - simple abstract example, easy rigid registration, then a more complex example with non-linear registration.
+## Atlas registration
 
-## Vocabulary {.smaller}
+![](img/registration_unregistered_slice.png){.fragment fragment-index=1 .absolute .nostretch top="22%" left="2%" width="46%"}
+![](img/registration_atlas_slice.png){.fragment fragment-index=2 .absolute .nostretch top="22%" right="2%" width="46%"}
 
-- Fixed image (reference, target)
-- Moving image (source, subject)
-- Transformation
-- Interest points / landmarks
-- Pixels
+::: {.fragment .absolute fragment-index=1 top="72%" left="2%" style="width:46%; text-align:center; color:#C2610F;"}
+Your sample
+:::
 
-## What is registration?
+::: {.fragment .absolute fragment-index=2 top="72%" right="2%" style="width:46%; text-align:center; color:#C2610F;"}
+The atlas
+:::
 
-Registration is the process of **aligning two or more images**. Three main things we need to specify:
+## Atlas registration
 
-1. **What are we matching?** — points, or pixels
-2. **How is the image allowed to move?** — defining the transformation type
-3. **How do we score a match?** — a numerical way of representing how well the images are aligned
+![](img/registration_atlas_overlay_before.png){.absolute .nostretch top="20%" left="19%" width="62%"}
+![](img/registration_atlas_overlay_after.png){.fragment .absolute .nostretch top="20%" left="19%" width="62%"}
 
-
+::: {.absolute top="82%" left="19%" style="width:62%; text-align:center;"}
+[sample]{style="color:#c22ec2;"} · [atlas]{style="color:#1a8f4c;"} · [both]{style="color:#1E1E1E;"}
+:::
+<!-- 
 ## Where this shows up in biology
 
 ::: {.columns style="font-size: 0.8em;"}
@@ -60,830 +74,476 @@ Fluorescence to brightfield, MRI to histology, IHC to H&E
 Registering a sample to a reference atlas
 ::::
 :::
+::: -->
+
+## Vocabulary
+
+- [Fixed image - the image that doesn't move]{.fragment fragment-index=1}
+- [Moving image - the image that is being aligned]{.fragment fragment-index=2}
+- [Transformation - the alignment instructions]{.fragment fragment-index=3}
+- [Interest points / landmarks - features used for matching]{.fragment fragment-index=4} 
+
+![](img/registration_unregistered_slice.png){.fragment .absolute .nostretch fragment-index=1 top="55%" left="5%" width="40%"}
+![](img/registration_atlas_slice.png){.fragment .absolute .nostretch fragment-index=2 top="55%" right="5%" width="40%"}
+
+::: {.fragment .absolute fragment-index=3 top="75%" left="45%"}
+<svg width="100" height="40" style="transform: scaleX(-1);">
+  <line x1="0" y1="15" x2="90" y2="15" stroke="black" stroke-width="4" marker-end="url(#arrowhead)"/>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" />
+    </marker>
+  </defs>
+</svg>
+:::
+
+::: {.fragment fragment-index=4}
+:::: {.absolute top="71%" left="14%" style="display:inline-block; width:14px; height:14px; border:2px solid black; border-radius:50%; background:#EE9040;"}
+::::
+:::: {.absolute top="71%" left="35%" style="display:inline-block; width:14px; height:14px; border:2px solid black; border-radius:50%; background:#EE9040;"}
+::::
+:::: {.absolute top="82.5%" left="23%" style="display:inline-block; width:14px; height:14px; border:2px solid black; border-radius:50%; background:#EE9040;"}
+::::
+:::: {.absolute top="83%" left="26.5%" style="display:inline-block; width:14px; height:14px; border:2px solid black; border-radius:50%; background:#EE9040;"}
+::::
+:::: {.absolute top="69%" left="66.5%" style="display:inline-block; width:14px; height:14px; border:2px solid black; border-radius:50%; background:#EE9040;"}
+::::
+:::: {.absolute top="69%" left="85.4%" style="display:inline-block; width:14px; height:14px; border:2px solid black; border-radius:50%; background:#EE9040;"}
+::::
+:::: {.absolute top="82.4%" left="74%" style="display:inline-block; width:14px; height:14px; border:2px solid black; border-radius:50%; background:#EE9040;"}
+::::
+:::: {.absolute top="82.4%" left="78%" style="display:inline-block; width:14px; height:14px; border:2px solid black; border-radius:50%; background:#EE9040;"}
+::::
+:::
+
+## What is registration?
+
+Registration is the process of aligning two or more images. 
+
+To setup a registration problem, we need to define:
+
+::: {.incremental}
+1. **What are we matching?** — interest points, or pixels
+2. **How is the image allowed to move?** — defining the transformation type
+3. **How do we score a match?** — a numerical way of representing how well the images are aligned
 :::
 
 # Types of registration
+Points vs pixels
 
-## Point-based (landmark) registration
+## Point-based (landmark) registration {.smaller}
 
-Uses a **sparse set of corresponding landmarks**
+::: {.incremental}
+- Uses a sparse set of corresponding landmarks
+  - Fiducial markers
+  - Anatomical landmarks
+  - Detected features (e.g. nuclei centroids)
+:::
 
-*"Pin the same 5 landmarks on both maps, then stretch one to match the other."*
+::: {.fragment}
+![](img/registration_point_based.png){.nostretch .absolute width="90%"}
+:::
 
-- Fiducial markers
-- Anatomical landmarks
-- Detected features (e.g. nuclei centroids)
+## Pixel-based (intensity) {.smaller}
 
-## Pixel-based (intensity)
-
-Uses the **full grid of intensity values**
-
-*"Slide and warp one photo over the other until the whole picture looks most
-similar."*
-
+::: {.incremental}
+- Uses the full grid of intensity values
 - No manual point-picking
-- Uses all available texture
-- Works where landmarks are hard to define
+- Uses the available texture
+:::
 
-## 🖼️ IMAGE PLACEHOLDER — "Points vs. pixels, visually"
+![](img/registration_pixel_based.png){.fragment .nostretch .absolute top="42%" left="4%" width="92%"}
 
-**What to show:** Same image pair rendered twice. Left: sparse coloured dots
-marking ~6 corresponding landmarks on each image, with faint lines connecting
-matched pairs. Right: the same pair shown as a heatmap of intensity differences
-across the *entire* field, no discrete points at all.
-
-**Why:** The sparse-vs-dense contrast is the single most important intuition
-here, and it's much clearer visually than verbally.
-
-## Choosing between them {.smaller}
-
-| | **Point-based** | **Pixel-based** |
-|---|---|---|
-| **Uses** | Sparse corresponding landmarks | Full intensity grid |
-| **Good for** | Reliably identifiable discrete structures in both images | Rich, continuous texture; no clear landmarks |
-| **Weakness** | Only as good as your landmarks — sparse and error-prone if misidentified | Heavier to compute; misled by intensity differences unrelated to anatomy (staining, illumination) |
-| **Example** | Slides with fiducial markers or clear tissue landmarks | Aligning two fluorescence channels or full microscopy fields |
-
-
-## Discussion
-
-Talk to your neighbour — 2 min
-
-You have **two consecutive H&E sections** from the same tissue block.
-Would you register by points or by pixels?
-
-. . .
-
-Now: one section is **H&E**, the other is a **fluorescence image**.
-Does your answer change?
 
 # Transformation Types
+How is the image allowed to move?
 
-How much is the image allowed to move?
+## Linear vs Non-linear transforms {.smaller}
 
-::: {.notes}
-Segment 3 — 17 minutes. This is the longest segment and the conceptual backbone.
-Don't rush the grid-overlay figure.
+::: {.fragment}
+- Linear transforms — the whole image moves as a single rigid sheet
+  - Parameterized by a small number of degrees of freedom
+  - Translation, rotation, scaling, shear
+:::
+::: {.fragment}
+- Non-linear transforms — different parts of the image can move independently
+  - Parameterized by a large number of degrees of freedom
+  - Can capture local tissue stretching, tearing, and compression
 :::
 
-## The flexibility spectrum
+## Linear: rigid {.smaller}
 
-::: {.callout-tip icon=false}
-## 🖼️ IMAGE PLACEHOLDER — "The grid figure" ⭐ HIGHEST VALUE VISUAL
-**What to show:** One source image with a regular square grid overlaid, then
-**four** transformed versions side by side:
-
-1. **Rigid** — grid translated and rotated, but every square identical
-2. **Affine** — grid uniformly skewed/stretched; squares → parallelograms, all
-   the same parallelogram
-3. **Piecewise affine** — grid divided into triangles; bends at triangle edges
-   but stays flat within each triangle (visibly *faceted*)
-4. **Non-linear** — grid bends smoothly everywhere, curved lines, no facets
-
-**Why:** Students will remember this picture long after they've forgotten the
-words. The faceted-vs-smooth contrast between (3) and (4) is especially worth
-making visually explicit.
-
-**Build option:** Reveal one panel at a time as you talk through each type.
+::: {.incremental}
+- Translation + rotation only
+- Distances and angles preserved; nothing stretches
 :::
 
-::: {.notes}
-Walk left to right. The key running question: "how many independent knobs does
-this transform have?" Flexibility increases left to right — and so does
-overfitting risk, which is exactly Segment 6.
+![](img/registration_flexibility_rigid.png){.fragment .nostretch .absolute bottom="20%" right="2.5%" width="100%"}
+
+## Linear: similarity {.smaller}
+
+::: {.incremental}
+- Rigid and one uniform scale factor
+- Same zoom in all directions
 :::
 
-## Linear transforms {.smaller}
+![](img/registration_flexibility_similarity.png){.fragment .nostretch .absolute bottom="20%" right="2.5%" width="100%"}
 
-All apply the **same motion everywhere** in the image — the whole picture moves
-as one sheet.
+## Linear: affine {.smaller}
 
-. . .
-
-**Rigid** — translation + rotation only
-
-Distances and angles preserved; nothing stretches
-
-*Use for:* stage drift, a genuinely rigid object imaged twice
-
-. . .
-
-**Similarity** — rigid + one uniform scale factor
-
-Same zoom in all directions
-
-*Use for:* same object at slightly different magnification
-
-. . .
-
-**Affine** — adds shear and independent per-axis scaling
-
-Parallel lines stay parallel, but shapes can skew and stretch unevenly
-
-*Use for:* uneven slide stretching, shear from sectioning angle
-
-. . .
-
-::: {.callout-note}
-**rigid ⊂ similarity ⊂ affine** — each step adds degrees of freedom, but the
-image still moves as *one rigid sheet*. No local, structure-specific warping.
+::: {.incremental}
+- Adds shear and independent per-axis scaling
+- Parallel lines stay parallel, but shapes can skew and stretch unevenly
 :::
 
-## Piecewise affine: the middle ground
+![](img/registration_flexibility_affine.png){.fragment .nostretch .absolute bottom="20%" right="2.5%" width="100%"}
 
-Divide the image into a **mesh of regions** — often triangles connecting your
-landmark points (a Delaunay triangulation) — and apply a **separate affine
-transform within each region**, matched along shared edges so the result stays
-continuous.
+## Linear vs Non-linear transforms {.smaller}
 
-. . .
+Reminder:
 
-::: {.callout-tip}
-## Analogy
-Instead of one flexible sheet bending smoothly, imagine cutting the sheet into a
-**patchwork of stiff tiles**, each able to stretch and skew individually, but
-hinged together at their edges.
+- Linear transforms — the whole image moves as a single rigid sheet
+  - Parameterized by a small number of degrees of freedom
+  - Translation, rotation, scaling, shear
+- Non-linear transforms — different parts of the image can move independently
+  - Parameterized by a large number of degrees of freedom
+  - Can capture local tissue stretching, tearing, and compression
+
+## Non-linear {.smaller}
+
+![](img/registration_flexibility_nonlinear.png){.nostretch .absolute bottom="20%" right="2.5%" width="100%"}
+
+## Non-linear: types {.smaller}
+
+
+::: {.fragment}
+- Thin-plate spline (TPS)
+  - Given landmark pairs, finds the smoothest deformation
+  - Interpolates smoothly in between the points
+:::
+::: {.fragment}
+- B-spline
+  - A coarse grid of control points where each deforms the nearby region
+  - Grid spacing controls flexibility
+:::
+::: {.fragment}
+- Diffeomorphic (ANTs SyN)
+  - Image can bend and stretch, but cannot tear, fold over itself, or collapse to a point
 :::
 
-. . .
+## TPS vs B-spline {.smaller}
 
-**Why it matters:** more locally flexible than a single global affine, but far
-more constrained than a dense free-form warp — because flexibility is directly
-tied to **how many landmarks/regions you actually define**.
+![](img/registration_nonlinear_compared.png){.nostretch .absolute bottom="2.5%" right="2.5%" height="80%"}
 
+## Discussion {.smaller}
 
-## 🖼️ IMAGE PLACEHOLDER — "Delaunay mesh on tissue"
-**What to show:** A tissue section with ~10 landmark points marked, connected
-into a triangular mesh. Ideally a second panel showing the same mesh after
-deformation, so students see individual triangles stretching by different amounts
-while staying connected at the edges.
+Manual serial sections from one tissue block are often torn or locally stretched by
+different amounts in different regions during processing.
 
-::: {.notes}
-This is the slide that makes overfitting concrete later — "more triangles than
-reliable landmarks" is an easy failure to picture.
-:::
-
-## Non-linear (deformable) transforms {.smaller}
-
-Motion varies **smoothly from point to point**. For tissue that stretches, tears,
-and compresses differently in different places.
-
-. . .
-
-**Thin-plate spline (TPS)**
-Given landmark pairs, finds the *smoothest possible warp* that matches each pair
-exactly, interpolating smoothly in between.
-*Analogy:* pinning a thin flexible metal sheet and letting it bend between pins.
-
-. . .
-
-**Free-form deformation / B-spline**
-A coarse grid of control points; moving each one smoothly deforms the nearby
-region.
-*Analogy:* pulling on knots in a fishing net. **Grid spacing controls
-flexibility** — denser grid, more local detail, more overfitting risk.
-
-## Non-linear transforms, continued {.smaller}
-
-**Diffeomorphic** (ANTs' SyN)
-Non-linear, but with a built-in guarantee the deformation is **smooth and
-invertible** — tissue can bend and stretch, but cannot tear, fold over itself, or
-collapse to a point.
-
-## 🖼️ IMAGE PLACEHOLDER — "Four non-linear warps compared" (optional)
-**What to show:** The same grid deformed by TPS, B-spline, demons, and
-diffeomorphic registration, side by side. The instructive contrast: TPS/B-spline
-look smooth and globally coherent; demons can look locally noisy or chaotic;
-diffeomorphic looks smooth *and* never self-intersects.
-
-## Discussion
-
-Talk to your neighbour — 2 min
-
-Serial sections from one tissue block are often **torn or locally stretched by
-different amounts in different regions** during processing.
-
-You have **a handful of usable landmarks** — maybe 8.
+You have a handful of usable landmarks — maybe 8.
 
 Rigid, affine, piecewise affine, or fully non-linear?
 
-::: {.notes}
-The trap: students reach for "fully non-linear, it's the most powerful." Push
-back — with only 8 landmarks, a dense warp has far more freedom than your data
-can constrain. Piecewise affine or a well-regularised smooth warp is the better
-answer. This directly seeds Segment 6.
+
+# Similarity Metrics
+How can we tell images are aligned?
+
+## Similarity metrics {.smaller}
+
+::: {.incremental}
+- A numerical score of how well two images or sets of points match
+- We will write every one of them so that **higher is better**
+- Once you have a similarity metric, optimisation is possible!
+:::
+
+::: {.fragment .smaller}
+You will also see these called *loss*, *cost*, or *objective* functions — those
+count errors, so they run the other way up. Same information, opposite sign.
+:::
+
+## Negative mean squared error {.smaller}
+
+::: {.incremental}
+- Mean squared error (MSE)
+  - Mean of the squared differences between corresponding pixels
+- That sum counts *error*, so we flip its sign and use **-MSE**
+  - A perfect match scores 0 — the best you can do; anything worse is negative
+- Best used when the two images are directly comparable
+  - Same stain, same modality, same exposure, same contrast
+:::
+
+![](img/registration_inputs_MSE_sweep.png){.nostretch .fragment .absolute bottom="2%" right="20%" width="60%"}
+![](img/registration_loss_MSE_sweep.gif){.nostretch .fragment .absolute bottom="2%" right="20%" width="60%"}
+
+## Negative mean squared error {.smaller}
+
+![](img/registration_inputs_MSE_contrast.png){.nostretch .absolute bottom="10%" right="12.5%" width="75%"}
+![](img/registration_loss_MSE_contrast.png){.nostretch .fragment .absolute bottom="10%" right="12.5%" width="75%"}
+
+## Cross-correlation {.smaller}
+
+::: {.incremental}
+- Measures how well the two images co-vary — do changes in intensity correlate between the two images?
+- A perfect match has a correlation of 1; smaller numbers are worse
+- More forgiving than -MSE about overall brightness
+:::
+
+![](img/registration_inputs_correlation_sweep.png){.nostretch .fragment .absolute bottom="2.5%" right="12.5%" width="75%"}
+![](img/registration_loss_correlation_sweep.gif){.nostretch .fragment .absolute bottom="2.5%" right="12.5%" width="75%"}
+
+## Cross-correlation {.smaller}
+
+![](img/registration_inputs_correlation.png){.nostretch .absolute top="20%" right="2.5%" width="95%"}
+![](img/registration_loss_correlation.png){.nostretch .fragment .absolute top="20%" right="2.5%" width="95%"}
+
+## Mutual information {.smaller}
+
+::: {.incremental}
+- Measures how much information about one image is gained by knowing the other
+- A perfect match has a high MI; smaller numbers are worse
+- Works even when the two images have very different brightness/contrast scales
+:::
+
+![](img/registration_inputs_mi_sweep.png){.nostretch .fragment .absolute bottom="2.5%" right="12.5%" width="75%"}
+![](img/registration_loss_mutual_information_sweep.gif){.nostretch .fragment .absolute bottom="2.5%" right="12.5%" width="75%"}
+
+## Comparing the three {.smaller}
+
+![](img/registration_loss_mutual_information.png){.nostretch .absolute bottom="10%" right="12.5%" width="75%"}
+
+
+## Point-based distance {.smaller}
+
+::: {.incremental}
+- Measures the distance between corresponding landmarks in the two images
+- Negated for the same reason MSE was — a perfect match scores 0, and
+  every landmark that misses pulls the score down
+- Simple, interpretable, with easy units (µm, pixels)
+- Only measures the alignment at the landmarks themselves, not in between
+:::
+
+## Cheat sheet: which metric to use {.smaller}
+
+::: {.fragment .absolute top="30%" left="30%"}
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Your situation</th>
+<th>Reach for</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd fragment">
+<td>Same stain / same modality</td>
+<td><strong>-MSE</strong> or <strong>cross-correlation</strong></td>
+</tr>
+<tr class="even fragment">
+<td>Different stains / different modalities</td>
+<td><strong>Mutual information</strong></td>
+</tr>
+<tr class="odd fragment">
+<td>Sparse identifiable landmarks</td>
+<td><strong>Point-based distance</strong></td>
+</tr>
+</tbody>
+</table>
 :::
 
 
-# Loss Functions
-How does the computer know it's aligned?
+# Similarity metric optimisation
+Nudging the transformation to raise the score
 
-::: {.notes}
-Segment 4 — 12 minutes.
+## Iterative optimisation {.smaller}
+
+::: {.incremental}
+The general loop for iterative optimisation is
+
+1. Try a transformation
+2. Measure the score
+3. Nudge the transformation to raise the score
+4. Back to one until it stops improving
 :::
 
-## The core idea
+![](img/registration_inputs_iterative.png){.nostretch .fragment .absolute bottom="2%" right="20%" width="60%"}
+![](img/register-affine.gif){.nostretch .fragment .absolute bottom="2%" right="20%" width="60%"}
 
-A **loss function** (cost function, similarity metric) is just a **number**
-scoring: *how well aligned are these two images right now?*
+## Getting stuck: local optima {.smaller}
 
-. . .
-
-::: {.callout-warning}
-## Watch the convention
-Some metrics are **losses** (lower = better aligned). Others are **similarity
-scores** (higher = better aligned). Tools differ. Always check which you're
-looking at.
+::: {.incremental}
+- The optimiser only feels the slope directly beneath it
+- So it settles on the first hilltop it reaches — not necessarily the highest
+- The result can look plausible while being aligned to the wrong structure
+- Written as a loss instead of a score, the same trap is called a *local minimum*
 :::
 
-. . .
-
-The loop:
-
-::: {.callout-note icon=false}
-**adjust transformation → recompute loss → repeat**, trying to make the loss as
-small (or the similarity as large) as possible
+::: {.fragment}
+What leaves you on the wrong hilltop
 :::
 
-## Sum of Squared Differences (SSD)
-
-*"For every pixel, how different is the brightness between the two images? Add it
-all up."*
-
-. . .
-
-**Best when:** same modality, same staining/contrast, directly comparable intensities
-*e.g. two frames of the same live-cell time-lapse*
-
-. . .
-
-**Fails when:** brightness scales differ — different exposure, different stain
-intensity — **even if the anatomy is perfectly aligned**
-
-::: {.notes}
-Emphasise that last point. A common real-world failure: registration "fails" and
-the user blames the algorithm, when actually the loss function was wrong for the
-data.
-:::
-
-## Cross-correlation
-
-*"Do intensities rise and fall together, even if their absolute brightness scales
-differ?"*
-
-. . .
-
-**Best when:** same modality, but with linear brightness/contrast differences
-*e.g. different exposure settings on the same fluorophore*
-
-. . .
-
-More forgiving than SSD about overall brightness, but still assumes the two
-images relate in a broadly **linear** way.
-
-## Mutual information
-
-*"How predictable is one image's intensity from the other's — even if the
-relationship is complex or non-linear?"*
-
-. . .
-
-**Best when:** **multi-modal** registration
-*e.g. MRI ↔ histology, or two different stains*
-
-. . .
-
-::: {.callout-tip}
-Corresponding structures may look **completely different in brightness** — dark
-in one image, bright in the other — and mutual information still finds them,
-because it only cares that they **co-vary in a structured way**.
-:::
-
-::: {.notes}
-This is the "magic" metric for biologists doing multi-modal work. Worth dwelling
-on — it's the answer to the H&E-vs-fluorescence question from Segment 2.
-:::
-
-## Point-based distance
-
-For **point-based** registration (Segment 2): the average distance between
-corresponding landmark pairs after the transformation is applied.
-
-. . .
-
-Simple, interpretable, and directly in units you understand (µm, pixels).
-
-. . .
-
-::: {.callout-warning}
-But it only measures what your landmarks measure. A registration can have
-excellent landmark error and still be badly wrong **between** the landmarks.
-:::
-
-## The decision rule {background-color="#e8f4e8"}
-
-::: {.callout-note icon=false}
-## Take this away
-
-| Your situation | Reach for |
-|---|---|
-| Same stain / same modality | **SSD** or **cross-correlation** |
-| Different stains / different modalities | **Mutual information** |
-| Sparse identifiable landmarks | **Point-based distance** |
-
-**Rule of thumb:** use the *simplest* loss that fits your data.
-:::
-
-::: {.callout-tip icon=false}
-## 🖼️ IMAGE PLACEHOLDER — "Loss tracks alignment"
-**What to show:** A 2×2 grid of the same image pair at four alignment states —
-badly misaligned, moderately misaligned, nearly aligned, perfectly aligned — with
-the **SSD and correlation value printed on each panel**.
-
-**Why:** Makes "the loss is just a number that tracks alignment quality"
-concrete rather than abstract. Students see the number fall as the images
-converge.
-
-**Bonus panel (optional):** the same pair scored with mutual information, showing
-MI *also* works here — but is unnecessary overkill for same-modality data.
-Motivates "use the simplest loss that fits."
-:::
-
----
-
-# 5. Loss Minimization {background-color="#1a3a5c"}
-
-### Actually finding the best transformation
-
-::: {.notes}
-Segment 5 — 9 minutes.
-:::
-
-## Hiking downhill in fog
-
-The process:
-
-> try a transformation → measure the loss → nudge the transformation to reduce
-> the loss → repeat until it stops improving
-
-. . .
-
-::: {.callout-tip}
-## The analogy
-You're on a hillside in **thick fog**. You can't see the whole landscape, but you
-can **feel the slope under your feet**. So you step downhill. And again. And
-again — until you're standing in a valley and every direction is uphill.
-:::
-
-::: {.callout-tip icon=false}
-## 🖼️ IMAGE PLACEHOLDER — "The loss landscape"
-**What to show:** A 1D or 2D loss-landscape curve — loss on the y-axis,
-transformation parameter (e.g. x-shift) on the x-axis — with a ball rolling
-downhill into a valley. Ideally show the corresponding image overlay at three
-points along the curve so students connect "position on curve" to "how aligned
-the images look."
-:::
-
-## Getting stuck: local minima
-
-::: {.callout-warning}
-## The problem
-Sometimes you end up in a valley that **isn't the lowest valley**. Every small
-nudge makes things worse — so the algorithm stops — but a completely different
-transformation would have been much better.
-:::
-
-. . .
-
-**When this bites in biology:**
-
+::: {.incremental}
 - Poor starting position (images begin far apart)
-- **Repetitive structure** — regular tissue patterns, grid-like cell arrays,
-  tiled acquisitions
-
-. . .
-
-::: {.callout-important}
-This is *why* coarse-to-fine works: a good initial alignment (often rigid, often
-point-based) **starts the search in the right valley** before you refine with a
-more flexible method.
+- Repetitive structure — regular tissue patterns, grid-like cell arrays, tiled acquisitions
+- Can be mitigated by starting coarse and refining
 :::
 
-::: {.callout-tip icon=false}
-## 🖼️ IMAGE PLACEHOLDER — "Local minimum trap"
-**What to show:** A loss landscape with two valleys — a shallow one on the left,
-a deeper (true) one on the right — and a ball resting in the shallow one.
-Alongside it, the corresponding image overlay: a registration result that looks
-*superficially plausible* but has, say, aligned the wrong tissue fold or shifted
-by one repeat of a periodic pattern.
-:::
+## Local optima {.smaller}
 
-## A shortcut: FFT-based registration {.smaller}
+![](img/registration_local_minima.png){.nostretch .absolute top="18%" left="18%" height="76%"}
 
-Not all minimization requires step-by-step searching.
-
-. . .
+## Phase correlation {.smaller}
 
 For pure **translation**, we can compute the correlation between two images for
 **every possible shift at once** using the **Fast Fourier Transform** — usually
 called **phase correlation**.
 
-. . .
+![](img/registration_phase_correlation_1d.png){.fragment .nostretch .absolute top="45%" left="2.5%" width="95%"}
 
-**Conceptually:**
+## Phase correlation {.smaller}
 
+::: {.incremental}
 1. Transform both images into **frequency space**
-2. Combine them with a simple multiplication
+2. Combine them with a simple multiplication which gives a normalised correlation in frequency space
 3. Transform back
-4. The **location of the peak** directly tells you the best-aligning shift
-
-. . .
-
-::: {.callout-note}
-No hiking required — you jump straight to the answer.
+4. The location of the peak directly tells you the best-aligning shift
 :::
 
-## Why FFT registration matters practically
+## Phase correlation {.smaller}
 
-::: {.columns}
-::: {.column width="50%"}
-**Fast, direct solution**
-Pure translation (and with preprocessing, rotation + scale) — near-instantaneous
-
-*This is why fixing stage drift in a time-lapse feels instant*
-:::
-::: {.column width="50%"}
-**Still needs iteration**
-Affine, piecewise affine, and non-linear transforms
-
-*Their extra degrees of freedom don't have the same shortcut*
-:::
+::: {.incremental}
+- No starting guess, no iteration, no local optima — the answer is read off the peak
+- Fast, and the same cost whatever the shift turns out to be
+- Only works for pure translation
+  - Rotation, scaling, or warping still needs the iterative route
+- A good way to get a coarse starting position for that iterative route
 :::
 
-. . .
+![](img/registration_inputs_phase_correlation.png){.nostretch .fragment .absolute bottom="5%" left="2.5%" width="95%"}
+![](img/registration_phase_correlation.png){.nostretch .fragment .absolute bottom="5%" left="2.5%" width="95%"}
 
-::: {.callout-important}
-## Framing
-FFT-based registration is a **special-case fast global solution**, not a
-different concept. It's still finding the shift that minimizes a loss (maximizes
-correlation) — just computed **all at once** instead of step by step.
+
+
+# Over- and Under-Fitting in Registration
+Too much of a good thing
+
+## Over- and under-fitting {.smaller}
+
+::: {.incremental}
+- The same trade-off as fitting a curve to noisy measurements
+  - A straight line through curved data misses the real trend — **underfitting**
+  - A high-order polynomial through every point chases the noise — **overfitting**
+- Registration has both failure modes, in two (or three) dimensions
+- The "model complexity" knob is the **transformation type**
 :::
 
-::: {.callout-tip icon=false}
-## 🖼️ IMAGE / DEMO PLACEHOLDER — "Phase correlation peak"
-**What to show:** Three panels — (1) the two input images, offset from each
-other; (2) the phase correlation output as a heatmap, showing a single sharp
-bright peak off-centre; (3) an annotation showing the peak's offset from centre
-equals the shift needed.
+![](img/registration_fitting_compared.png){.nostretch .fragment .absolute bottom="2.5%" left="2.5%" width="95%"}
 
-**Why:** The sharp-peak image is striking and makes "the answer just appears"
-believable in a way words don't.
+## Underfitting: too many constraints {.smaller}
 
-**Demo option:** If you have a live environment, `skimage.registration.
-phase_cross_correlation` on a deliberately shifted image takes about three lines
-and returns the known shift — very satisfying to run live.
+::: {.incremental}
+- The transformation is too simple to express the real difference between the images
+- **Example:** rigid registration of sections that were genuinely stretched and
+  torn unevenly during processing
+- **Symptom:** structured misalignment in part of the image, and optimising
+  harder doesn't help — the transform cannot express the deformation you need
 :::
 
----
+![](img/underfit-rigid-on-affine.gif){.nostretch .fragment .absolute bottom="2.5%" right="12.5%" width="75%"}
 
-# 6. Over- and Under-Constrained Registration {background-color="#1a3a5c"}
+## Underfitting: too many constraints {.smaller}
 
-### Or: overfitting and underfitting
+A non-linear warp, fitted with an affine transform — the global stretch comes
+out, the local warping cannot, and the score flattens out well below zero.
 
-::: {.notes}
-Segment 6 — 9 minutes. Most biologists already have model-fitting intuition from
-statistics; lean on it hard.
+![](img/underfit-affine-on-nonlinear.gif){.nostretch .absolute bottom="2.5%" right="12.5%" width="75%"}
+
+## Overfitting: too few constraints {.smaller}
+
+::: {.incremental}
+- So many degrees of freedom that any two images can be forced to match
+  - A dense B-spline grid with more control points than the texture can constrain
+- The score looks excellent, but the tissue is folded, implausibly
+  stretched, or matched to structures that shouldn't correspond at all
 :::
 
-## You already know this concept
+## Overfitting: too few constraints {.smaller}
 
-::: {.callout-tip icon=false}
-## 🖼️ IMAGE PLACEHOLDER — "The stats analogy"
-**What to show:** The classic curve-fitting triptych — a scatter of noisy points
-fitted with (1) a straight line through curved data (**underfit**), (2) a
-sensible smooth curve (**good fit**), (3) a wiggly high-order polynomial passing
-exactly through every point including the noise (**overfit**).
+![](img/registration_overfitting.png){.nostretch .absolute top="30%" left="2%" width="96%"}
 
-**Why:** Most biologists have seen this in a stats course. Registration is the
-same problem in two dimensions — leading with the familiar version makes the
-rest almost self-explanatory.
-:::
-
-. . .
-
-Registration has exactly the same failure modes — and the "model complexity" knob
-is the **transformation type** from Segment 3.
-
-## Under-constrained (underfitting)
-
-The transformation is **too rigid/simple** to capture real differences between
-the images.
-
-. . .
-
-**Example:** using only **rigid** registration on tissue sections that were
-genuinely stretched and torn unevenly during processing.
-
-. . .
-
-**Symptom:** consistent, **structured misalignment** in parts of the image — and
-optimizing harder doesn't help, because the transform simply cannot express the
-deformation you need.
-
-::: {.callout-note}
-Global alignment looks "close enough," but local structures stubbornly refuse to
-line up.
-:::
-
-## Over-constrained (overfitting)
-
-The transformation has **so many degrees of freedom** that it can force *any* two
-images to look aligned.
-
-. . .
-
-**Examples:**
-
-- A **dense B-spline grid** with far more control points than your image texture
-  can constrain
-- A **piecewise affine mesh with more triangles than reliable landmarks**
-
-. . .
-
-**Symptom:** the loss looks **excellent** — near-perfect — but visual inspection
-shows tissue that is folded, implausibly stretched, or aligned to structures that
-shouldn't correspond at all.
-
-::: {.callout-warning}
-## The dangerous one
-Underfitting *looks* wrong. Overfitting **looks right by the numbers** and wrong
-only to your eye. **Always inspect the deformation field, not just the loss.**
-:::
 
 ## Finding the right level {.smaller}
 
-::: {.callout-important}
-## The synthesis
-The right amount of flexibility depends on **how much true deformation you
-expect** and **how much data (landmarks, texture) you have to constrain it**.
+The right amount of flexibility depends on how much true deformation you expect,
+and how much data — landmarks, texture — you have to constrain it.
+
+::: {.incremental}
+- Start coarse and refine — rigid -> affine -> non-linear
+- Adjust the regularisation terms
+  - Each non-linear method has a way to penalise implausible warps
+- Use a pyramid / multi-resolution approach
 :::
 
-. . .
+# `brainreg`
 
-Two built-in defences:
+## `brainreg` {.smaller}
 
-**Diffeomorphic methods** allow non-linear flexibility while *guaranteeing*
-physical plausibility — no tearing, no folding. The constraint is baked in.
-
-. . .
-
-**Piecewise affine** caps flexibility by mesh density — you choose how many
-triangles, so the overfitting risk is easy to reason about and dial up or down.
-
-. . .
-
-**Regularization** (conceptually): a way of **penalising implausible warps** so
-that a flexible transform stays biologically sensible. You're adding a second
-term to the loss that says "and don't do anything ridiculous."
-
-## Discussion {background-color="#f0e6d2"}
-
-::: {.callout-note icon=false}
-## 💬 Which is which? — 2 min
-
-Two registration results are on screen. One is **under-registered**, one is
-**over-registered**.
-
-- Which is which, and how do you know?
-- What would you change about the **transform choice** for each?
+::: {.columns}
+::: {.column width="58%"}
+::: {.incremental}
+- Pixel-based — no landmarks to pick
+- Mutual information — sample and atlas are different modalities
+- Affine first, then non-linear (B-spline) — coarse to fine
+- Solves on downsampled data, then applies the result to the full-resolution
+  channels
+:::
+:::
 :::
 
-::: {.callout-tip icon=false}
-## 🖼️ IMAGE PLACEHOLDER — "Failure mode pair" ⭐ IMPORTANT
-**What to show:** Two registration results side by side, unlabelled.
+![](img/brainreg_simple.png){.nostretch .absolute right="2.5%" top="12%" height="82%"}
 
-- **Under-registered:** rigid-only result on deformed tissue — visible gaps at
-  edges, structures clearly offset in one region while fine in another
-- **Over-registered:** overly flexible warp — tissue visibly distorted, a
-  structure smeared or folded, anatomy that no longer looks biologically real.
-  **Include the deformation grid overlay** so the implausible warp is obvious.
+## `brainreg`: the essentials {.smaller}
 
-**Why:** Students need to learn to *recognise* these by eye, since the loss value
-won't tell them.
-:::
-
----
-
-# 7. Putting It Together {background-color="#1a3a5c"}
-
-### Case studies
-
-::: {.notes}
-Segment 7 — 8 minutes. 3–4 min in small groups, 3–4 min discussing as a class.
-This is the highest-value segment — protect it if running behind.
-:::
-
-## Your turn {background-color="#f0e6d2"}
-
-::: {.callout-note icon=false}
-## 💬 In groups of 3–4 — 4 minutes
-
-For **each** scenario on the next slides, decide:
-
-1. **Points or pixels?**
-2. **Which transform type?**
-3. **Which loss function?**
-4. **What over- or under-fitting risk should you watch for?**
-:::
-
-Don't worry about getting it "right" — the reasoning is the point.
-
-## Scenario 1 {.smaller}
-
-::: {.callout-note icon=false}
-## Serial H&E sections
-Two whole-slide images of **adjacent serial sections**, both **H&E stained**.
-
-You have ~**8 identifiable tissue landmarks**, unevenly distributed, plus rich
-texture throughout.
+::: {.incremental}
+- **Atlas** — the target atlas
+- **Data orientation** — e.g. `psl`, the position of pixel (0, 0, 0)
+- **Brain geometry** — a whole brain, or a single hemisphere
+- **Voxel size** — in microns, one per axis, in the same order as the data
 :::
 
 ::: {.fragment}
-::: {.callout-tip icon=false}
-## Suggested reasoning
-**Points → pixels.** Start point-based with the 8 landmarks for coarse
-rigid/affine alignment — possibly a **piecewise affine** mesh given the landmark
-count. Then refine **pixel-based** with **SSD or correlation** (same stain, so
-intensities are comparable).
-
-**Risk:** overfitting if you push to a denser non-linear warp than 8 landmarks
-can constrain. A smooth, regularised diffeomorphic warp is safer than a dense
-free-form grid.
-:::
+Additional channels have no field of their own — open them as extra layers in
+`napari` and they are carried through the same transformation.
 :::
 
-## Scenario 2 {.smaller}
+## `brainreg`: advanced {.smaller}
 
-::: {.callout-note icon=false}
-## Live confocal time-lapse
-The sample **drifts slightly on the stage** between frames, but the cells don't
-move relative to each other.
-:::
-
-::: {.fragment}
-::: {.callout-tip icon=false}
-## Suggested reasoning
-**Pixel-based**, **SSD or correlation** (same modality, same session).
-**Rigid — really just translation** — is sufficient, because there is no real
-biological deformation to capture.
-
-This is the textbook case for **FFT / phase correlation**: pure translation,
-solved directly and near-instantly.
-
-**Risk:** using a non-linear transform here would **overfit to noise** — warping
-the image to chase pixel-level differences that aren't real motion.
-:::
-:::
-
-## Scenario 3 {.smaller}
-
-::: {.callout-note icon=false}
-## Fluorescence section → brain atlas
-Registering a fluorescence image of a mouse brain section to a **standard
-atlas**. Different modality, different individual, **real anatomical variation
-expected**.
+::: {.incremental}
+- **Affine / freeform downsampling steps calculate** — how many levels the
+  coarse-to-fine pyramid builds
+  - and **… steps use** — how many of those levels it actually registers on
+- **Grid spacing** — B-spline control point spacing; tighter grid, more local
+  flexibility, more overfitting risk
+- **Bending energy weight** — the regularisation term; how hard implausible
+  warps are penalised
+- **Smoothing sigma image** / **atlas** — blur before matching, so the
+  optimiser sees shape rather than speckle
+- **Histogram bins image** / **atlas** — how finely mutual information bins
+  intensities before scoring
 :::
 
 ::: {.fragment}
-::: {.callout-tip icon=false}
-## Suggested reasoning
-**Mutual information** — the modalities differ, so intensities aren't directly
-comparable.
-
-**Affine for coarse alignment**, then a **fully non-linear (likely
-diffeomorphic)** transform, because there is genuine biological deformation to
-capture here — this is real anatomical variation, not noise.
-
-**Risk:** *under*fitting. Stopping at affine would leave real individual
-anatomical differences uncorrected.
-:::
+The defaults are tuned for whole mouse brains — reach for these when your sample
+isn't one.
 :::
 
-::: {.notes}
-Scenario 3 is where groups most often under-reach ("affine is probably fine").
-Scenario 2 is where they most often over-reach ("let's use a deformable model").
-Both mistakes are useful — name them explicitly as the two failure directions
-from Segment 6.
+## `brainreg`: tips {.smaller}
+
+::: {.incremental}
+- Get the orientation and voxel spacing right first
+- Registration accuracy is the limiting factor, not the resolution of the atlas (typically!)
+  - 25 um is usually sufficient for whole-brain registration
+- **Always inspect the result**, don't just trust that it finished
+  - Check the atlas boundaries against real anatomy
+  - Focus on your region of interest
 :::
 
----
-
-# 8. Tools & Synthesis {background-color="#1a3a5c"}
-
-::: {.notes}
-Segment 8 — 5 minutes. Orientation only, not a teaching block.
-:::
-
-## Where do I actually do this? {.smaller}
-
-| Tool | Typical use | Transforms supported |
-|---|---|---|
-| **Fiji / ImageJ**<br>(TurboReg, bUnwarpJ, Register Virtual Stack Slices) | General microscopy; quick manual or semi-automated alignment | Rigid, affine (TurboReg); elastic/spline non-linear (bUnwarpJ) |
-| **elastix / SimpleElastix** | Configurable, widely used biomedical pipeline | Rigid, affine, B-spline non-linear |
-| **ANTs** | Atlas/brain registration, serial section alignment | Rigid, affine, diffeomorphic (SyN) |
-| **QuPath** | Digital pathology, whole-slide alignment | Point-based, affine, mesh-based via plugins |
-| **VALIS** | Purpose-built for serial histology whole-slide images | Rigid, affine, non-linear |
-| **napari** + plugins | Interactive viewing + registration | Varies by plugin |
-| **scikit-image** | Scripting; includes `phase_cross_correlation` | Translation (FFT), rigid, affine, piecewise affine |
-
-::: {.notes}
-Don't read this table aloud. Point at the two or three most relevant to your
-audience and say "start here." Hand it out.
-:::
-
-## The decision framework {background-color="#e8f4e8" .smaller}
-
-::: {.callout-note icon=false}
-## Five questions for any registration problem
-
-**1. What correspondence do I have?**
-Sparse landmarks → point-based · Rich texture → pixel-based
-
-**2. How much deformation do I expect?**
-None/little → rigid or affine · Regionally uneven but simple → piecewise affine ·
-Smooth, complex, biologically variable → fully non-linear
-
-**3. What loss fits my data?**
-Same modality → SSD/correlation · Different modality → mutual information
-
-**4. How will it be minimized?**
-Iterative downhill search in general · Pure translation → FFT/phase correlation
-
-**5. Am I over- or under-fitting?**
-Match transform flexibility to expected deformation *and* available data.
-**Inspect the deformation field, not just the loss.**
-:::
-
-## Questions? {background-color="#1a3a5c"}
-
-::: {.callout-tip icon=false}
-## Optional closing prompt if discussion is slow
-*"Take a registration problem from your own work. Walk us through the five
-questions — where are you unsure?"*
-:::
-
-::: {.notes}
-If the room is quiet, calling on the five-question framework with someone's real
-data is usually more productive than a generic "any questions?"
-:::
-
----
-
-## Further reading & next steps {.smaller visibility="uncounted"}
-
-**Hands-on follow-up**
-
-- Run rigid vs. non-linear registration on the same image pair in Fiji and
-  compare — the difference in warping is instructive
-- Try `skimage.registration.phase_cross_correlation` on a deliberately shifted
-  image
-
-. . .
-
-**If you want the maths**
-
-- Deeper treatment of diffeomorphic registration (velocity fields, why
-  invertibility matters biologically)
-- Formal treatment of mutual information and entropy-based metrics
-
-. . .
-
-**Contact:** *your email here*
-
-::: {.notes}
-Slide is marked `visibility="uncounted"` so it doesn't affect slide numbering —
-it's a reference slide, not lecture content.
-:::
-
----
-
-## Appendix: Deferred topics {visibility="uncounted" .smaller}
-
-Slides kept in reserve for questions.
-
-::: {.callout-note}
-## Suggested appendix slides to build if your audience tends to ask
-- **Rigid vs. affine in 3D** — degrees of freedom count (6 vs. 12)
-- **Multi-resolution / pyramid registration** — why registering downsampled
-  images first helps avoid local minima (ties to Segment 5)
-- **Registration quality metrics** — how do you *validate* a registration
-  quantitatively when you don't have ground truth?
-- **Group-wise registration** — registering many images to a common frame at
-  once rather than pairwise
-:::
-
-::: {.notes}
-These are the four most common questions from a biology audience after this
-lecture. Multi-resolution in particular comes up almost every time — it's worth
-having one slide ready.
-:::
+# Questions?

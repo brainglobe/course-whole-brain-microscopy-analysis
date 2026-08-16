@@ -73,7 +73,12 @@ Adapted from [https://github.com/HealthBioscienceIDEAS/microscopy-novice/](https
 # Image Registration
 
 {{< include slides/registration.qmd >}}
-  
+
+# Machine Learning for Cell Detection & Segmentation
+From neurons to neural nets to SAM — the concepts behind the tools you already use.
+
+{{< include slides/machine_learning.md >}}
+
 # Tutorials
 
 ## Motivation
