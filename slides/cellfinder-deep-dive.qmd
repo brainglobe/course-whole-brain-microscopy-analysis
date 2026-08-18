@@ -315,6 +315,17 @@ A series of image filters on the signal channel only
 | `max_cluster_size` | 100_000 | Largest detected cell cluster (in cubic um) where splitting should be attempted. Clusters above this size will be labeled as artifacts. |
 :::
 
+## Performance-related parameters 
+
+::: {.table-tiny}
+| Parameter | Default | Description |
+|---|---|---|
+| batch_size | None (1 on GPU, 4 on CPU) | The number of planes of the original data volume to process at once. The GPU/CPU memory must be able to contain this many planes for all the filters. For performance-critical applications, tune to maximize memory usage without running out. Check your GPU/CPU memory to verify it's not full. |
+| torch_device | None | The device on which to run the computation. If not specified (None), "cuda" will be used if a GPU is available, otherwise "cpu". You can also manually specify "cuda" or "cpu". |
+| pin_memory | False | Pins data to be sent to the GPU to the CPU memory. This allows faster GPU data speeds, but can only be used if the data used by the GPU can stay in the CPU RAM while the GPU uses it. I.e. there's enough RAM. Otherwise, if there's a risk of the RAM being paged, it shouldn't be used. Defaults to False. |
+| n_free_cpus | 2 | How many CPU cores to leave free. |
+:::
+
 ## Classification {.smaller}
 
 Assumption: noise is bright in both channels, signal is bright only in one channel.
@@ -330,6 +341,7 @@ Assumption: noise is bright in both channels, signal is bright only in one chann
 :::
 
 :::
+
 
 ## Classification
 
@@ -354,6 +366,21 @@ Default model, use as starting point for retraining.
 
 ::: footer
 [Tyson, A. L. et al. (2021) “A deep learning algorithm for 3D cell detection in whole mouse brain image datasets" PLoS Comp Biol 17(5): e1009074.](https://doi.org/10.1371/journal.pcbi.1009074)
+:::
+
+## Classification parameters {.smaller}
+
+::: {.table-tiny}
+| Parameter | Default | Description |
+|---|---|---|
+| cube_width | 50 | The width of the data cube centered on the cell used for classification. |
+| cube_height| 50 | The height of the data cube centered on the cell used for classification. |
+| cube_depth | 20 | The depth of the data cube centered on the cell used for classification. |
+| network_depth | 50 | The network depth to use during classification. |
+| normalize_channels | False | If True, the signal and background data will be each normalized to a mean of zero and standard deviation of 1 before classification. |
+| normalization_n_sampling_planes | 50 | If `normalize_channels` is True, the data arrays will be down-sampled in the first axis to use approximately this many planes -- equally spaced, before calculating their mean/std. E.g. a value of 50 for a dataset of 200 planes means every fourth plane will be used. |
+| max_workers | 3 | The max number of sub-processes to use for data loading / processing during classification. |
+
 :::
 
 ## Cell detection tutorial
@@ -401,9 +428,36 @@ Suggested strategy
 
 Reminder: only candidate cells will be classified
 
-## Retraining parameters
+## Retraining parameters {.smaller}
 
-TODO: table with explanations
+::: {.table-tiny}
+| Parameter | Default | Description |
+|---|---|---|
+| trained_model | - | Path to the trained model |
+| network_depth | 50 | Resnet depth (based on He et al. (2015) |
+| learning_rate | 0.0001 | Learning rate for training the model |
+| test_fraction | 0.1 | Fraction of training data to use for validation |
+| epochs | 100 | Number of training epochs |
+| no_augment | False | If True, don't apply data augmentation | 
+| augment_likelihood | 0.9 | Value `[0, 1]` with the probability of a data item being augmented. I.e. `0.9` means 90%% of the data will have been augmented.
+| lr_schedule | () | If not empty, the list of epochs when to multiply the current learning rate by the lr_multiplier. E.g. if it's [10, 25], we start with a learning rate of 0.001, and lr_multiplier is 0.1, then the LR will be 0.001 for epochs 0-9, 0.0001 for 10-24, and 0.0001 for epoch 25 and beyond.|
+| lr_multiplier | 0.1 | The multiplier by which to multiply the previous learning rate at the epochs listed in lr_schedule. |
+| augment_likelihood | 0.9 |  Value `[0, 1]` with the probability of a data item being augmented. I.e. `0.9` means 90%% of the data will have been augmented. |
+| normalize_channels | False | Normalize the training data to the mean/std of the datasets from which the cubes came from. |
+
+:::
+
+## Retraining parameters {.smaller}
+
+::: {.table-tiny}
+| Parameter | Default | Description |
+|---|---|---|
+| continue_training | False | Continue training from an existing trained model. If no model or model weights are specified, this will continue from the included model. |
+| batch_size | 16 | Training batch size |
+| tensorboard | False | Log to output_directory/tensorboard |
+| max_workers | 3 | Maximum number of worker processes to use to load data |
+| pin_memory | True | Pins data to be sent to the GPU to the CPU memory. This allows faster GPU data speeds, but can only be used if the data used by the GPU can stay in the CPU RAM while the GPU uses it. I.e. there's enough RAM. Otherwise, if there's a risk of the RAM being paged, it shouldn't be used. |
+:::
 
 ## Curation and retraining
 
@@ -451,6 +505,7 @@ classify_candidates_custom(candidates, ...)
 
 <iframe src="https://biapy.readthedocs.io/en/latest/tutorials/detection/brain_cell_detection.html" width="100%" height="800px" style="border:1px solid #ccc;"></iframe>
 
+
 ## Implementation notes
 
 * implemented within the `pytorch` framework
@@ -459,27 +514,6 @@ classify_candidates_custom(candidates, ...)
 * highly optimised data loading
 
 Matt Einhorn, Cleland Lab, Cornell
-
-## Performance-related parameters
-
-batch_size: int
-    The number of planes of the original data volume to process at
-    once. The GPU/CPU memory must be able to contain this many planes
-    for all the filters. For performance-critical applications, tune to
-    maximize memory usage without running out. Check your GPU/CPU memory
-    to verify it's not full.
-torch_device : str, optional
-    The device on which to run the computation. If not specified (None),
-    "cuda" will be used if a GPU is available, otherwise "cpu".
-    You can also manually specify "cuda" or "cpu".
-pin_memory: bool
-    Pins data to be sent to the GPU to the CPU memory. This allows faster
-    GPU data speeds, but can only be used if the data used by the GPU can
-    stay in the CPU RAM while the GPU uses it. I.e. there's enough RAM.
-    Otherwise, if there's a risk of the RAM being paged, it shouldn't be
-    used. Defaults to False.
-n_free_cpus : int
-    How many CPU cores to leave free.
 
 ## Performance experiments
 
@@ -495,12 +529,25 @@ performance improvements allows new applications
 
 ## What's next for cellfinder
 
+:::: {.columns}
+
+::: {.column}
 implementations for 
 
 * single channel
 * 2D sections
+:::
 
-TODO: picture of Soumya. Friday. GSoC logo
+::: {.column}
+
+![](img/soumya_snigdha_kundu.webp)
+
+Soumya
+
+![](img/gsoc.png){width=20%}
+:::
+
+::::
 
 ## What's next for cellfinder
 

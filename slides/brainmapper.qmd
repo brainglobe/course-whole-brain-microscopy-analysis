@@ -35,6 +35,8 @@ Often we want to combine atlas registration and cell detection, to answer questi
 
 * move data close to compute
 
-https://brainglobe.info/tutorials/transform-cells-atlas.html
+## Tutorial
 
-https://brainglobe.info/tutorials/brainmapper/index.html
+Napari: https://brainglobe.info/tutorials/transform-cells-atlas.html
+
+CLI: https://brainglobe.info/tutorials/brainmapper/index.html

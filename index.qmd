@@ -118,12 +118,6 @@ Brown APY, Cossell L,Strom M, Tyson AL, Vélez-Fort M, Margrie TW. Analysis of s
 
 {{< include slides/cellfinder-deep-dive.qmd >}}
 
-## Detecting cells in large 3D images with cellfinder
-
-[Cell detection tutorial](https://brainglobe.info/tutorials/cellfinder-detection.html)
-
-[Retraining tutorial](https://brainglobe.info/tutorials/cellfinder-retraining.html)
-
 {{< include slides/brainmapper.qmd >}}
 
 # Tour of other BrainGlobe tools
