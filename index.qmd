@@ -191,6 +191,10 @@ Tasks:
 
 You are welcome to contribute to BrainGlobe - get in touch anytime and we will support you!
 
+## Feedback
+
+Please take 5 minutes to fill out [this feedback form](https://forms.gle/UZV2cregqCpuzbe3A)!
+
 <!-- ## BrainGlobe Initiative {.smaller}
 
 ::: {.columns}
