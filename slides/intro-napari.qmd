@@ -1,7 +1,7 @@
 ## Why Napari
 
 * Napari is a graphical user interface
-* All BrainGlobe analyses have a napari plugin
+* All BrainGlobe analysis tools have a napari plugin
 
 ## Opening Napari
 
