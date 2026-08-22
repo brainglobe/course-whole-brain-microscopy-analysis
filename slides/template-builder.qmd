@@ -1,39 +1,185 @@
+# BrainGlobe template builder
+Making atlases from scratch
+
+## 
+
+<iframe src="https://www.thetransmitter.org/animal-models/the-non-model-organism-renaissance-has-arrived/" width="100%" height="600px"></iframe>
+
+## 
+
+<iframe src="https://www.thetransmitter.org/neuros-ark/" width="100%" height="600px"></iframe>
+
+## 
+
+<iframe src="https://www.thetransmitter.org/animal-models/neuroscience-has-a-species-problem/" width="100%" height="600px"></iframe>
+
 ## Context
 
-Neuroscience benefits from more diverse model species
-We need an atlas to fully realise this potential
-BrainGlobe lends itself well to include more species
+* Systems neuroscience benefits from more diverse model species
+* These need an anatomical atlas to fully realise this potential
+* BrainGlobe lends itself well to this, thanks to the Atlas API
 
-## template building
+## Context
 
-Group-wise symmetric diffeomorphic normalistaion
-Basically a bunch of image registrations + some averaging
-Implemented in ants
-## brainglobe template builder
+High-quality, openly licensed atlases exist
 
-## atlas forge
+* for some non-traditional model organisms
+* but not for others
 
-## the Eurasian blackcap
+## Blind Mexican cavefish {.smaller}
 
-## whats next for template building
+If a high-quality, openly licensed atlases exists, we can package it for BrainGlobe.
 
-* Gpu acceleration
-* Provision as a service
-## atlases in progress
+```{=html}
+<iframe src=https://neuroglancer-demo.appspot.com/#!%7B%22dimensions%22:%7B%22x%22:%5B0.000002%2C%22m%22%5D%2C%22y%22:%5B0.000002%2C%22m%22%5D%2C%22z%22:%5B0.000002%2C%22m%22%5D%7D%2C%22position%22:%5B128%2C105.5%2C243.5%5D%2C%22crossSectionScale%22:0.8116666666666666%2C%22projectionOrientation%22:%5B0%2C0.7071067690849304%2C0.7071067690849304%2C0%5D%2C%22projectionScale%22:608.75%2C%22layers%22:%5B%7B%22type%22:%22image%22%2C%22source%22:%22https://brainglobe.s3.us-west-2.amazonaws.com/atlas/templates/sju_cavefish-template/3_0/template.ome.zarr/%7Czarr3:%22%2C%22tab%22:%22source%22%2C%22shaderControls%22:%7B%22normalized%22:%7B%22range%22:%5B0%2C4078%5D%7D%7D%2C%22name%22:%22template%22%7D%2C%7B%22type%22:%22image%22%2C%22source%22:%22https://brainglobe.s3.us-west-2.amazonaws.com/atlas/templates/sju_cavefish-cartpt-template/3_0/template.ome.zarr/%7Czarr3:%22%2C%22tab%22:%22source%22%2C%22shaderControls%22:%7B%22normalized%22:%7B%22range%22:%5B0%2C630%5D%7D%7D%2C%22name%22:%22sju_cavefish-cartpt%22%2C%22visible%22:false%7D%2C%7B%22type%22:%22segmentation%22%2C%22source%22:%5B%22https://brainglobe.s3.us-west-2.amazonaws.com/atlas/annotation-sets/sju_cavefish-annotation/3_0/annotations_compressed.ome.zarr/%7Czarr3:%22%2C%7B%22url%22:%22precomputed://https://brainglobe.s3.us-west-2.amazonaws.com/atlas/annotation-sets/sju_cavefish-annotation/3_0/annotations.precomputed%22%2C%22subsources%22:%7B%22properties%22:true%7D%2C%22enableDefaultSubsources%22:false%7D%5D%2C%22tab%22:%22segments%22%2C%22objectAlpha%22:0.55%2C%22segments%22:%5B%22999%22%2C%221%22%2C%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%227%22%2C%228%22%2C%229%22%2C%2210%22%2C%2211%22%2C%2213%22%2C%2214%22%2C%2215%22%2C%2216%22%2C%2217%22%2C%2218%22%2C%2219%22%2C%2220%22%2C%2221%22%2C%2222%22%2C%2223%22%2C%2224%22%2C%2225%22%2C%2226%22%2C%2227%22%5D%2C%22segmentColors%22:%7B%221%22:%22#800000%22%2C%222%22:%22#00bfff%22%2C%223%22:%22#00bfff%22%2C%224%22:%22#8a2be2%22%2C%225%22:%22#a0522d%22%2C%226%22:%22#f0ffff%22%2C%227%22:%22#db7093%22%2C%228%22:%22#00ffff%22%2C%229%22:%22#7cfc00%22%2C%2210%22:%22#ff4500%22%2C%2211%22:%22#0000ff%22%2C%2213%22:%22#808000%22%2C%2214%22:%22#008080%22%2C%2215%22:%22#000080%22%2C%2216%22:%22#800080%22%2C%2217%22:%22#ffff00%22%2C%2218%22:%22#00fa9a%22%2C%2219%22:%22#ff69b4%22%2C%2220%22:%22#d2691e%22%2C%2221%22:%22#5f9ea0%22%2C%2222%22:%22#98fb98%22%2C%2223%22:%22#ff6347%22%2C%2224%22:%22#000080%22%2C%2225%22:%22#808080%22%2C%2226%22:%22#fffacd%22%2C%2227%22:%22#700060%22%2C%22999%22:%22#ffffff%22%7D%2C%22name%22:%22annotation%22%7D%2C%7B%22type%22:%22segmentation%22%2C%22source%22:%7B%22url%22:%22precomputed://https://brainglobe.s3.us-west-2.amazonaws.com/atlas/annotation-sets/sju_cavefish-annotation/3_0/annotations.precomputed%22%2C%22subsources%22:%7B%22properties%22:true%2C%22mesh%22:true%7D%2C%22enableDefaultSubsources%22:false%7D%2C%22tab%22:%22segments%22%2C%22objectAlpha%22:0.55%2C%22segments%22:%5B%22999%22%2C%221%22%2C%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%227%22%2C%228%22%2C%229%22%2C%2210%22%2C%2211%22%2C%2213%22%2C%2214%22%2C%2215%22%2C%2216%22%2C%2217%22%2C%2218%22%2C%2219%22%2C%2220%22%2C%2221%22%2C%2222%22%2C%2223%22%2C%2224%22%2C%2225%22%2C%2226%22%2C%2227%22%5D%2C%22segmentColors%22:%7B%221%22:%22#800000%22%2C%222%22:%22#00bfff%22%2C%223%22:%22#00bfff%22%2C%224%22:%22#8a2be2%22%2C%225%22:%22#a0522d%22%2C%226%22:%22#f0ffff%22%2C%227%22:%22#db7093%22%2C%228%22:%22#00ffff%22%2C%229%22:%22#7cfc00%22%2C%2210%22:%22#ff4500%22%2C%2211%22:%22#0000ff%22%2C%2213%22:%22#808000%22%2C%2214%22:%22#008080%22%2C%2215%22:%22#000080%22%2C%2216%22:%22#800080%22%2C%2217%22:%22#ffff00%22%2C%2218%22:%22#00fa9a%22%2C%2219%22:%22#ff69b4%22%2C%2220%22:%22#d2691e%22%2C%2221%22:%22#5f9ea0%22%2C%2222%22:%22#98fb98%22%2C%2223%22:%22#ff6347%22%2C%2224%22:%22#000080%22%2C%2225%22:%22#808080%22%2C%2226%22:%22#fffacd%22%2C%2227%22:%22#700060%22%2C%22999%22:%22#ffffff%22%7D%2C%22name%22:%22region%20meshes%22%7D%2C%7B%22type%22:%22segmentation%22%2C%22source%22:%22https://brainglobe.s3.us-west-2.amazonaws.com/atlas/annotation-sets/sju_cavefish-annotation/3_0/hemispheres.ome.zarr/%7Czarr3:%22%2C%22tab%22:%22source%22%2C%22segments%22:%5B%221%22%2C%222%22%5D%2C%22segmentColors%22:%7B%221%22:%22#4c78a8%22%2C%222%22:%22#f58518%22%7D%2C%22name%22:%22hemisphere%20mask%22%2C%22visible%22:false%7D%5D%2C%22showSlices%22:false%2C%22selectedLayer%22:%7B%22visible%22:true%2C%22layer%22:%22annotation%22%7D%2C%22layout%22:%224panel-alt%22%7D
+        width="100%"
+        height="500px"
+        style="border:none;"
+        allowfullscreen>
+</iframe>
+```
 
-Molerat
-Zebrafinch
-Crab
-Bat
-Poison frog
-Mouse strains
-Swordtail fish
-Budgerigar?
-Mouse bone?
-Ray?
+::: {.absolute right="0%" bottom="0%" style="text-align: right; font-size: 0.4em;"}
+Rob Kozol (St. John's University)
+:::
+
+## Eurasian blackcap {.smaller}
+
+If no atlas exists, it can be made from scratch.
+
+```{=html}
+<iframe src=https://neuroglancer-demo.appspot.com/#!%7B%22dimensions%22:%7B%22x%22:%5B0.000024999999999999998%2C%22m%22%5D%2C%22y%22:%5B0.000024999999999999998%2C%22m%22%5D%2C%22z%22:%5B0.000024999999999999998%2C%22m%22%5D%7D%2C%22position%22:%5B256%2C183%2C204%5D%2C%22crossSectionScale%22:0.8533333333333334%2C%22projectionOrientation%22:%5B0%2C0.7071067690849304%2C0.7071067690849304%2C0%5D%2C%22projectionScale%22:640%2C%22layers%22:%5B%7B%22type%22:%22image%22%2C%22source%22:%22https://brainglobe.s3.us-west-2.amazonaws.com/atlas/templates/eurasian_blackcap-template/3_0/template.ome.zarr/%7Czarr3:%22%2C%22tab%22:%22source%22%2C%22shaderControls%22:%7B%22normalized%22:%7B%22range%22:%5B0%2C55691%5D%7D%7D%2C%22name%22:%22template%22%7D%2C%7B%22type%22:%22segmentation%22%2C%22source%22:%5B%22https://brainglobe.s3.us-west-2.amazonaws.com/atlas/annotation-sets/eurasian_blackcap-annotation/3_0/annotations_compressed.ome.zarr/%7Czarr3:%22%2C%7B%22url%22:%22precomputed://https://brainglobe.s3.us-west-2.amazonaws.com/atlas/annotation-sets/eurasian_blackcap-annotation/3_0/annotations.precomputed%22%2C%22subsources%22:%7B%22properties%22:true%7D%2C%22enableDefaultSubsources%22:false%7D%5D%2C%22tab%22:%22segments%22%2C%22objectAlpha%22:0.55%2C%22segments%22:%5B%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%227%22%2C%2210%22%2C%2217%22%2C%2218%22%2C%2219%22%2C%2220%22%2C%2230%22%2C%2240%22%2C%2250%22%2C%2260%22%2C%2270%22%2C%2280%22%2C%2290%22%2C%22110%22%2C%22140%22%2C%22220%22%2C%22305%22%2C%22402%22%2C%22505%22%2C%22511%22%2C%22512%22%2C%22513%22%2C%22514%22%2C%22516%22%2C%22517%22%2C%22518%22%2C%22519%22%2C%22520%22%2C%22526%22%2C%22527%22%2C%22546%22%2C%22566%22%2C%22596%22%2C%22597%22%2C%22908%22%2C%22916%22%2C%221019%22%2C%221020%22%2C%221%22%2C%22999%22%2C%2261%22%5D%2C%22segmentColors%22:%7B%221%22:%22#00c864%22%2C%222%22:%22#00ff00%22%2C%223%22:%22#0000ff%22%2C%224%22:%22#ffff00%22%2C%225%22:%22#00ffff%22%2C%226%22:%22#ff00ff%22%2C%227%22:%22#fbff00%22%2C%2210%22:%22#ff9100%22%2C%2217%22:%22#ff00ff%22%2C%2218%22:%22#ff4000%22%2C%2219%22:%22#2200ff%22%2C%2220%22:%22#0078bd%22%2C%2230%22:%22#b06c6c%22%2C%2240%22:%22#ee82ee%22%2C%2250%22:%22#fcf569%22%2C%2260%22:%22#f4a460%22%2C%2261%22:%22#ff0004%22%2C%2270%22:%22#ff0000%22%2C%2280%22:%22#87ceeb%22%2C%2290%22:%22#02bbf3%22%2C%22110%22:%22#c71585%22%2C%22140%22:%22#d2b48c%22%2C%22220%22:%22#ff7f00%22%2C%22305%22:%22#ff0000%22%2C%22402%22:%22#dd4031%22%2C%22505%22:%22#00fa9a%22%2C%22511%22:%22#76cf11%22%2C%22512%22:%22#f89c06%22%2C%22513%22:%22#0000cd%22%2C%22514%22:%22#00bd94%22%2C%22516%22:%22#fd001d%22%2C%22517%22:%22#000080%22%2C%22518%22:%22#07ffff%22%2C%22519%22:%22#2e8b57%22%2C%22520%22:%22#ef1d06%22%2C%22526%22:%22#ff0037%22%2C%22527%22:%22#8789ea%22%2C%22546%22:%22#bd1058%22%2C%22566%22:%22#ef0a28%22%2C%22596%22:%22#f4170f%22%2C%22597%22:%22#1dff00%22%2C%22908%22:%22#06efef%22%2C%22916%22:%22#408699%22%2C%22999%22:%22#ffffff%22%2C%221019%22:%22#adfd00%22%2C%221020%22:%22#ff001d%22%7D%2C%22name%22:%22annotation%22%7D%2C%7B%22type%22:%22segmentation%22%2C%22source%22:%7B%22url%22:%22precomputed://https://brainglobe.s3.us-west-2.amazonaws.com/atlas/annotation-sets/eurasian_blackcap-annotation/3_0/annotations.precomputed%22%2C%22subsources%22:%7B%22properties%22:true%2C%22mesh%22:true%7D%2C%22enableDefaultSubsources%22:false%7D%2C%22tab%22:%22segments%22%2C%22objectAlpha%22:0.55%2C%22segments%22:%5B%222%22%2C%223%22%2C%224%22%2C%225%22%2C%226%22%2C%227%22%2C%2210%22%2C%2217%22%2C%2218%22%2C%2219%22%2C%2220%22%2C%2230%22%2C%2240%22%2C%2250%22%2C%2260%22%2C%2270%22%2C%2280%22%2C%2290%22%2C%22110%22%2C%22140%22%2C%22220%22%2C%22%21305%22%2C%22%21402%22%2C%22%21505%22%2C%22511%22%2C%22512%22%2C%22513%22%2C%22514%22%2C%22%21516%22%2C%22517%22%2C%22518%22%2C%22519%22%2C%22520%22%2C%22526%22%2C%22527%22%2C%22546%22%2C%22566%22%2C%22%21596%22%2C%22597%22%2C%22908%22%2C%22916%22%2C%221019%22%2C%221020%22%2C%221%22%2C%22999%22%2C%22%2161%22%5D%2C%22segmentColors%22:%7B%221%22:%22#00c864%22%2C%222%22:%22#00ff00%22%2C%223%22:%22#0000ff%22%2C%224%22:%22#ffff00%22%2C%225%22:%22#00ffff%22%2C%226%22:%22#ff00ff%22%2C%227%22:%22#fbff00%22%2C%2210%22:%22#ff9100%22%2C%2217%22:%22#ff00ff%22%2C%2218%22:%22#ff4000%22%2C%2219%22:%22#2200ff%22%2C%2220%22:%22#0078bd%22%2C%2230%22:%22#b06c6c%22%2C%2240%22:%22#ee82ee%22%2C%2250%22:%22#fcf569%22%2C%2260%22:%22#f4a460%22%2C%2261%22:%22#ff0004%22%2C%2270%22:%22#ff0000%22%2C%2280%22:%22#87ceeb%22%2C%2290%22:%22#02bbf3%22%2C%22110%22:%22#c71585%22%2C%22140%22:%22#d2b48c%22%2C%22220%22:%22#ff7f00%22%2C%22305%22:%22#ff0000%22%2C%22402%22:%22#dd4031%22%2C%22505%22:%22#00fa9a%22%2C%22511%22:%22#76cf11%22%2C%22512%22:%22#f89c06%22%2C%22513%22:%22#0000cd%22%2C%22514%22:%22#00bd94%22%2C%22516%22:%22#fd001d%22%2C%22517%22:%22#000080%22%2C%22518%22:%22#07ffff%22%2C%22519%22:%22#2e8b57%22%2C%22520%22:%22#ef1d06%22%2C%22526%22:%22#ff0037%22%2C%22527%22:%22#8789ea%22%2C%22546%22:%22#bd1058%22%2C%22566%22:%22#ef0a28%22%2C%22596%22:%22#f4170f%22%2C%22597%22:%22#1dff00%22%2C%22908%22:%22#06efef%22%2C%22916%22:%22#408699%22%2C%22999%22:%22#ffffff%22%2C%221019%22:%22#adfd00%22%2C%221020%22:%22#ff001d%22%7D%2C%22name%22:%22region%20meshes%22%7D%2C%7B%22type%22:%22segmentation%22%2C%22source%22:%22https://brainglobe.s3.us-west-2.amazonaws.com/atlas/annotation-sets/eurasian_blackcap-annotation/3_0/hemispheres.ome.zarr/%7Czarr3:%22%2C%22tab%22:%22source%22%2C%22segments%22:%5B%221%22%2C%222%22%5D%2C%22segmentColors%22:%7B%221%22:%22#4c78a8%22%2C%222%22:%22#f58518%22%7D%2C%22name%22:%22hemisphere%20mask%22%2C%22visible%22:false%7D%5D%2C%22showSlices%22:false%2C%22selectedLayer%22:%7B%22visible%22:true%2C%22layer%22:%22annotation%22%7D%2C%22layout%22:%224panel-alt%22%7D
+        width="100%"
+        height="500px"
+        style="border:none;"
+        allowfullscreen>
+</iframe>
+```
+
+::: footer
+[Sirmpilatze, N. et al. (2025) "Mapping the magnetoreceptive brain: A 3D digital atlas of the migratory bird Eurasian blackcap (Sylvia atricapilla)" bioRxiv 2025.03.04.641293](https://doi.org/10.1101/2025.03.04.641293)
+:::
+
+## Eurasian blackcap
+
+![](img/annotations_on_template_hemi_30fps.mp4){.absolute .nostretch top="30%" left="0%" width="50%" loop="true" controls="false" autoplay="true" muted="true"}
+
+::: footer
+[Sirmpilatze, N. et al. (2025) "Mapping the magnetoreceptive brain: A 3D digital atlas of the migratory bird Eurasian blackcap (Sylvia atricapilla)" bioRxiv 2025.03.04.641293](https://doi.org/10.1101/2025.03.04.641293)
+:::
+
+
+## BrainGlobe template builder
+
+Provide an accessible Python API to democratise template generation, building on existing tools.
+
+## Existing tools for template building from (human) neuroimaging
+
+* [Advanced Normalisation Tools (ANTs)](https://github.com/ANTsX/ANTs/blob/d92f933e4b8e7c29cbf31d31d2f03264e1304fb9/Scripts/antsMultivariateTemplateConstruction.sh)
+* [COBRA lab's optimizedANTs "magic script"](https://github.com/CoBrALab/optimized_antsMultivariateTemplateConstruction/blob/master/modelbuild.sh)
+
+::: footer
+[A reproducible evaluation of ANTs similarity metric performance in brain image registration](https://doi.org/10.1016/j.neuroimage.2010.09.025)
+:::
+
+## SyGN algorithm {.smaller}
+
+"Symmetric group-wise normalisation"
+
+:::: {.columns}
+
+:::{.column width="35%"}
+Basically
+
+* register all images
+* average
+* repeat
+
+<br>
+
+::: 
+
+:::{.column width="60%"}
+
+![](img/SyGN_algorithm.png){fig-alt="A diagram showing the SyN algorithm"}
+
+:::
+
+::::
+
+## SyGN algorithm {.smaller}
+
+"Symmetric group-wise normalisation"
+
+![](img/template_building_progress.png){fig-alt="Coronal slices of the template as the SyGN goes through its steps"}
+
+## Python API
+
+### [brainglobe-template-builder](https://github.com/brainglobe/brainglobe-template-builder)
+
+```{.python}
+from brainglobe_template_builder.preprocess import preprocess
+from brainglobe_template_builder.standardis import standardise
+```
+
+Python functions for preparing whole-brain microscopy images for template generation.
+
+* Built-in quality control at various steps
+* Some initial `napari` functionality
+* A configuration file for running template building on HPC.
+
+## Keep species/atlas-specific code light
+
+### [atlas-forge](https://github.com/brainglobe/atlas-forge)
+
+For example, see the [scripts for the fiddler crab](https://github.com/brainglobe/atlas-forge/tree/main/fiddler_crab)
+
+## Demo
+
+## The difficult part is annotation
+
+We are trying to help by
+
+* writing guides
+* (smoothing functionality)
+
+but we have to rely on expert anatomists.
+
+## Finished templates
+
+* Eurasian blackcap (STPT)
+* Female Lister Hooded rat (STPT)
+* African mole-rat (LSFM)
+* Drosophila wing-disc at instar3 (developmental biology, confocal)
+
+## Planned templates
+
+* Zebrafinch
+* Various Mouse strains
+* Crab 
+* Bat
+* Poison frog
+* Swordtail fish
+
+## Templates on the "list"
+
+* Budgerigar?
+* Fiddler ray?
+* Mouse bone?
+* Atlas of the developing fruit fly wing?
+* Singing mouse?
+
+## What's next for template building?
+
+* GPU acceleration?
+* Provision as a service?
+* Polish the graphical user interface?
 
 ## Collaboration days
 
-Anyone interested
-* Trying out annotation tools
-* Make a template with your data
+Anyone interested in
+
+* Trying out annotation tools (e.g. [brainbox](https://brainbox.pasteur.fr/), [microdraw](https://microdraw.pasteur.fr/))
+* Making a template with your data
+
+please [open an issue](https://github.com/neuroinformatics-unit/osss-collaboration-days/issues/new?template=project-idea.yaml) describing your thoughts and tag @alessandrofelder in it :) 
