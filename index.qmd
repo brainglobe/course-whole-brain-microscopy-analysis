@@ -4,6 +4,7 @@ subtitle: With BrainGlobe and napari
 execute: 
   enabled: true
 ---
+
 # Welcome
 
 ## Schedule Day 1 {.smaller}
@@ -69,7 +70,10 @@ Adapted from [https://github.com/HealthBioscienceIDEAS/microscopy-novice/](https
 
 {{< include irv-helga/slides/brainglobe-tools.qmd >}}
 
-  
+# Image Registration
+
+{{< include slides/registration.qmd >}}
+
 # Tutorials
 
 ## Motivation
