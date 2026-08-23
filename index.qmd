@@ -14,7 +14,7 @@ execute:
 - Installing BrainGlobe and `napari` (15 mins)
 - Introduction to Image analysis with `napari` (60 mins)
 - Introduction to BrainGlobe (60 mins)
-- ***Lunch break (60 mins)**
+- **Lunch break (60 mins)**
 - Symposium
 :::
 
