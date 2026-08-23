@@ -19,3 +19,54 @@ $presentation-title-slide-text-align: left !default;
 .gray_link_div a:hover {
   color: #505050;      /* Set your desired link color */
 }
+/* Zoom inset: full section with the crop revealed over it, plus leader lines
+   back to the region it came from. Coordinates inside the SVG are percentages
+   of the base image, so the whole thing scales with the slide. */
+.inset-wrap {
+  position: absolute;
+  top: 3%;
+  left: 2.5%;
+  width: 95%;
+}
+
+.inset-wrap .inset-base {
+  display: block;
+  width: 100%;
+  margin: 0;
+  border: none;
+  box-shadow: none;
+}
+
+.inset-wrap .inset-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.inset-wrap .inset-overlay svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.inset-wrap .inset-overlay svg line,
+.inset-wrap .inset-overlay svg rect {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2;
+}
+
+.inset-wrap .inset-zoom {
+  position: absolute;
+  left: 3%;
+  top: 52%;
+  width: 42%;
+  margin: 0;
+  border: 3px solid #fff;
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.7);
+}

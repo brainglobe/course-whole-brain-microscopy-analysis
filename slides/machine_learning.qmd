@@ -1,0 +1,502 @@
+## What we'll cover {.smaller}
+
+
+##
+
+::: {.cell-inset}
+```{=html}
+<div class="inset-wrap">
+  <img class="inset-base" src="img/cells_full.png">
+  <div class="fragment fade-in inset-overlay">
+    <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+      <line x1="60.8" y1="33.5" x2="3" y2="52" vector-effect="non-scaling-stroke"/>
+      <line x1="79.8" y1="52.5" x2="45" y2="94" vector-effect="non-scaling-stroke"/>
+      <rect x="60.8" y="33.5" width="19.0" height="19.0" vector-effect="non-scaling-stroke"/>
+    </svg>
+    <img class="inset-zoom" src="img/cells_cropped.png">
+  </div>
+</div>
+```
+:::
+
+## Rule based detection {.smaller}
+How would you identify where the cells are in this image?
+
+![](img/ml_raw_image.png){.nostretch .absolute bottom="25%" left="0%" width="46%"}
+
+![](img/ml_brightness_threshold.png){.fragment .nostretch .absolute bottom="25%" right="0%" width="46%"}
+
+## Rule based detection {.smaller}
+
+Adding a second measurement, like cell size, lets you separate cells from noise
+
+![](img/ml_size_threshold_scatter.png){.fragment .nostretch .absolute bottom="32%" left="4%" width="46%"}
+
+![](img/ml_size_threshold_image.png){.fragment .nostretch .absolute bottom="32%" right="4%" width="46%"}
+
+::: {.fragment .absolute bottom="8%" left="6%" style="width: 88%; text-align: center;"}
+We picked both cutoffs by eye
+:::
+
+## Fitting the boundary from data {.smaller}
+
+We can fit a boundary from the data itself, rather than picking a threshold by eye
+
+![](img/ml_linear_combo.png){.fragment .nostretch .absolute top="29%" left="16%" width="70%"}
+
+## Logistic regression {.smaller}
+
+Collapse both measurements into a single score, then fit a sigmoid function
+
+![](img/ml_logistic_regression.png){.fragment .nostretch .absolute bottom="6%" left="8%" width="84%"}
+
+## Real data is complex! {.smaller}
+
+Even with the best-fit line, one straight boundary always cuts through the wrong points
+
+![](img/ml_boundary_needs_more.png){.fragment .nostretch .absolute bottom="6%" left="8%" width="84%"}
+
+## Fitting complex relationships {.smaller}
+
+Change the question from *"is this a cell?"* to *"is this exactly onecell?"*
+
+![](img/ml_two_sigmoids.png){.fragment .nostretch .absolute top="27%" left="17%" width="66%"}
+
+## Fitting complex relationships {.smaller}
+
+Each bump costs two units. Stack up enough of them and the weights alone can fit relationships of any shape.
+
+![](img/ml_many_sigmoids.png){.fragment .nostretch .absolute bottom="6%" left="8%" width="84%"}
+
+## How the weights are found {.smaller}
+
+Relies on having a loss that estimates model performance
+
+![](img/ml_training_loop.png){.fragment .nostretch .absolute bottom="6%" left="8%" width="84%"}
+
+::: {.notes}
+Three things to say:
+
+1. The **loss** is one number: how wrong the model is on the training data.
+   Nothing else in training is being optimised.
+2. A **step** measures the loss, works out which way each weight should move
+   to lower it, and moves it a little. That is gradient descent; the "little"
+   is the learning rate.
+3. An **epoch** is one pass over the training set. Training is thousands of
+   steps.
+
+Worth naming the honest gap in the picture: real loss surfaces are in
+millions of dimensions, not one, and they are not this smooth.
+:::
+
+# What is a neural net?
+
+## A combination of units {background-color="black" .smaller}
+
+![](img/fully_connected.png){.nostretch .absolute top="16%" left="20%" height="60%"}
+
+::: {.absolute bottom="4%" left="6%" style="width: 88%; color: white;"}
+::: {.fragment}
+Every pixel feeds every unit in the first layer, and each unit is the same as the last few slides: a weight per input, a bias, a squash. The ten outputs are: [0, 1, 2, ..., 10]
+:::
+:::
+
+::: {.notes}
+Say the number out loud: 784 inputs x ~100 units is already ~78,000 weights
+for a thumbnail. Hold that number — it is the problem convolution solves, and
+we come back to this exact figure when we ask what an image really is.
+:::
+
+## Architecture: wiring the units {.smaller}
+
+::: {.incremental}
+- Fully connected layers: every unit in one layer connects to every unit in the next
+- Convolutional layers: each unit only connects to a small patch of the previous layer
+- Transformer layers: every unit can read every other, but how much it reads each one is computed from the input itself
+:::
+
+::: {.fragment}
+All of these are just different ways to wire up regression units.
+:::
+
+# Training and testing
+
+## Train, validation, test split {.smaller}
+
+Split the data once, three ways — and treat the test set as spent the moment you look at it.
+
+![](img/ml_split_three_way.png){.fragment .nostretch .absolute top="28%" left="8%" width="84%"}
+
+::: {.fragment .absolute bottom="6%" left="8%" style="width: 84%;"}
+Memorising practice answers != learning biology.
+:::
+
+::: {.notes}
+The test set is the one thing here that cannot be undone. Look at it twice —
+tweak anything after seeing it — and you no longer have a clean number to
+report, because you have started fitting to it by hand.
+:::
+
+## Scoring a model {.smaller}
+
+Every claim about performance is one number, computed by comparing predictions to labels on one split
+
+::: {.incremental}
+- **Accuracy** — fraction of calls that were right. Misleading when one class is rare: call everything "background" in a sparse image and you score 99%
+- **Precision** — of the things you called cells, how many were cells? Low precision = false positives
+- **Recall** — of the cells that were there, how many did you find? Low recall = false negatives
+- **F1** — a combined metric, so a model can't win by being timid or trigger-happy
+:::
+
+::: {.fragment}
+Precision and recall **trade off**: lower the detection threshold and recall goes up while precision goes down
+:::
+
+## Generalisation {.smaller}
+
+::: {.incremental}
+- A model that generalises scores as well on unseen data as on training data
+- **Underfitting**: too little capacity, or too little training — poor on both
+- **Overfitting**: enough capacity to memorise the training set — good on train, poor on test
+:::
+
+::: {.fragment}
+And remember: the test labels are human opinions too. 95% recall against one annotator's boundaries is not 95% against the biology.
+:::
+
+## Overfitting {.smaller}
+
+Same loop as before, now scored on both splits after every epoch.
+
+![](img/ml_overfitting_curves.png){.fragment .nostretch .absolute top="28%" left="14%" width="72%"}
+
+# From pixels to meaning
+
+## Pixels don't scale {background-color="black" .smaller}
+
+![](img/fully_connected.png){.nostretch .absolute top="16%" left="20%" height="60%"}
+
+::: {.fragment .absolute bottom="4%" left="6%" style="width: 88%; color: white;"}
+784 pixels for a thumbnail digit — a single tile of imaging data is millions. almost all of it is empty background! The actual information is sparse
+:::
+
+::: {.notes}
+Two separate objections, worth separating out loud:
+
+1. Cost — wiring every pixel to every unit grows the weight count with the
+   image, and the network has to learn "a cell is a cell" independently at
+   every position.
+2. Redundancy — neighbouring pixels are nearly identical, and most of a brain
+   slice is background. Millions of numbers carrying very little.
+
+The fix is to stop working in pixels and work in something denser.
+:::
+
+## The compression funnel {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+**pixel space**
+
+millions of numbers, mostly redundant
+:::
+
+::: {.column width="50%"}
+::: {.fragment}
+**embedding space**
+
+a few hundred numbers, in which like sits near like
+:::
+:::
+:::
+
+![](img/ml_embedding_funnel.png){.nostretch .absolute bottom="8%" left="8%" width="84%"}
+
+::: {.notes}
+Like reducing a transcript to its themes — you lose the exact wording and gain
+something more useful to work with.
+
+The right-hand panel is the payoff, and it is worth naming: after the
+squeeze, things of the same kind land near each other. That is what makes the
+classifier's job easy, and it is exactly what transfers when someone else's
+embedding space is reused on your data — the next slide.
+:::
+
+# Convolutional Neural Networks
+
+## A window that slides {.smaller}
+
+::: {.incremental}
+- The same small window of weights is applied everywhere in the image
+- Where it matches, it writes a high value into a feature map
+:::
+
+![](img/convolution.gif){.fragment .nostretch .absolute bottom="16%" left="34%" width="32%"}
+
+::: {.notes}
+Blue is the input, green is the feature map the window writes into; the
+dashed border is padding so the edges get treated like everywhere else.
+:::
+
+## Increasingly abstract spotters {.smaller}
+
+Early layers find edges; later layers combine them into shapes, then parts, then a name
+
+![](img/increasing_complexity.png){.fragment .nostretch .absolute bottom="4%" left="20%" width="60%"}
+
+::: {.notes}
+Figure from Goodfellow, Bengio & Courville, *Deep Learning* (2016), fig 1.2.
+
+This is the intuition for depth. Each layer's units look at what the previous
+layer found, not at raw pixels — so "meaning" accumulates with depth: pixels,
+edges, corners and contours, object parts, object identity.
+:::
+
+## Detection vs segmentation {background-color="black" .smaller}
+
+![](img/ml_detect_vs_segment.png){.nostretch .absolute top="17%" left="8%" width="84%"}
+
+::: {.absolute bottom="6%" left="8%" style="width: 84%; color: white;"}
+:::: {.columns}
+::::: {.column width="50%"}
+:::::: {.fragment}
+Detection — a point per cell
+::::::
+:::::
+::::: {.column width="50%"}
+:::::: {.fragment}
+Segmentation — every pixel is a cell or background
+::::::
+:::::
+::::
+:::
+
+# U-Net: built for segmentation
+
+## The U shape {.smaller}
+
+Zoom out for context, zoom back in to trace the exact outline.
+
+![](img/ml_unet.png){.fragment .nostretch .absolute bottom="10%" left="8%" width="84%"}
+
+## Skip connections {.smaller}
+
+Without them the decoder only has the blurry bottleneck to work from.
+
+![](img/ml_unet_skip.png){.fragment .nostretch .absolute bottom="10%" left="8%" width="84%"}
+
+## Input -> precise mask {background-color="black" .smaller}
+
+![](img/ml_mask_output.png){.nostretch .absolute top="24%" left="8%" width="84%"}
+
+## Scoring a mask: IoU {.smaller}
+
+Precision and recall need a rule for when a predicted cell *is* a labelled cell. For masks, that rule is overlap.
+
+![](img/iou.png){.fragment .nostretch .absolute top="24%" left="26%" width="48%"}
+
+::: {.notes}
+IoU — intersection over union — is 1 for a perfect match and 0 for no
+overlap. Segmentation papers report things like "AP@0.5 IoU": count a cell as
+found if its mask overlaps the label by at least 0.5, then compute
+precision/recall on those calls.
+
+So the metric has a knob in it. Tighten the threshold and the same model
+scores worse. Whenever someone quotes a segmentation number, ask what
+threshold it was at — and remember the labels underneath are still one
+person's boundaries.
+:::
+
+# Vision Transformers
+
+## Attention, in words {.smaller}
+
+In "the animal didn't cross the street because **it** was too tired", what does "it" refer to?
+
+![](img/attention_words.png){.fragment .nostretch .absolute top="25%" left="32%" width="36%"}
+
+::: {.notes}
+Each colour is a different attention head, looking for a different kind of
+relationship: one links "it" to "animal" (what it refers to), another to
+"street" and "tired". Nothing here was hand-coded; the weights came out of
+training.
+:::
+
+## Attention, in images {.smaller}
+
+Same idea on pixels: the model decides for itself which parts of the image matter
+
+![](img/attention.png){.fragment .nostretch .absolute top="25%" left="38%" width="35%"}
+
+::: {.notes}
+Right column is the attention map — bright where the model is looking. It
+finds the dog, the plane and the snake without ever being told where they
+are, and without a sliding window.
+
+Contrast with the CNN: a convolution always looks at a fixed local
+neighbourhood. Attention can link two patches at opposite corners if the
+image warrants it.
+:::
+
+## ViT: patches, like words {.smaller}
+
+::: {.incremental}
+- The image is cut into fixed-size patches, and each patch is treated like a word
+- The stack of patches goes through the same machinery to generate an embedding
+- A simple network on top can use this embedding to predict the output
+:::
+
+![](img/vit_architecture.png){.fragment .nostretch .absolute top="30%" left="26%" width="48%"}
+
+::: {.notes}
+Matters later because SAM's backbone is a ViT. One analogy, one slide, move
+on — but do point at the "linear projection of flattened patches" box and
+say that is the pixels-to-embedding step from earlier, done per patch.
+:::
+
+# From scratch vs fine-tuning
+
+## Training from scratch {.smaller}
+
+:::{.incremental}
+- Complex model architectures take longer to train and need more data
+- Large foundational models are trained on 100k - 1 billion images!
+   - `cellfinder` was trained on 100k hand labelled cells
+- Generating the data takes too long
+:::
+
+## Fine-tuning {.smaller}
+
+::: {.incremental}
+- Starting from random weights doesn't always make sense!
+- Sometimes you want to reuse the encoder/embeddings from other models
+- Feed a small number (100s to 1000s) of your data to teach the model "your" data
+:::
+
+# Building your training set
+
+## Test set leakage {.smaller}
+
+Splitting images randomly isn't the same as splitting subjects randomly
+
+::: {.incremental}
+- If one animal contributes images to both the training set and the test set, the model can partly identify it: same tissue, same staining batch, same imaging session
+- The test score then reflects memorisation of that subject, not real generalisation
+- Fix: split by subject (or by acquisition session) first, then assign every image from that subject to train, validation, *or* test — never split across
+:::
+
+## Split the animals, not the images {.smaller}
+
+![](img/ml_split_by_subject.png){.nostretch .absolute top="24%" left="10%" width="80%"}
+
+## Statistical not causal {.smaller}
+
+A model learns whatever correlates with the label, which may not necessarily be the biology!
+
+::: {.incremental}
+- Chest X-ray models trained to detect COVID-19 were found to rely on features *outside the lungs entirely* — image borders, laterality markers, patient positioning
+- If every positive scan came from one hospital, the model can learn that hospital's scanner artefacts instead of the disease
+:::
+
+::: {.fragment}
+The model is statistical, not causal. It will happily use a confound if the confound is easier to learn than the real biology.
+:::
+
+::: {.notes}
+Source: DeGrave, Janizek & Lee, "AI for radiographic COVID-19 detection
+selects shortcuts over signal", Nature Machine Intelligence 2021.
+
+Ask: what confound could sneak into a cell-detection dataset? Target answers:
+imaging session, animal, microscope, time of day — same traps as test set
+leakage, one level up.
+:::
+
+## Human-in-the-loop {.smaller}
+
+Most fine-tuning data comes from correcting the model's own mistakes.
+
+![](img/ml_human_loop.png){.fragment .nostretch .absolute bottom="4%" left="22%" width="56%"}
+
+# The tool landscape
+
+## ilastik {.smaller}
+
+Learning, without deep learning
+
+::: {.incremental}
+- You paint a few pixels of your target and a few of background
+- A classical classifier (random forest) learns the boundary between them
+- Interactive: you see the result and paint more where it's wrong
+:::
+
+## StarDist {.smaller}
+
+A shape prior instead of free-form pixels
+
+::: {.incremental}
+- Predicts, for each pixel, the distances to the object boundary along fixed rays — a star-convex polygon
+- Because every cell is one polygon, touching cells come out as separate objects rather than one merged blob
+:::
+
+![](img/ml_stardist_rays.png){.fragment .nostretch .absolute bottom="9%" left="18%" width="64%"}
+
+## Cellpose 2 {.smaller}
+
+A U-Net that predicts flows, plus retraining in the loop
+
+::: {.incremental}
+- Instead of a mask, it predicts for each pixel a direction pointing towards its cell's centre; pixels that flow to the same point are one cell
+- Generalist model trained on a large, deliberately varied collection of cell images
+- Ships with human-in-the-loop retraining: correct a few cells, fine-tune, carry on
+:::
+
+![](img/ml_cellpose_flows.png){.fragment .nostretch .absolute bottom="9%" left="18%" width="64%"}
+
+## Segment Anything (SAM) {.smaller}
+
+The foundation-model move: one model, fine-tuned
+
+::: {.incremental}
+- ViT backbone, trained on SA-1B: ~11 million natural images, ~1 billion masks — of which only ~10 million over ~300k images were drawn by hand; the rest the model generated and a filter kept
+- Promptable: click a point or drag a box, get a mask — no retraining
+- Knows "object", not "cell", out of the box it does poorly on microscopy images
+:::
+
+::: {.fragment}
+Every piece of this is something we've already met: ViT, embeddings, a U-Net-style decoder, human-in-the-loop.
+:::
+
+## Cellpose-SAM {.smaller}
+
+Fine-tuning a foundation model onto cells
+
+::: {.incremental}
+- Takes SAM's pretrained ViT backbone and trains it on Cellpose's cellular datasets
+- Deliberately trained against realistic degradations — blur, noise, anisotropy, channel order — so it holds up on data it hasn't seen
+- Approaches human-to-human agreement on their test set: roughly as close to one annotator as another annotator is
+:::
+
+::: {.notes}
+Pachitariu, Rariden & Stringer, bioRxiv 2025. The annotator-agreement
+framing is the honest way to read that headline number, and it closes the
+loop with the second slide of the lecture.
+:::
+
+## cellfinder {.smaller}
+
+Detection for large 3D imaging datasets
+
+::: {.incremental}
+- Classical filtering proposes candidate cells; a small CNN classifies each candidate as cell or artefact
+- Detection, not segmentation: counts and coordinates not outlines
+- Ships with a pretrained network, which can (should!) be fine-tuned
+:::
+
+## Recap {.smaller}
+
+
+::: {.fragment}
+Tomorrow you'll retrain `cellfinder` on your own corrections — fine-tuning and human-in-the-loop, on real data.
+:::
+
+## Questions?
