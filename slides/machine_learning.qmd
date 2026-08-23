@@ -22,9 +22,9 @@
 ## Rule based detection {.smaller}
 How would you identify where the cells are in this image?
 
-![](img/ml_raw_image.png){.nostretch .absolute bottom="25%" left="0%" width="46%"}
+![](img/ml_raw_image.png){.nostretch .absolute bottom="25%" left="0%" width="49%"}
 
-![](img/ml_brightness_threshold.png){.fragment .nostretch .absolute bottom="25%" right="0%" width="46%"}
+![](img/ml_brightness_threshold.png){.fragment .nostretch .absolute bottom="25%" right="0%" width="49%"}
 
 ## Rule based detection {.smaller}
 
@@ -34,9 +34,6 @@ Adding a second measurement, like cell size, lets you separate cells from noise
 
 ![](img/ml_size_threshold_image.png){.fragment .nostretch .absolute bottom="32%" right="4%" width="46%"}
 
-::: {.fragment .absolute bottom="8%" left="6%" style="width: 88%; text-align: center;"}
-We picked both cutoffs by eye
-:::
 
 ## Fitting the boundary from data {.smaller}
 
@@ -48,23 +45,31 @@ We can fit a boundary from the data itself, rather than picking a threshold by e
 
 Collapse both measurements into a single score, then fit a sigmoid function
 
-![](img/ml_logistic_regression.png){.fragment .nostretch .absolute bottom="6%" left="8%" width="84%"}
+score  =  w₁ · width  +  w₂ · brightness  +  b  =  0.29 · width  +  0.02 · brightness  − 7.6
+
+![](img/ml_logistic_regression.png){.fragment .nostretch .absolute bottom="17%" left="12%" width="76%"}
+
+::: {.fragment .absolute bottom="4%" left="12%" style="width: 76%;"}
+17 px wide, brightness 183 → score **+1.0** → cell
+
+3 px wide, brightness 109 → score **−4.5** → not a cell
+:::
 
 ## Real data is complex! {.smaller}
 
-Even with the best-fit line, one straight boundary always cuts through the wrong points
+No straight boundary can separate these two groups - wherever you put it, it cuts through the wrong points
 
 ![](img/ml_boundary_needs_more.png){.fragment .nostretch .absolute bottom="6%" left="8%" width="84%"}
 
 ## Fitting complex relationships {.smaller}
 
-Change the question from *"is this a cell?"* to *"is this exactly onecell?"*
+Change the question from *"is this a cell?"* to *"is this exactly one cell?"*
 
 ![](img/ml_two_sigmoids.png){.fragment .nostretch .absolute top="27%" left="17%" width="66%"}
 
 ## Fitting complex relationships {.smaller}
 
-Each bump costs two units. Stack up enough of them and the weights alone can fit relationships of any shape.
+Nothing about the target is sigmoid shaped. Add enough single sigmoids, each with its own fitted weight, and the sum can take essentially any shape.
 
 ![](img/ml_many_sigmoids.png){.fragment .nostretch .absolute bottom="6%" left="8%" width="84%"}
 
@@ -102,9 +107,7 @@ Every pixel feeds every unit in the first layer, and each unit is the same as th
 :::
 
 ::: {.notes}
-Say the number out loud: 784 inputs x ~100 units is already ~78,000 weights
-for a thumbnail. Hold that number — it is the problem convolution solves, and
-we come back to this exact figure when we ask what an image really is.
+784 inputs x ~100 units is already ~78,000 weights for a thumbnail.
 :::
 
 ## Architecture: wiring the units {.smaller}
@@ -161,8 +164,14 @@ Precision and recall **trade off**: lower the detection threshold and recall goe
 :::
 
 ::: {.fragment}
-And remember: the test labels are human opinions too. 95% recall against one annotator's boundaries is not 95% against the biology.
+Test labels are human opinions too. 95% recall against one annotator's boundaries is not 95% against the biology.
 :::
+
+## Underfitting {.smaller}
+
+Too little capacity to represent the relationship at all - so it is wrong on the training data as well as on unseen data.
+
+![](img/ml_underfitting.png){.fragment .nostretch .absolute bottom="8%" left="10%" width="80%"}
 
 ## Overfitting {.smaller}
 
@@ -177,7 +186,7 @@ Same loop as before, now scored on both splits after every epoch.
 ![](img/fully_connected.png){.nostretch .absolute top="16%" left="20%" height="60%"}
 
 ::: {.fragment .absolute bottom="4%" left="6%" style="width: 88%; color: white;"}
-784 pixels for a thumbnail digit — a single tile of imaging data is millions. almost all of it is empty background! The actual information is sparse
+784 pixels for a thumbnail digit — a single tile of imaging data is millions. Almost all of it is empty background! The actual information is sparse
 :::
 
 ::: {.notes}
@@ -326,7 +335,7 @@ training.
 
 Same idea on pixels: the model decides for itself which parts of the image matter
 
-![](img/attention.png){.fragment .nostretch .absolute top="25%" left="38%" width="35%"}
+![](img/attention.png){.fragment .nostretch .absolute top="20%" left="38%" width="35%"}
 
 ::: {.notes}
 Right column is the attention map — bright where the model is looking. It
@@ -346,7 +355,7 @@ image warrants it.
 - A simple network on top can use this embedding to predict the output
 :::
 
-![](img/vit_architecture.png){.fragment .nostretch .absolute top="30%" left="26%" width="48%"}
+![](img/vit_architecture.png){.fragment .nostretch .absolute top="34%" left="26%" width="48%"}
 
 ::: {.notes}
 Matters later because SAM's backbone is a ViT. One analogy, one slide, move
@@ -462,10 +471,6 @@ The foundation-model move: one model, fine-tuned
 - Knows "object", not "cell", out of the box it does poorly on microscopy images
 :::
 
-::: {.fragment}
-Every piece of this is something we've already met: ViT, embeddings, a U-Net-style decoder, human-in-the-loop.
-:::
-
 ## Cellpose-SAM {.smaller}
 
 Fine-tuning a foundation model onto cells
@@ -473,7 +478,7 @@ Fine-tuning a foundation model onto cells
 ::: {.incremental}
 - Takes SAM's pretrained ViT backbone and trains it on Cellpose's cellular datasets
 - Deliberately trained against realistic degradations — blur, noise, anisotropy, channel order — so it holds up on data it hasn't seen
-- Approaches human-to-human agreement on their test set: roughly as close to one annotator as another annotator is
+- Approaches human-to-human agreement on their test set
 :::
 
 ::: {.notes}

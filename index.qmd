@@ -41,7 +41,38 @@ execute:
 - Hackathon preparation (45 mins)
 :::
 
+## Motivation
+By the end of the course:
+
+![](img/tracing.png)
+
+## Motivation {background-video="img/cellfinder_small.mp4" background-video-loop="true"}
+
 # Introductions
+
+
+## The instructor team {.smaller}
+
+::: {style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1em; text-align: center;"}
+
+::: {.fragment}
+![](img/alessandro.png){width="60%"}\
+Alessandro Felder
+:::
+
+::: {.fragment}
+![](img/igor.png){width="60%"}\
+Igor Tatarnikov
+:::
+
+::: {.fragment}
+![](img/harry.png){width="60%"}\
+Harry Carey
+:::
+
+:::
+
+## [Mentimeter](https://www.menti.com/al8s7v312exn)
 
 # Installation
 
@@ -71,25 +102,19 @@ Adapted from [https://github.com/HealthBioscienceIDEAS/microscopy-novice/](https
 
 # Tutorials
 
-## Motivation
-By the end of the course:
-
-![](img/tracing.png)
-
-## Motivation {background-video="img/cellfinder_small.mp4" background-video-loop="true"}
-
 ## Tutorials {.smaller}
 
-* registering whole-brain microscopy to an atlas
-* segmenting probes and bulk fluorescence
-* cell detection in whole-brain microscopy
-  * retraining `cellfinder` to fine-tune cell detection
-* combining registration and cell detection
+* Registering whole-brain microscopy to an atlas
+* Segmenting probes and bulk fluorescence
+* Cell detection in whole-brain microscopy
+  * Retraining `cellfinder` to fine-tune cell detection
+* Combining registration and cell detection
+* Scripting with BrainGlobe
 
 ## Data {.smaller}
 
-* small sample data comes with `napari`
-* large sample data `histology-training/brainglobe-course-data/MS_cx_left`
+* Small sample data comes with `napari`
+* Large sample data `brainglobe-course-data/MS_cx_left`
   * on HD: share if needed
 
 ::: aside
