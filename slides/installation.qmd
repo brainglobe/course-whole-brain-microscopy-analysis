@@ -2,14 +2,15 @@
 ## Install napari and BrainGlobe
 
 ### Everyone
+
 ```{.bash}
-conda create -n brainglobe-env python=3.12
-conda activate brainglobe-env
-pip install brainglobe
+conda activate brainglobe
+uv pip install brainglobe
 ```
 
-#### Silicon mac users (additionally)
-```bash
+## Silicon mac users (additionally)
+
+```{.bash}
 conda install niftyreg
 ```
 
@@ -18,7 +19,7 @@ conda install niftyreg
 
 ::: {.column width="50%"}
 Double-check that running
-```bash
+```{.bash}
 napari
 ```
 opens a new `napari` window, with brainglobe plugins available under `Plugins`.
@@ -29,15 +30,3 @@ opens a new `napari` window, with brainglobe plugins available under `Plugins`.
 :::
 
 ::::
-
-## Install BrainGlobe atlases
-
-Run
-```bash
-brainglobe install -a allen_mouse_25um
-```
-
-To check whether this worked:
-```bash
-brainglobe list
-```

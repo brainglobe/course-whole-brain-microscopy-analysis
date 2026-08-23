@@ -114,6 +114,8 @@ Brown APY, Cossell L,Strom M, Tyson AL, Vélez-Fort M, Margrie TW. Analysis of s
 
 [Tutorial](https://brainglobe.info/tutorials/tutorial-whole-brain-registration.html)
 
+{{< include slides/template-builder.qmd >}}
+
 ## Segmenting structures in whole brain microscopy images with brainglobe-segmentation
 
 [Tutorial (1D)](https://brainglobe.info/tutorials/segmenting-1d-tracks.html)
@@ -194,6 +196,10 @@ Tasks:
 * [GitHub](https://github.com/brainglobe/){preview-link="true"}
 
 You are welcome to contribute to BrainGlobe - get in touch anytime and we will support you!
+
+## Feedback
+
+Please take 5 minutes to fill out [this feedback form](https://forms.gle/UZV2cregqCpuzbe3A)!
 
 <!-- ## BrainGlobe Initiative {.smaller}
 
