@@ -33,7 +33,7 @@ execute:
 ::: {.incremental}
 - Introduction to cell detection in whole brain microscopy images with `cellfinder` (60 mins)
 - Detecting cells in large 3D images with cellfinder (60 mins)
-- Combining `brainreg` and `cellfinder` on the command line (`brainmapper`)(30 mins)
+- Combining `brainreg` and `cellfinder` on the command line with `brainmapper` (30 mins)
 - **Lunch break (60 mins)**
 - Visualising data in atlas space with `brainrender` and `brainrender-napari` (45 mins)
 - Scripting with `brainglobe-heatmap` and `brainrender` (30 mins)
