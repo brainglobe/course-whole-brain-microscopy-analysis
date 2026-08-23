@@ -1,6 +1,6 @@
 ## A deeper look
 
-`File > Open Files(s)`, then navigate to `calcium imaging folder` and open `translation1_00001_ce.tif`
+`File > Open Files(s)`, then navigate to `calcium imaging folder` and open `translation1_00001_ce.tif` (or other small-ish sample data of choice)
 
 ![](img/cells-napari.png){alt="A screenshot of a some fluorescent cells"}
 
@@ -169,8 +169,7 @@ but there are a few that are most common for image data:
 | `float64`          | Float 64-bit             | $-1.7 \times 10^{308}...+1.7  \times 10^{308}$
 
 `uint8` and `uint16` are most common for images from light microscopes. 
-`float32` and `float64` are common during image processing (as we will see in 
-later episodes).
+`float32` and `float64` are common during image processing.
 
 ## Coordinate system {.smaller}
 
@@ -197,19 +196,33 @@ would be the pixel in row 1 and column 3. Remember that these coordinates always
 start from 0 as you can see in the diagram:
 :::
 
-## Handedness of the coordinate system
+## Handedness of the coordinate system {.smaller}
 
 * napari v0.6.0 and later use a **right-handed 3D coordinate system** by default.
-* BrainGlobe (in particular `brainrender`) expects a **left-handed system**.
+* Some BrainGlobe tools (in particular `brainrender`) expect a **left-handed system**.
 
 To change to a left-handed system:
 
 1. Right-click the **Toggle 2D/3D view** button in the bottom-left corner.  
-2. Select the pre-0.6.0 default: **away, down, right**.  
+2. Select the pre-0.6.0 default: **away, down, right**. 
 
 :::aside
 For more details on napari’s 3D axis directions and handedness, see the [napari documentation](https://napari.org/stable/guides/handedness.html).
 :::
+https://napari.org/stable/guides/axis-names.html
+
+## Axis names
+
+* napari v0.7.0 and later use a **negative numbers** as axis names by default.
+   * think of it like Python indexing: in a 3D image, index 0 is index -3.
+
+Visualise the origin and axis direction with `View` > `Axes` > `Axes visible`   
+
+:::aside
+For more details on napari’s axis names, see the [napari documentation](https://napari.org/stable/guides/axis-names.html).
+:::
+
+## Demo: handedness and axis names
 
 ## Key points
 
@@ -221,3 +234,8 @@ these have a `shape` and `dtype`
 - Images use a coordinate system with (0,0) at the top left, x increasing to 
 the right, and y increasing down
 
+## BrainGlobe conventions (for reference)
+
+* BrainGlobe's `napari` plugins work in pixel coordinates (for now)
+* `brainrender` displays in a left-handed coordinate system
+    * this can look like a LR flip bug 
