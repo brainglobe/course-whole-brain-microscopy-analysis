@@ -43,38 +43,6 @@ The atlas
 ::: {.absolute top="82%" left="19%" style="width:62%; text-align:center;"}
 [sample]{style="color:#c22ec2;"} · [atlas]{style="color:#1a8f4c;"} · [both]{style="color:#1E1E1E;"}
 :::
-<!-- 
-## Where this shows up in biology
-
-::: {.columns style="font-size: 0.8em;"}
-::: {.column width="50%"}
-::::{.fragment}
-**Serial sections**
-
-Aligning consecutive sections cut from the same block
-::::
-
-::::{.fragment}
-**Time-lapse imaging**
-
-Correcting stage drift or sample motion between frames
-::::
-:::
-
-::: {.column width="50%"}
-::::{.fragment}
-**Multi-modal data**
-
-Fluorescence to brightfield, MRI to histology, IHC to H&E
-::::
-
-::::{.fragment}
-**Atlas mapping**
-
-Registering a sample to a reference atlas
-::::
-:::
-::: -->
 
 ## Vocabulary
 
@@ -235,15 +203,6 @@ Reminder:
 
 ![](img/registration_nonlinear_compared.png){.nostretch .absolute bottom="2.5%" right="2.5%" height="80%"}
 
-## Discussion {.smaller}
-
-Manual serial sections from one tissue block are often torn or locally stretched by
-different amounts in different regions during processing.
-
-You have a handful of usable landmarks — maybe 8.
-
-Rigid, affine, piecewise affine, or fully non-linear?
-
 
 # Similarity Metrics
 How can we tell images are aligned?
@@ -252,7 +211,7 @@ How can we tell images are aligned?
 
 ::: {.incremental}
 - A numerical score of how well two images or sets of points match
-- We will write every one of them so that **higher is better**
+- Typically higher is better
 - Once you have a similarity metric, optimisation is possible!
 :::
 
@@ -277,8 +236,11 @@ count errors, so they run the other way up. Same information, opposite sign.
 
 ## Negative mean squared error {.smaller}
 
-![](img/registration_inputs_MSE_contrast.png){.nostretch .absolute bottom="10%" right="12.5%" width="75%"}
-![](img/registration_loss_MSE_contrast.png){.nostretch .fragment .absolute bottom="10%" right="12.5%" width="75%"}
+![](img/registration_inputs_MSE_contrast.png){.nostretch .absolute bottom="8%" right="12.5%" width="75%"}
+![](img/registration_loss_MSE_contrast.png){.nostretch .fragment .absolute bottom="0%" right="7%" width="86%"}
+
+::: {style="background: #ffffff; width: 75%; height: 12%; margin: 0px; position: absolute; top: 18.5%; left: 12%"}
+:::
 
 ## Cross-correlation {.smaller}
 
