@@ -70,6 +70,11 @@ Igor Tatarnikov
 Harry Carey
 :::
 
+::: {.fragment}
+![](img/saarah_hussain.jpg){width="60%"}\
+Saarah Hussain
+:::
+
 :::
 
 ## [Mentimeter](https://www.menti.com/al8s7v312exn)
