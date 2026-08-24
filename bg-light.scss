@@ -34,6 +34,8 @@ $presentation-title-slide-text-align: left !default;
 .table-tiny table th:nth-child(2),
 .table-tiny table td:nth-child(2) {
   text-align: right !important;
+}
+
 /* Zoom inset: full section with the crop revealed over it, plus leader lines
    back to the region it came from. Coordinates inside the SVG are percentages
    of the base image, so the whole thing scales with the slide. */
