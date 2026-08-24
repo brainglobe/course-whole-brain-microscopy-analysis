@@ -147,6 +147,7 @@ Brown APY, Cossell L,Strom M, Tyson AL, Vélez-Fort M, Margrie TW. Analysis of s
 
 [Tutorial (2D/3D)](https://brainglobe.info/tutorials/segmenting-3d-structures.html)
 
+{{< include slides/cellfinder-deep-dive.qmd >}}
 # Machine learning for image analysis
 
 {{< include slides/machine_learning.qmd >}}
@@ -155,30 +156,7 @@ Brown APY, Cossell L,Strom M, Tyson AL, Vélez-Fort M, Margrie TW. Analysis of s
 
 ## Detecting cells in large 3D images with cellfinder
 
-[Cell detection tutorial](https://brainglobe.info/tutorials/cellfinder-detection.html)
-
-[Retraining tutorial](https://brainglobe.info/tutorials/cellfinder-retraining.html)
-
-## Pulling things together: `brainmapper` CLI
-
-:::: {.columns}
-::: {.column}
-* `brainmapper` is the name of [our command line tool](https://brainglobe.info/tutorials/brainmapper/index.html) to combine cell detection and atlas registration. 
-:::
-::: {.column}
-![](img/brainmapper-cli.png)
-:::
-::::
-
-## `brainmapper` CLI
-
-* Required arguments
-  * `-s` The primary signal channel
-  * `-b` The secondary autofluorescence channel
-  * `-o` The output directory 
-  * `--orientation` e.g. `psl`
-  * `-v` The voxel spacing (microns) in the same order as the data orientation (`psl`): 5 2 2.
-  * `--atlas`
+{{< include slides/brainmapper.qmd >}}
 
 # Tour of other BrainGlobe tools
 
