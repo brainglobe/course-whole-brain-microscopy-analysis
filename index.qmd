@@ -147,12 +147,13 @@ Brown APY, Cossell L,Strom M, Tyson AL, Vélez-Fort M, Margrie TW. Analysis of s
 
 [Tutorial (2D/3D)](https://brainglobe.info/tutorials/segmenting-3d-structures.html)
 
-{{< include slides/cellfinder-deep-dive.qmd >}}
 # Machine learning for image analysis
 
 {{< include slides/machine_learning.qmd >}}
 
 # Cell detection with cellfinder
+
+{{< include slides/cellfinder-deep-dive.qmd >}}
 
 ## Detecting cells in large 3D images with cellfinder
 
