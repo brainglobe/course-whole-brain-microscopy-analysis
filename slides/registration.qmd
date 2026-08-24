@@ -239,9 +239,6 @@ count errors, so they run the other way up. Same information, opposite sign.
 ![](img/registration_inputs_MSE_contrast.png){.nostretch .absolute bottom="8%" right="12.5%" width="75%"}
 ![](img/registration_loss_MSE_contrast.png){.nostretch .fragment .absolute bottom="0%" right="7%" width="86%"}
 
-::: {style="background: #ffffff; width: 75%; height: 12%; margin: 0px; position: absolute; top: 18.5%; left: 12%"}
-:::
-
 ## Cross-correlation {.smaller}
 
 ::: {.incremental}
@@ -286,7 +283,7 @@ count errors, so they run the other way up. Same information, opposite sign.
 
 ## Cheat sheet: which metric to use {.smaller}
 
-::: {.fragment .absolute top="30%" left="30%"}
+::: {.fragment .absolute top="20%" left="10%"}
 <table class="caption-top">
 <thead>
 <tr class="header">
@@ -354,16 +351,16 @@ What leaves you on the wrong hilltop
 
 ## Phase correlation {.smaller}
 
-For pure **translation**, we can compute the correlation between two images for
-**every possible shift at once** using the **Fast Fourier Transform** — usually
-called **phase correlation**.
+For pure translation, we can compute the correlation between two images for
+every possible shift at once using the Fast Fourier Transform. Usually
+called phase correlation.
 
 ![](img/registration_phase_correlation_1d.png){.fragment .nostretch .absolute top="45%" left="2.5%" width="95%"}
 
 ## Phase correlation {.smaller}
 
 ::: {.incremental}
-1. Transform both images into **frequency space**
+1. Transform both images into frequency space
 2. Combine them with a simple multiplication which gives a normalised correlation in frequency space
 3. Transform back
 4. The location of the peak directly tells you the best-aligning shift
@@ -372,7 +369,7 @@ called **phase correlation**.
 ## Phase correlation {.smaller}
 
 ::: {.incremental}
-- No starting guess, no iteration, no local optima — the answer is read off the peak
+- No starting guess, no iteration, global solution
 - Fast, and the same cost whatever the shift turns out to be
 - Only works for pure translation
   - Rotation, scaling, or warping still needs the iterative route
@@ -384,17 +381,17 @@ called **phase correlation**.
 
 
 
-# Over- and Under-Fitting in Registration
+# Overfitting and Underfitting in Registration
 Too much of a good thing
 
-## Over- and under-fitting {.smaller}
+## Overfitting and underfitting {.smaller}
 
 ::: {.incremental}
 - The same trade-off as fitting a curve to noisy measurements
-  - A straight line through curved data misses the real trend — **underfitting**
-  - A high-order polynomial through every point chases the noise — **overfitting**
+  - A straight line through curved data misses the real trend: underfitting
+  - A high-order polynomial through every point chases the noise: overfitting
 - Registration has both failure modes, in two (or three) dimensions
-- The "model complexity" knob is the **transformation type**
+- The "model complexity" knob is the transformation type
 :::
 
 ![](img/registration_fitting_compared.png){.nostretch .fragment .absolute bottom="2.5%" left="2.5%" width="95%"}
@@ -493,8 +490,7 @@ Additional channels have no field of their own — open them as extra layers in
 :::
 
 ::: {.fragment}
-The defaults are tuned for whole mouse brains — reach for these when your sample
-isn't one.
+The defaults are tuned for whole mouse brains
 :::
 
 ## `brainreg`: tips {.smaller}
