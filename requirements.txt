@@ -1,2 +1,5 @@
 jupyter
 jupyter-cache
+SimpleITK
+scikit-image
+matplotlib

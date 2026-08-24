@@ -15,7 +15,7 @@ format:
     revealjs:
         theme: [bg-light.scss]
         logo: img/BG_logo.png
-        footer: "[https://brainglobe.info/course-whole-brain-microscopy-analysis](https://brainglobe.info/course-whole-brain-microscopy-analysis) | 2025-11-10"
+        footer: "[https://brainglobe.info/course-whole-brain-microscopy-analysis](https://brainglobe.info/course-whole-brain-microscopy-analysis) | 2026-08-24"
         slide-number: c
         menu:
           numbers: true

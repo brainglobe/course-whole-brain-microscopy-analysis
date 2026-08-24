@@ -4,6 +4,7 @@ subtitle: With BrainGlobe and napari
 execute: 
   enabled: true
 ---
+
 # Welcome
 
 ## Schedule Day 1 {.smaller}
@@ -12,16 +13,16 @@ execute:
 - Introductions (15 mins)
 - Installing BrainGlobe and `napari` (15 mins)
 - Introduction to Image analysis with `napari` (60 mins)
-- **Break (15 mins)**
 - Introduction to BrainGlobe (60 mins)
-- ***Lunch break (60 mins)**
+- **Lunch break (60 mins)**
 - Symposium
 :::
 
 ## Schedule Day 2 {.smaller}
 ::: {.incremental}
 - Introduction to anatomical atlases and common coordinate spaces (60 mins)
-- Introduction to image registration (75 mins)
+- Introduction to image registration (60 mins)
+- Introduction to template building (30 mins)
 - **Lunch break (60 mins)**
 - Registering whole brain microscopy images with `brainreg` (60 mins)
 - Segmenting structures in whole brain microscopy images with brainglobe-segmentation (30 mins)
@@ -32,45 +33,13 @@ execute:
 ::: {.incremental}
 - Introduction to cell detection in whole brain microscopy images with `cellfinder` (60 mins)
 - Detecting cells in large 3D images with cellfinder (60 mins)
-- Combining `brainreg` and `cellfinder` on the command line (`brainmapper`)(30 mins)
+- Combining `brainreg` and `cellfinder` on the command line with `brainmapper` (30 mins)
 - **Lunch break (60 mins)**
 - Visualising data in atlas space with `brainrender` and `brainrender-napari` (45 mins)
 - Scripting with `brainglobe-heatmap` and `brainrender` (30 mins)
 - Contributing to BrainGlobe (30 mins)
 - Hackathon preparation (45 mins)
 :::
-
-# Introductions
-
-# Installation
-
-{{< include slides/installation.qmd >}}
-
-
-# Image Analysis (with napari)
-Adapted from [https://github.com/HealthBioscienceIDEAS/microscopy-novice/](https://github.com/HealthBioscienceIDEAS/microscopy-novice/) (under CC BY 4.0 license)
-
-{{< include slides/intro-napari.qmd >}}
-{{< include slides/what-is-an-image.qmd >}}
-{{< include slides/processing-images.qmd >}}
-
-
-# BrainGlobe
-
-::: {.incremental}
-- Background
-- Tools
-- Expanding access
-:::
-
-{{< include irv-helga/slides/background.qmd >}}
-
-{{< include irv-helga/slides/brainglobe-initiative.qmd >}}
-
-{{< include irv-helga/slides/brainglobe-tools.qmd >}}
-
-  
-# Tutorials
 
 ## Motivation
 By the end of the course:
@@ -79,18 +48,78 @@ By the end of the course:
 
 ## Motivation {background-video="img/cellfinder_small.mp4" background-video-loop="true"}
 
+# Introductions
+
+
+## The instructor team {.smaller}
+
+::: {style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1em; text-align: center;"}
+
+::: {.fragment}
+![](img/alessandro.png){width="60%"}\
+Alessandro Felder
+:::
+
+::: {.fragment}
+![](img/igor.png){width="60%"}\
+Igor Tatarnikov
+:::
+
+::: {.fragment}
+![](img/harry.png){width="60%"}\
+Harry Carey
+:::
+
+::: {.fragment}
+![](img/saarah_hussain.jpg){width="60%"}\
+Saarah Hussain
+:::
+
+:::
+
+## [Mentimeter](https://www.menti.com/al8s7v312exn)
+
+# Installation
+
+{{< include slides/installation.qmd >}}
+
+# Image Analysis (with napari)
+Adapted from [https://github.com/HealthBioscienceIDEAS/microscopy-novice/](https://github.com/HealthBioscienceIDEAS/microscopy-novice/) (under CC BY 4.0 license)
+
+{{< include slides/intro-napari.qmd >}}
+
+{{< include slides/what-is-an-image.qmd >}}
+
+{{< include slides/processing-images.qmd >}}
+
+
+# BrainGlobe
+
+{{< include irv-helga/slides/background.qmd >}}
+
+{{< include irv-helga/slides/brainglobe-initiative.qmd >}}
+
+{{< include irv-helga/slides/brainglobe-tools.qmd >}}
+
+# Image Registration
+
+{{< include slides/registration.qmd >}}
+
+# Tutorials
+
 ## Tutorials {.smaller}
 
-* registering whole-brain microscopy to an atlas
-* segmenting probes and bulk fluorescence
-* cell detection in whole-brain microscopy
-  * retraining `cellfinder` to fine-tune cell detection
-* combining registration and cell detection
+* Registering whole-brain microscopy to an atlas
+* Segmenting probes and bulk fluorescence
+* Cell detection in whole-brain microscopy
+  * Retraining `cellfinder` to fine-tune cell detection
+* Combining registration and cell detection
+* Scripting with BrainGlobe
 
 ## Data {.smaller}
 
-* small sample data comes with `napari`
-* large sample data `histology-training/brainglobe-course-data/MS_cx_left`
+* Small sample data comes with `napari`
+* Large sample data `brainglobe-course-data/MS_cx_left`
   * on HD: share if needed
 
 ::: aside
@@ -110,6 +139,8 @@ Brown APY, Cossell L,Strom M, Tyson AL, Vélez-Fort M, Margrie TW. Analysis of s
 
 [Tutorial](https://brainglobe.info/tutorials/tutorial-whole-brain-registration.html)
 
+{{< include slides/template-builder.qmd >}}
+
 ## Segmenting structures in whole brain microscopy images with brainglobe-segmentation
 
 [Tutorial (1D)](https://brainglobe.info/tutorials/segmenting-1d-tracks.html)
@@ -117,6 +148,13 @@ Brown APY, Cossell L,Strom M, Tyson AL, Vélez-Fort M, Margrie TW. Analysis of s
 [Tutorial (2D/3D)](https://brainglobe.info/tutorials/segmenting-3d-structures.html)
 
 {{< include slides/cellfinder-deep-dive.qmd >}}
+# Machine learning for image analysis
+
+{{< include slides/machine_learning.qmd >}}
+
+# Cell detection with cellfinder
+
+## Detecting cells in large 3D images with cellfinder
 
 {{< include slides/brainmapper.qmd >}}
 
@@ -167,6 +205,10 @@ Tasks:
 * [GitHub](https://github.com/brainglobe/){preview-link="true"}
 
 You are welcome to contribute to BrainGlobe - get in touch anytime and we will support you!
+
+## Feedback
+
+Please take 5 minutes to fill out [this feedback form](https://forms.gle/UZV2cregqCpuzbe3A)!
 
 <!-- ## BrainGlobe Initiative {.smaller}
 
