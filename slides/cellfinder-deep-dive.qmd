@@ -292,6 +292,15 @@ A series of image filters on the signal channel only
 :::
 :::
 
+## Structure splitting in 3D
+
+::: {.r-stack}
+![](img/cellfinder-pre-splitting.png){.fragment fragment-index="1"}
+
+![](img/cellfinder-post-splitting.png){.fragment fragment-index="2"}
+:::
+
+
 ## 3D Filtering parameters {.smaller}
 
 ::: {.table-tiny}
@@ -313,6 +322,22 @@ A series of image filters on the signal channel only
 | `n_splitting_iter` | 10 | The number of iterations to run the 3d filtering on a cluster. Each iteration reduces the cluster size by the voxels not retained in the previous iteration. |
 | `soma_spread_factor` | 1.4 | Cell spread factor for determining the largest cell volume before splitting up cell clusters. Structures with spherical volume of diameter `soma_spread_factor * soma_diameter` or less will not be split. |
 | `max_cluster_size` | 100_000 | Largest detected cell cluster (in cubic um) where splitting should be attempted. Clusters above this size will be labeled as artifacts. |
+:::
+
+## Candidate coordinates {.smaller}
+
+::: {.columns}
+::: {.column width="50%"}
+
+Store the average coordinate of each candidate.
+
+:::
+
+::: {.column width="50%"}
+
+![](img/struct_id_closeup.png)
+
+:::
 :::
 
 ## Performance-related parameters 
