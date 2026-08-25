@@ -1425,7 +1425,7 @@ Zoom - Scroll in/out</code></pre>
 <section id="d-cell-detection-3" class="slide level2">
 <h2>3D cell detection</h2>
 <div class="absolute" style="top: 20%; left: 5%; width: 90%; ">
-<div id="4d9ceb03" class="cell" data-execution_count="1">
+<div id="9b614087" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <script type="module">
     const { set_or_remove_dark_class } = await window._itables_2_9_1;
@@ -1528,7 +1528,7 @@ This is the <code>init_notebook_mode</code> cell from ITables v2.9.1<br>
 </div>
 <div class="cell-output cell-output-display">
 <!--| quarto-html-table-processing: none -->
-<table id="itables_85514855_3dd5_4029_8698_57ae82b64578" hidden="hidden">
+<table id="itables_7edf6ae2_3d6f_485d_9215_d779cfd5b66c" hidden="hidden">
   <tbody>
     <tr>
       <td style="vertical-align:middle; text-align:left"><a href="https://itables.org/"><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="64" viewbox="0 0 500 400" style="font-family: 'Droid Sans', sans-serif;">
@@ -1594,7 +1594,7 @@ This is the <code>init_notebook_mode</code> cell from ITables v2.9.1<br>
     </tr>
   </tbody>
 </table>
-<div id="itables_85514855_3dd5_4029_8698_57ae82b64578_fallback"><table style="border-collapse:collapse"><thead>    <tr style="text-align: right;">
+<div id="itables_7edf6ae2_3d6f_485d_9215_d779cfd5b66c_fallback"><table style="border-collapse:collapse"><thead>    <tr style="text-align: right;">
       <th style="border:1px solid #ddd;padding:8px"><sup><noscript><span title="JavaScript not allowed. Please trust this notebook to get interactive tables.">🔒</span></noscript><a href="https://itables.org/fallbacks/static_preview.html" title="ITables v2.9.1 static preview">ⓘ</a></sup>structure_name</th>
       <th style="border:1px solid #ddd;padding:8px">left_cell_count</th>
       <th style="border:1px solid #ddd;padding:8px">right_cell_count</th>
@@ -1610,13 +1610,13 @@ This is the <code>init_notebook_mode</code> cell from ITables v2.9.1<br>
 <tr><td style="border:1px solid #ddd;padding:8px">Lateral dorsal nucleus of thalamus</td><td style="border:1px solid #ddd;padding:8px">121.0</td><td style="border:1px solid #ddd;padding:8px">1.0</td><td style="border:1px solid #ddd;padding:8px">122.0</td></tr>
 <tr><td style="border:1px solid #ddd;padding:8px">Retrosplenial area, dorsal part, layer 5</td><td style="border:1px solid #ddd;padding:8px">110.0</td><td style="border:1px solid #ddd;padding:8px">0.0</td><td style="border:1px solid #ddd;padding:8px">110.0</td></tr>
 <tr><td style="border:1px solid #ddd;padding:8px">Retrosplenial area, dorsal part, layer 6a</td><td style="border:1px solid #ddd;padding:8px">89.0</td><td style="border:1px solid #ddd;padding:8px">0.0</td><td style="border:1px solid #ddd;padding:8px">89.0</td></tr>
-</tbody><tfoot><tr><td colspan="4" style="border:none;padding:8px;text-align:center">(649 more rows not shown)</td></tr></tfoot></table></div><script>document.getElementById("itables_85514855_3dd5_4029_8698_57ae82b64578")?.removeAttribute("hidden");document.getElementById("itables_85514855_3dd5_4029_8698_57ae82b64578_fallback")?.setAttribute("hidden", "hidden");</script>
+</tbody><tfoot><tr><td colspan="4" style="border:none;padding:8px;text-align:center">(649 more rows not shown)</td></tr></tfoot></table></div><script>document.getElementById("itables_7edf6ae2_3d6f_485d_9215_d779cfd5b66c")?.removeAttribute("hidden");document.getElementById("itables_7edf6ae2_3d6f_485d_9215_d779cfd5b66c_fallback")?.setAttribute("hidden", "hidden");</script>
 <script type="module">
     (async () => {
         async function init() {
             const { ITable, jQuery: $ } = await window._itables_2_9_1;
 
-            document.querySelectorAll("#itables_85514855_3dd5_4029_8698_57ae82b64578:not(.dataTable)").forEach(table => {
+            document.querySelectorAll("#itables_7edf6ae2_3d6f_485d_9215_d779cfd5b66c:not(.dataTable)").forEach(table => {
                 if (!(table instanceof HTMLTableElement))
                     return;
 
@@ -2624,6 +2624,13 @@ Sparse identifiable landmarks
 </section>
 <section id="what-well-cover" class="slide level2 smaller">
 <h2>What we’ll cover</h2>
+<ul>
+<li>Basics of neural networks</li>
+<li>CNNs</li>
+<li>U-Nets</li>
+<li>Visual Transformations</li>
+<li>Tool landscape</li>
+</ul>
 </section>
 <section id="section-10" class="slide level2">
 <h2></h2>
@@ -2746,8 +2753,8 @@ Sparse identifiable landmarks
 </div>
 </section></section>
 <section>
-<section id="training-and-testing" class="title-slide slide level1 center">
-<h1>Training and testing</h1>
+<section id="building-your-training-set" class="title-slide slide level1 center">
+<h1>Building your training set</h1>
 
 </section>
 <section id="train-validation-test-split" class="slide level2 smaller">
@@ -2757,8 +2764,32 @@ Sparse identifiable landmarks
 <div class="fragment absolute" style="width: 84%;left: 8%; bottom: 6%; ">
 <p>Memorising practice answers != learning biology.</p>
 </div>
+</section>
+<section id="test-set-leakage" class="slide level2 smaller">
+<h2>Test set leakage</h2>
+<p>Splitting images randomly isn’t the same as splitting subjects randomly</p>
+<ul>
+<li class="fragment">If one animal contributes images to both the training set and the test set, the model can partly identify it: same tissue, same staining batch, same imaging session</li>
+<li class="fragment">The test score then reflects memorisation of that subject, not real generalisation</li>
+<li class="fragment">Fix: split by subject (or by acquisition session) first, then assign every image from that subject to train, validation, <em>or</em> test — never split across</li>
+</ul>
+</section>
+<section id="split-the-animals-not-the-images" class="slide level2 smaller">
+<h2>Split the animals, not the images</h2>
+<p><img data-src="img/ml_split_by_subject.png" class="absolute" style="top: 24%; left: 10%; width: 80%; "></p>
+</section>
+<section id="statistical-not-causal" class="slide level2 smaller">
+<h2>Statistical not causal</h2>
+<p>A model learns whatever correlates with the label, which may not necessarily be the biology!</p>
+<ul>
+<li class="fragment">Chest X-ray models trained to detect COVID-19 were found to rely on features <em>outside the lungs entirely</em> — image borders, laterality markers, patient positioning</li>
+<li class="fragment">If every positive scan came from one hospital, the model can learn that hospital’s scanner artefacts instead of the disease</li>
+</ul>
+<div class="fragment">
+<p>The model is statistical, not causal. It will happily use a confound if the confound is easier to learn than the real biology.</p>
+</div>
 <aside class="notes">
-<p>The test set is the one thing here that cannot be undone. Look at it twice — tweak anything after seeing it — and you no longer have a clean number to report, because you have started fitting to it by hand.</p>
+<p>Source: DeGrave, Janizek &amp; Lee, “AI for radiographic COVID-19 detection selects shortcuts over signal”, Nature Machine Intelligence 2021.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -2797,13 +2828,48 @@ Sparse identifiable landmarks
 </section>
 <section id="underfitting" class="slide level2 smaller">
 <h2>Underfitting</h2>
-<p>Too little capacity to represent the relationship at all - so it is wrong on the training data as well as on unseen data.</p>
+<p>Too little capacity to represent the relationship at all - so it is wrong on the training data as well as on unseen data</p>
 <p><img data-src="img/ml_underfitting.png" class="fragment absolute" style="left: 10%; bottom: 8%; width: 80%; "></p>
 </section>
 <section id="overfitting" class="slide level2 smaller">
 <h2>Overfitting</h2>
-<p>Same loop as before, now scored on both splits after every epoch.</p>
+<p>Too much capacity, the model memorises the training data without extracting any information</p>
 <p><img data-src="img/ml_overfitting_curves.png" class="fragment absolute" style="top: 28%; left: 14%; width: 72%; "></p>
+</section>
+<section id="data-augmentation" class="slide level2 smaller">
+<h2>Data augmentation</h2>
+<p>Labelling is the expensive step: make more training examples out of the ones you already have!</p>
+<ul>
+<li class="fragment">Flip, rotate, rescale, brighten, blur, add noise</li>
+<li class="fragment">The model sees a sample at more orientations, brightnesses and noise levels</li>
+<li class="fragment">Microscopy has no up, so flips and rotations are free</li>
+</ul>
+</section>
+<section id="data-augmentation-1" class="slide level2 smaller">
+<h2>Data augmentation</h2>
+<p><img data-src="img/ml_augmentation.png" class="absolute" style="top: 24%; left: 6%; width: 88%; "></p>
+<aside class="notes">
+<p>Intensity, noise and blur stand in for real acquisition variation - different sessions, different scopes, different laser power. This is the same idea Cellpose-SAM leans on later in the deck, where the model is deliberately trained against blur, noise and anisotropy.</p>
+<p>For segmentation the mask has to go through the same transform as the image; flipping one and not the other is the classic bug.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="augment-the-training-set-only" class="slide level2 smaller">
+<h2>Augment the training set only</h2>
+<ul>
+<li class="fragment">Split first, augment second — a flipped copy of a training image landing in the test set is the leakage problem again</li>
+<li class="fragment">Validation and test sets stay untouched: they have to look like the data you’ll actually face</li>
+<li class="fragment">Augmentation buys <em>invariance</em>, not new biology. 500 copies of 10 animals is still 10 animals!</li>
+</ul>
 </section></section>
 <section>
 <section id="from-pixels-to-meaning" class="title-slide slide level1 center">
@@ -2895,7 +2961,6 @@ Sparse identifiable landmarks
 <p><img data-src="img/increasing_complexity.png" class="fragment absolute" style="left: 20%; bottom: 4%; width: 60%; "></p>
 <aside class="notes">
 <p>Figure from Goodfellow, Bengio &amp; Courville, <em>Deep Learning</em> (2016), fig 1.2.</p>
-<p>This is the intuition for depth. Each layer’s units look at what the previous layer found, not at raw pixels — so “meaning” accumulates with depth: pixels, edges, corners and contours, object parts, object identity.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -3049,49 +3114,6 @@ Sparse identifiable landmarks
 <li class="fragment">Sometimes you want to reuse the encoder/embeddings from other models</li>
 <li class="fragment">Feed a small number (100s to 1000s) of your data to teach the model “your” data</li>
 </ul>
-</section></section>
-<section>
-<section id="building-your-training-set" class="title-slide slide level1 center">
-<h1>Building your training set</h1>
-
-</section>
-<section id="test-set-leakage" class="slide level2 smaller">
-<h2>Test set leakage</h2>
-<p>Splitting images randomly isn’t the same as splitting subjects randomly</p>
-<ul>
-<li class="fragment">If one animal contributes images to both the training set and the test set, the model can partly identify it: same tissue, same staining batch, same imaging session</li>
-<li class="fragment">The test score then reflects memorisation of that subject, not real generalisation</li>
-<li class="fragment">Fix: split by subject (or by acquisition session) first, then assign every image from that subject to train, validation, <em>or</em> test — never split across</li>
-</ul>
-</section>
-<section id="split-the-animals-not-the-images" class="slide level2 smaller">
-<h2>Split the animals, not the images</h2>
-<p><img data-src="img/ml_split_by_subject.png" class="absolute" style="top: 24%; left: 10%; width: 80%; "></p>
-</section>
-<section id="statistical-not-causal" class="slide level2 smaller">
-<h2>Statistical not causal</h2>
-<p>A model learns whatever correlates with the label, which may not necessarily be the biology!</p>
-<ul>
-<li class="fragment">Chest X-ray models trained to detect COVID-19 were found to rely on features <em>outside the lungs entirely</em> — image borders, laterality markers, patient positioning</li>
-<li class="fragment">If every positive scan came from one hospital, the model can learn that hospital’s scanner artefacts instead of the disease</li>
-</ul>
-<div class="fragment">
-<p>The model is statistical, not causal. It will happily use a confound if the confound is easier to learn than the real biology.</p>
-</div>
-<aside class="notes">
-<p>Source: DeGrave, Janizek &amp; Lee, “AI for radiographic COVID-19 detection selects shortcuts over signal”, Nature Machine Intelligence 2021.</p>
-<p>Ask: what confound could sneak into a cell-detection dataset? Target answers: imaging session, animal, microscope, time of day — same traps as test set leakage, one level up.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
 </section>
 <section id="human-in-the-loop" class="slide level2 smaller">
 <h2>Human-in-the-loop</h2>
@@ -3171,8 +3193,8 @@ Sparse identifiable landmarks
 <li class="fragment">Ships with a pretrained network, which can (should!) be fine-tuned</li>
 </ul>
 </section>
-<section id="recap" class="slide level2 smaller">
-<h2>Recap</h2>
+<section id="tomorrow" class="slide level2 smaller">
+<h2>Tomorrow</h2>
 <div class="fragment">
 <p>Tomorrow you’ll retrain <code>cellfinder</code> on your own corrections — fine-tuning and human-in-the-loop, on real data.</p>
 </div>
