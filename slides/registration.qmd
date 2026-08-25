@@ -357,6 +357,9 @@ called phase correlation.
 
 ![](img/registration_phase_correlation_1d.png){.fragment .nostretch .absolute top="45%" left="2.5%" width="95%"}
 
+::: {style="background: #ffffff; width: 33%; height: 41%; margin: 0px; position: absolute; top: 46%; left: 32%"}
+:::
+
 ## Phase correlation {.smaller}
 
 ::: {.incremental}
