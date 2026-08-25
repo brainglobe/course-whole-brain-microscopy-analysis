@@ -449,7 +449,7 @@ Most fine-tuning data comes from correcting the model's own mistakes.
 
 # The tool landscape
 
-## ilastik {.smaller}
+## [ilastik](https://www.ilastik.org/) {.smaller}
 
 Learning, without deep learning
 
@@ -459,7 +459,7 @@ Learning, without deep learning
 - Interactive: you see the result and paint more where it's wrong
 :::
 
-## StarDist {.smaller}
+## [StarDist](https://stardist.net/) {.smaller}
 
 A shape prior instead of free-form pixels
 
@@ -470,7 +470,7 @@ A shape prior instead of free-form pixels
 
 ![](img/ml_stardist_rays.png){.fragment .nostretch .absolute bottom="9%" left="18%" width="64%"}
 
-## Cellpose 2 {.smaller}
+## [Cellpose 2](https://cellpose.readthedocs.io/en/latest/index.html) {.smaller}
 
 A U-Net that predicts flows, plus retraining in the loop
 
@@ -482,7 +482,7 @@ A U-Net that predicts flows, plus retraining in the loop
 
 ![](img/ml_cellpose_flows.png){.fragment .nostretch .absolute bottom="9%" left="18%" width="64%"}
 
-## Segment Anything (SAM) {.smaller}
+## [Segment Anything (SAM)](https://segment-anything.metademolab.com/) {.smaller}
 
 The foundation-model move: one model, fine-tuned
 
@@ -492,7 +492,7 @@ The foundation-model move: one model, fine-tuned
 - Knows "object", not "cell", out of the box it does poorly on microscopy images
 :::
 
-## Cellpose-SAM {.smaller}
+## [Cellpose-SAM](https://cellpose.readthedocs.io/en/latest/index.html) {.smaller}
 
 Fine-tuning a foundation model onto cells
 
