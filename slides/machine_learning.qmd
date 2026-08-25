@@ -1,5 +1,9 @@
 ## What we'll cover {.smaller}
-
+- Basics of neural networks
+- CNNs
+- U-Nets
+- Visual Transformations
+- Tool landscape
 
 ##
 
@@ -122,7 +126,7 @@ Every pixel feeds every unit in the first layer, and each unit is the same as th
 All of these are just different ways to wire up regression units.
 :::
 
-# Training and testing
+# Building your training set
 
 ## Train, validation, test split {.smaller}
 
@@ -134,10 +138,36 @@ Split the data once, three ways — and treat the test set as spent the moment y
 Memorising practice answers != learning biology.
 :::
 
+## Test set leakage {.smaller}
+
+Splitting images randomly isn't the same as splitting subjects randomly
+
+::: {.incremental}
+- If one animal contributes images to both the training set and the test set, the model can partly identify it: same tissue, same staining batch, same imaging session
+- The test score then reflects memorisation of that subject, not real generalisation
+- Fix: split by subject (or by acquisition session) first, then assign every image from that subject to train, validation, *or* test — never split across
+:::
+
+## Split the animals, not the images {.smaller}
+
+![](img/ml_split_by_subject.png){.nostretch .absolute top="24%" left="10%" width="80%"}
+
+## Statistical not causal {.smaller}
+
+A model learns whatever correlates with the label, which may not necessarily be the biology!
+
+::: {.incremental}
+- Chest X-ray models trained to detect COVID-19 were found to rely on features *outside the lungs entirely* — image borders, laterality markers, patient positioning
+- If every positive scan came from one hospital, the model can learn that hospital's scanner artefacts instead of the disease
+:::
+
+::: {.fragment}
+The model is statistical, not causal. It will happily use a confound if the confound is easier to learn than the real biology.
+:::
+
 ::: {.notes}
-The test set is the one thing here that cannot be undone. Look at it twice —
-tweak anything after seeing it — and you no longer have a clean number to
-report, because you have started fitting to it by hand.
+Source: DeGrave, Janizek & Lee, "AI for radiographic COVID-19 detection
+selects shortcuts over signal", Nature Machine Intelligence 2021.
 :::
 
 ## Scoring a model {.smaller}
@@ -169,15 +199,47 @@ Test labels are human opinions too. 95% recall against one annotator's boundarie
 
 ## Underfitting {.smaller}
 
-Too little capacity to represent the relationship at all - so it is wrong on the training data as well as on unseen data.
+Too little capacity to represent the relationship at all - so it is wrong on the training data as well as on unseen data
 
 ![](img/ml_underfitting.png){.fragment .nostretch .absolute bottom="8%" left="10%" width="80%"}
 
 ## Overfitting {.smaller}
 
-Same loop as before, now scored on both splits after every epoch.
+Too much capacity, the model memorises the training data without extracting any information
 
 ![](img/ml_overfitting_curves.png){.fragment .nostretch .absolute top="28%" left="14%" width="72%"}
+
+## Data augmentation {.smaller}
+
+Labelling is the expensive step: make more training examples out of the ones you already have!
+
+::: {.incremental}
+- Flip, rotate, rescale, brighten, blur, add noise
+- The model sees a sample at more orientations, brightnesses and noise levels
+- Microscopy has no up, so flips and rotations are free
+:::
+
+## Data augmentation {.smaller}
+
+![](img/ml_augmentation.png){.nostretch .absolute top="24%" left="6%" width="88%"}
+
+::: {.notes}
+Intensity, noise and blur stand in for real acquisition variation - different
+sessions, different scopes, different laser power. This is the same idea
+Cellpose-SAM leans on later in the deck, where the model is deliberately
+trained against blur, noise and anisotropy.
+
+For segmentation the mask has to go through the same transform as the image;
+flipping one and not the other is the classic bug.
+:::
+
+## Augment the training set only {.smaller}
+
+::: {.incremental}
+- Split first, augment second — a flipped copy of a training image landing in the test set is the leakage problem again
+- Validation and test sets stay untouched: they have to look like the data you'll actually face
+- Augmentation buys *invariance*, not new biology. 500 copies of 10 animals is still 10 animals!
+:::
 
 # From pixels to meaning
 
@@ -255,10 +317,6 @@ Early layers find edges; later layers combine them into shapes, then parts, then
 
 ::: {.notes}
 Figure from Goodfellow, Bengio & Courville, *Deep Learning* (2016), fig 1.2.
-
-This is the intuition for depth. Each layer's units look at what the previous
-layer found, not at raw pixels — so "meaning" accumulates with depth: pixels,
-edges, corners and contours, object parts, object identity.
 :::
 
 ## Detection vs segmentation {background-color="black" .smaller}
@@ -382,43 +440,6 @@ say that is the pixels-to-embedding step from earlier, done per patch.
 - Feed a small number (100s to 1000s) of your data to teach the model "your" data
 :::
 
-# Building your training set
-
-## Test set leakage {.smaller}
-
-Splitting images randomly isn't the same as splitting subjects randomly
-
-::: {.incremental}
-- If one animal contributes images to both the training set and the test set, the model can partly identify it: same tissue, same staining batch, same imaging session
-- The test score then reflects memorisation of that subject, not real generalisation
-- Fix: split by subject (or by acquisition session) first, then assign every image from that subject to train, validation, *or* test — never split across
-:::
-
-## Split the animals, not the images {.smaller}
-
-![](img/ml_split_by_subject.png){.nostretch .absolute top="24%" left="10%" width="80%"}
-
-## Statistical not causal {.smaller}
-
-A model learns whatever correlates with the label, which may not necessarily be the biology!
-
-::: {.incremental}
-- Chest X-ray models trained to detect COVID-19 were found to rely on features *outside the lungs entirely* — image borders, laterality markers, patient positioning
-- If every positive scan came from one hospital, the model can learn that hospital's scanner artefacts instead of the disease
-:::
-
-::: {.fragment}
-The model is statistical, not causal. It will happily use a confound if the confound is easier to learn than the real biology.
-:::
-
-::: {.notes}
-Source: DeGrave, Janizek & Lee, "AI for radiographic COVID-19 detection
-selects shortcuts over signal", Nature Machine Intelligence 2021.
-
-Ask: what confound could sneak into a cell-detection dataset? Target answers:
-imaging session, animal, microscope, time of day — same traps as test set
-leakage, one level up.
-:::
 
 ## Human-in-the-loop {.smaller}
 
@@ -497,8 +518,7 @@ Detection for large 3D imaging datasets
 - Ships with a pretrained network, which can (should!) be fine-tuned
 :::
 
-## Recap {.smaller}
-
+## Tomorrow {.smaller}
 
 ::: {.fragment}
 Tomorrow you'll retrain `cellfinder` on your own corrections — fine-tuning and human-in-the-loop, on real data.
